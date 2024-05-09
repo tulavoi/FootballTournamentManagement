@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,19 +18,18 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void guna2ControlBox3_Click(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            guna2ShadowForm1.SetShadowForm(this);
         }
 
-        private void guna2ControlBox1_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void guna2ControlBox2_Click(object sender, EventArgs e)
-        {
-
+            //string serverName = txtServerName.Text;
+            //string dbName = txtDBName.Text;
+            //string connectionString = $"Data Source={serverName};Initial Catalog={dbName};Integrated Security=True;Trust Server Certificate=True";
+            MainForm frm = new MainForm();
+            frm.Show();
         }
     }
 }
