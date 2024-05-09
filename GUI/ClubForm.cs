@@ -48,7 +48,6 @@ namespace GUI
             dgvClubs.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI SemiBold", 10);
             dgvPlayers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI SemiBold", 10);
             dgvManagers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI SemiBold", 10);
-            // dgvStadium.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI SemiBold", 10);
         }
 
 

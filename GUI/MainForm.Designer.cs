@@ -40,9 +40,9 @@
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel_Left = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnOpenRefereeForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenHomeForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenSettingForm = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnOpenRefereeForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenMatchForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenClubForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -73,9 +73,9 @@
             this.guna2Panel_Top.Controls.Add(this.guna2ControlBox3);
             this.guna2Panel_Top.Controls.Add(this.guna2ControlBox1);
             this.guna2Panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel_Top.Location = new System.Drawing.Point(280, 0);
+            this.guna2Panel_Top.Location = new System.Drawing.Point(253, 0);
             this.guna2Panel_Top.Name = "guna2Panel_Top";
-            this.guna2Panel_Top.Size = new System.Drawing.Size(1517, 84);
+            this.guna2Panel_Top.Size = new System.Drawing.Size(1597, 84);
             this.guna2Panel_Top.TabIndex = 1;
             // 
             // iconForm
@@ -109,7 +109,7 @@
             this.guna2ControlBox4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox4.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox4.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox4.Location = new System.Drawing.Point(1454, 0);
+            this.guna2ControlBox4.Location = new System.Drawing.Point(1534, 0);
             this.guna2ControlBox4.Name = "guna2ControlBox4";
             this.guna2ControlBox4.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox4.TabIndex = 17;
@@ -128,7 +128,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.btnSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnSearch.IconLeftOffset = new System.Drawing.Point(10, 0);
-            this.btnSearch.Location = new System.Drawing.Point(944, 24);
+            this.btnSearch.Location = new System.Drawing.Point(1024, 24);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.PasswordChar = '\0';
@@ -149,7 +149,7 @@
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1391, 0);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1471, 0);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox2.TabIndex = 14;
@@ -165,7 +165,7 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1328, 0);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1408, 0);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox3.TabIndex = 13;
@@ -178,7 +178,7 @@
             this.guna2ControlBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox1.ForeColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1506, 0);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1586, 0);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox1.TabIndex = 12;
@@ -196,8 +196,37 @@
             this.guna2Panel_Left.FillColor = System.Drawing.Color.White;
             this.guna2Panel_Left.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel_Left.Name = "guna2Panel_Left";
-            this.guna2Panel_Left.Size = new System.Drawing.Size(280, 932);
+            this.guna2Panel_Left.Size = new System.Drawing.Size(253, 1000);
             this.guna2Panel_Left.TabIndex = 0;
+            // 
+            // btnOpenRefereeForm
+            // 
+            this.btnOpenRefereeForm.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.btnOpenRefereeForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenRefereeForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenRefereeForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOpenRefereeForm.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOpenRefereeForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOpenRefereeForm.FillColor = System.Drawing.Color.White;
+            this.btnOpenRefereeForm.FillColor2 = System.Drawing.Color.White;
+            this.btnOpenRefereeForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnOpenRefereeForm.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenRefereeForm.HoverState.BorderColor = System.Drawing.Color.Purple;
+            this.btnOpenRefereeForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
+            this.btnOpenRefereeForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.btnOpenRefereeForm.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnOpenRefereeForm.HoverState.Image = global::GUI.Properties.Resources.referee__1_;
+            this.btnOpenRefereeForm.Image = global::GUI.Properties.Resources.referee;
+            this.btnOpenRefereeForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOpenRefereeForm.ImageOffset = new System.Drawing.Point(4, 0);
+            this.btnOpenRefereeForm.ImageSize = new System.Drawing.Size(39, 39);
+            this.btnOpenRefereeForm.Location = new System.Drawing.Point(0, 292);
+            this.btnOpenRefereeForm.Name = "btnOpenRefereeForm";
+            this.btnOpenRefereeForm.Size = new System.Drawing.Size(253, 67);
+            this.btnOpenRefereeForm.TabIndex = 28;
+            this.btnOpenRefereeForm.Text = "Referees";
+            this.btnOpenRefereeForm.TextOffset = new System.Drawing.Point(11, 0);
+            this.btnOpenRefereeForm.Click += new System.EventHandler(this.btnOpenRefereeForm_Click);
             // 
             // btnOpenHomeForm
             // 
@@ -222,7 +251,7 @@
             this.btnOpenHomeForm.ImageSize = new System.Drawing.Size(30, 30);
             this.btnOpenHomeForm.Location = new System.Drawing.Point(0, 161);
             this.btnOpenHomeForm.Name = "btnOpenHomeForm";
-            this.btnOpenHomeForm.Size = new System.Drawing.Size(280, 67);
+            this.btnOpenHomeForm.Size = new System.Drawing.Size(253, 67);
             this.btnOpenHomeForm.TabIndex = 30;
             this.btnOpenHomeForm.Text = "Home";
             this.btnOpenHomeForm.Click += new System.EventHandler(this.btnOpenHomeForm_Click);
@@ -250,40 +279,11 @@
             this.btnOpenSettingForm.ImageSize = new System.Drawing.Size(33, 33);
             this.btnOpenSettingForm.Location = new System.Drawing.Point(0, 429);
             this.btnOpenSettingForm.Name = "btnOpenSettingForm";
-            this.btnOpenSettingForm.Size = new System.Drawing.Size(280, 67);
+            this.btnOpenSettingForm.Size = new System.Drawing.Size(253, 67);
             this.btnOpenSettingForm.TabIndex = 29;
             this.btnOpenSettingForm.Text = "Setting";
             this.btnOpenSettingForm.TextOffset = new System.Drawing.Point(5, 0);
             this.btnOpenSettingForm.Click += new System.EventHandler(this.btnOpenSettingForm_Click);
-            // 
-            // btnOpenRefereeForm
-            // 
-            this.btnOpenRefereeForm.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.btnOpenRefereeForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnOpenRefereeForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnOpenRefereeForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOpenRefereeForm.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOpenRefereeForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnOpenRefereeForm.FillColor = System.Drawing.Color.White;
-            this.btnOpenRefereeForm.FillColor2 = System.Drawing.Color.White;
-            this.btnOpenRefereeForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnOpenRefereeForm.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenRefereeForm.HoverState.BorderColor = System.Drawing.Color.Purple;
-            this.btnOpenRefereeForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
-            this.btnOpenRefereeForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnOpenRefereeForm.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenRefereeForm.HoverState.Image = global::GUI.Properties.Resources.referee__1_;
-            this.btnOpenRefereeForm.Image = global::GUI.Properties.Resources.referee;
-            this.btnOpenRefereeForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnOpenRefereeForm.ImageOffset = new System.Drawing.Point(4, 0);
-            this.btnOpenRefereeForm.ImageSize = new System.Drawing.Size(39, 39);
-            this.btnOpenRefereeForm.Location = new System.Drawing.Point(0, 292);
-            this.btnOpenRefereeForm.Name = "btnOpenRefereeForm";
-            this.btnOpenRefereeForm.Size = new System.Drawing.Size(280, 67);
-            this.btnOpenRefereeForm.TabIndex = 28;
-            this.btnOpenRefereeForm.Text = "Referees";
-            this.btnOpenRefereeForm.TextOffset = new System.Drawing.Point(11, 0);
-            this.btnOpenRefereeForm.Click += new System.EventHandler(this.btnOpenRefereeForm_Click);
             // 
             // btnOpenMatchForm
             // 
@@ -308,7 +308,7 @@
             this.btnOpenMatchForm.ImageSize = new System.Drawing.Size(53, 53);
             this.btnOpenMatchForm.Location = new System.Drawing.Point(0, 359);
             this.btnOpenMatchForm.Name = "btnOpenMatchForm";
-            this.btnOpenMatchForm.Size = new System.Drawing.Size(280, 67);
+            this.btnOpenMatchForm.Size = new System.Drawing.Size(253, 67);
             this.btnOpenMatchForm.TabIndex = 27;
             this.btnOpenMatchForm.Text = "Matches";
             this.btnOpenMatchForm.TextOffset = new System.Drawing.Point(10, 0);
@@ -337,7 +337,7 @@
             this.btnOpenClubForm.ImageSize = new System.Drawing.Size(38, 38);
             this.btnOpenClubForm.Location = new System.Drawing.Point(0, 228);
             this.btnOpenClubForm.Name = "btnOpenClubForm";
-            this.btnOpenClubForm.Size = new System.Drawing.Size(280, 67);
+            this.btnOpenClubForm.Size = new System.Drawing.Size(253, 67);
             this.btnOpenClubForm.TabIndex = 26;
             this.btnOpenClubForm.Text = "Clubs";
             this.btnOpenClubForm.TextOffset = new System.Drawing.Point(-3, 0);
@@ -371,9 +371,9 @@
             // panelContainer
             // 
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(280, 84);
+            this.panelContainer.Location = new System.Drawing.Point(253, 84);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1517, 848);
+            this.panelContainer.Size = new System.Drawing.Size(1597, 916);
             this.panelContainer.TabIndex = 2;
             // 
             // guna2AnimateWindow1
@@ -386,16 +386,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1797, 932);
+            this.ClientSize = new System.Drawing.Size(1850, 1000);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.guna2Panel_Top);
             this.Controls.Add(this.guna2Panel_Left);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(1850, 1000);
+            this.MinimumSize = new System.Drawing.Size(1850, 1000);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.guna2Panel_Top.ResumeLayout(false);
             this.guna2Panel_Top.PerformLayout();
