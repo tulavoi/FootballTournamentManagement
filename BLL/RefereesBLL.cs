@@ -19,5 +19,20 @@ namespace BLL
         {
             return refereesDAL.AddData(referee);
         }
+
+        public bool DeleteData(int refereeID)
+        {
+            return refereesDAL.DeleteData(refereeID);
+        }
+
+        public Referee LoadDataByRefereeID(int refereeID)
+        {
+            return refereesDAL.LoadDataByRefereeID(refereeID);
+        }
+
+        public bool EditData(Referee referee)
+        {
+            return refereesDAL.EditData(referee);
+        }
     }
 }

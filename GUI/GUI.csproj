@@ -122,6 +122,12 @@
     <Compile Include="FormDialogEditPlayer.Designer.cs">
       <DependentUpon>FormDialogEditPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDialogEditReferee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDialogEditReferee.Designer.cs">
+      <DependentUpon>FormDialogEditReferee.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDialogEditStadium.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogEditPlayer.resx">
       <DependentUpon>FormDialogEditPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDialogEditReferee.resx">
+      <DependentUpon>FormDialogEditReferee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogEditStadium.resx">
       <DependentUpon>FormDialogEditStadium.cs</DependentUpon>

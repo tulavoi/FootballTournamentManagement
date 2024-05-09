@@ -41,8 +41,11 @@ namespace GUI
                 int rowIndex = dgvReferees.Rows.Add();
                 dgvReferees.Rows[rowIndex].Cells[0].Tag = referee.RefereeID;
                 dgvReferees.Rows[rowIndex].Cells[1].Value = referee.RefereeName;
-                DateTime dob = Convert.ToDateTime(referee.DOB);
-                dgvReferees.Rows[rowIndex].Cells[2].Value = dob.ToString("dd/MM/yyyy");
+
+                DateTime? dob = referee.DOB;
+                string dobString = dob.HasValue ? dob.Value.ToString("dd/MM/yyyy") : "";
+
+                dgvReferees.Rows[rowIndex].Cells[2].Value = dobString;
                 dgvReferees.Rows[rowIndex].Cells[3].Value = referee.Country;
             }
         }
@@ -238,5 +241,63 @@ namespace GUI
             return true;
         }
         #endregion
+
+        private void dgvReferees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 4 && e.ColumnIndex != 5)
+                return;
+
+            // Button column edit
+            if (e.ColumnIndex == 4)
+            {
+                HandleEditPlayerButtonClick(e.RowIndex);
+            }
+
+            // Button column delete
+            if (e.ColumnIndex == 5)
+            {
+                HandleDeletePlayerButtonClick(e.RowIndex);
+            }
+        }
+
+        private void HandleEditPlayerButtonClick(int rowIndex)
+        {
+            if (rowIndex < 0)
+                return;
+
+            string refereeName = dgvReferees.Rows[rowIndex].Cells[1].Value.ToString();
+
+            int refereeID = (int)dgvReferees.Rows[rowIndex].Cells[0].Tag;
+            FormDialogEditReferee frm = new FormDialogEditReferee(refereeID);
+            frm.ShowDialog();
+
+            LoadData();
+        }
+
+        private void HandleDeletePlayerButtonClick(int rowIndex)
+        {
+            if (rowIndex < 0)
+                return;
+
+            string refereeName = dgvReferees.Rows[rowIndex].Cells[1].Value.ToString();
+
+            DialogResult rs = MessageBox.Show($"Are you sure to delete \"{refereeName}\"?",
+                                                "Information",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes)
+            {
+                int refereeID = int.Parse(dgvReferees.Rows[rowIndex].Cells[0].Tag.ToString());
+
+                bool isDeleteRefereeSuccess = refereesBLL.DeleteData(refereeID);
+                if (isDeleteRefereeSuccess)
+                {
+                    MessageBox.Show($"Deleted player \"{refereeName}\" successfully!");
+                    LoadData();
+                }
+                else
+                    MessageBox.Show($"Delete player \"{refereeName}\" failed!");
+            }
+        }
     }
 }
