@@ -665,7 +665,7 @@ namespace GUI
             {
                 btnOpenDialogAddStadium.Enabled = false;
 
-                if (File.Exists(stadium.Image))
+                if (File.Exists(shortcutStadiumImgPath + stadium.Image))
                     pictureBoxStadium.Image = Image.FromFile(shortcutStadiumImgPath + stadium.Image);
 
                 lblStadiumName.Text = stadium.StadiumName;

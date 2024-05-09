@@ -9,6 +9,7 @@ namespace DAL
 {
     public class PlayersDAL
     {
+        ConnectDatabase connectDB = new ConnectDatabase();
         public string connectionString = "Data Source=LAPTOP-5I4BGSNV\\HOANGVU;Initial Catalog=DBProject.Net;Integrated Security=True";
         public SqlConnection connection = null;
 
@@ -175,43 +176,7 @@ namespace DAL
             }
         }
 
-        //public List<Player> SearchPlayer(string keyword, int clubID)
-        //{
-        //    List<Player> players = new List<Player>();
-        //    using (DBProjetDataContext db = new DBProjetDataContext())
-        //    {
-        //        keyword = "%" + keyword + "%";
-        //        var query = from p in db.Players
-        //                    join c in db.Clubs on p.ClubID equals c.ClubID
-        //                    where p.ClubID == clubID &&
-        //                    (
-        //                        p.PlayerName.ToLower().Contains(keyword) ||
-        //                        p.Country.ToLower().Contains(keyword) ||
-        //                        p.Position.ToLower().Contains(keyword) ||
-        //                        p.Foot.ToLower().Contains(keyword)
-        //                    )
-        //                    select p;
 
-        //        foreach (var item in query)
-        //        {
-        //            Player player = new Player();
-        //            player.PlayerID = item.PlayerID;
-        //            player.Image = item.Image;
-        //            player.PlayerName = item.PlayerName;
-        //            player.ClubID = item.ClubID;
-        //            player.Number = item.Number;
-        //            player.Country = item.Country;
-        //            player.DOB = item.DOB;
-        //            player.Position = item.Position;
-
-        //            players.Add(player);
-        //        }
-        //    }
-        //    return players;
-        //}
-
-
-        // Bị cộng dồn row ở trong datagridview
         public List<Player> SearchPlayer(string keyword, int clubID)
         {
             List<Player> players = new List<Player>();
@@ -219,14 +184,15 @@ namespace DAL
             {
                 try
                 {
-                    // Mở kết nối
-                    OpenConnect();
+                    connectDB.OpenConnect();
 
-                    SqlCommand cmd = CreateCommand("usp_SearchPlayer", CommandType.StoredProcedure);
+                    SqlCommand cmd = connectDB.CreateCommand("usp_SearchPlayer", CommandType.StoredProcedure);
                     cmd.Parameters.AddWithValue("@Keyword", keyword);
                     cmd.Parameters.AddWithValue("@ClubID", clubID);
-                    SqlDataReader reader = ExecuteReader(cmd);
-                    players = ReadDatasFromReader(reader);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        players = ReadDatasFromReader(reader);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -234,8 +200,7 @@ namespace DAL
                 }
                 finally
                 {
-                    // Đóng kết nối
-                    CloseConnect();
+                    connectDB.CloseConnect();
                 }
             }
             return players;
@@ -262,34 +227,8 @@ namespace DAL
             return players;
         }
 
-        private SqlDataReader ExecuteReader(SqlCommand cmd)
-        {
-            return cmd.ExecuteReader();
-        }
+        
 
-        private SqlCommand CreateCommand(string cmdText, CommandType storedProcedure)
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = storedProcedure;
-            cmd.CommandText = cmdText;
-            cmd.Connection = connection;
-            return cmd;
-        }
-
-        private void CloseConnect()
-        {
-            if (connection != null && connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-                connection.Dispose();
-            }
-        }
-
-        public void OpenConnect()
-        {
-            connection = new SqlConnection(connectionString);
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
-        }
+        
     }
 }
