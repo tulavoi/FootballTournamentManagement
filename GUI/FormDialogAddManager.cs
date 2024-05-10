@@ -24,10 +24,14 @@ namespace GUI
             InitializeComponent();
             this.clubID = clubID;
             this.clubLogo = clubLogo;
+
+            guna2ShadowForm1.SetShadowForm(this);
         }
 
         private void FormDialogAddManager_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             pictureBoxClubLogo.Image = clubLogo;
         }
 

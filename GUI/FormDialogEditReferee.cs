@@ -24,6 +24,8 @@ namespace GUI
 
         private void FormDialogEditReferee_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             Referee referee = refereesBLL.LoadDataByRefereeID(refereeID);
 
             // Gán values referee vào controls

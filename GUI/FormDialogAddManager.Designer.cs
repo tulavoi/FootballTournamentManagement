@@ -41,25 +41,21 @@
             this.txtYear = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtMonth = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDay = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pictureBoxClubLogo = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtCountry = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pictureBoxManagerImg = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnBrowseManagerImg = new Guna.UI2.WinForms.Guna2Button();
             this.txtManagerName = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBoxClubLogo = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.pictureBoxManagerImg = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panelTop.SuspendLayout();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagerImg)).BeginInit();
             this.SuspendLayout();
-            // 
-            // guna2ShadowForm1
-            // 
-            this.guna2ShadowForm1.TargetForm = this;
             // 
             // guna2DragControl1
             // 
@@ -253,6 +249,16 @@
             this.txtDay.TabIndex = 63;
             this.txtDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dobTextboxes_KeyPress);
             // 
+            // pictureBoxClubLogo
+            // 
+            this.pictureBoxClubLogo.ImageRotate = 0F;
+            this.pictureBoxClubLogo.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxClubLogo.Name = "pictureBoxClubLogo";
+            this.pictureBoxClubLogo.Size = new System.Drawing.Size(63, 66);
+            this.pictureBoxClubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxClubLogo.TabIndex = 62;
+            this.pictureBoxClubLogo.TabStop = false;
+            // 
             // guna2HtmlLabel6
             // 
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
@@ -298,6 +304,20 @@
             this.guna2HtmlLabel5.Size = new System.Drawing.Size(77, 30);
             this.guna2HtmlLabel5.TabIndex = 6;
             this.guna2HtmlLabel5.Text = "Country:";
+            // 
+            // pictureBoxManagerImg
+            // 
+            this.pictureBoxManagerImg.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxManagerImg.BorderRadius = 3;
+            this.pictureBoxManagerImg.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxManagerImg.Image = global::GUI.Properties.Resources.photo_missing;
+            this.pictureBoxManagerImg.ImageRotate = 0F;
+            this.pictureBoxManagerImg.Location = new System.Drawing.Point(60, 140);
+            this.pictureBoxManagerImg.Name = "pictureBoxManagerImg";
+            this.pictureBoxManagerImg.Size = new System.Drawing.Size(232, 277);
+            this.pictureBoxManagerImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxManagerImg.TabIndex = 37;
+            this.pictureBoxManagerImg.TabStop = false;
             // 
             // btnBrowseManagerImg
             // 
@@ -391,30 +411,6 @@
             this.btnSave.TabIndex = 12;
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // pictureBoxClubLogo
-            // 
-            this.pictureBoxClubLogo.ImageRotate = 0F;
-            this.pictureBoxClubLogo.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxClubLogo.Name = "pictureBoxClubLogo";
-            this.pictureBoxClubLogo.Size = new System.Drawing.Size(63, 66);
-            this.pictureBoxClubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxClubLogo.TabIndex = 62;
-            this.pictureBoxClubLogo.TabStop = false;
-            // 
-            // pictureBoxManagerImg
-            // 
-            this.pictureBoxManagerImg.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxManagerImg.BorderRadius = 3;
-            this.pictureBoxManagerImg.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBoxManagerImg.Image = global::GUI.Properties.Resources.photo_missing;
-            this.pictureBoxManagerImg.ImageRotate = 0F;
-            this.pictureBoxManagerImg.Location = new System.Drawing.Point(60, 140);
-            this.pictureBoxManagerImg.Name = "pictureBoxManagerImg";
-            this.pictureBoxManagerImg.Size = new System.Drawing.Size(232, 277);
-            this.pictureBoxManagerImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxManagerImg.TabIndex = 37;
-            this.pictureBoxManagerImg.TabStop = false;
             // 
             // FormDialogAddManager
             // 

@@ -39,6 +39,8 @@ namespace GUI
 
         private void FormDialogEditPlayer_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             // Gán club logo vào picturebox
             pictureBoxClubLogo.Image = clubLogo;
 

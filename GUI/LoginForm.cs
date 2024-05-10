@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BLL;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,12 +8,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.Design;
 using System.Windows.Forms;
 
 namespace GUI
 {
     public partial class LoginForm : Form
     {
+        string serverName;
+        string dbName;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -21,13 +26,28 @@ namespace GUI
         private void LoginForm_Load(object sender, EventArgs e)
         {
             guna2ShadowForm1.SetShadowForm(this);
+
+            txtServerName.Text = "LAPTOP-5I4BGSNV\\HOANGVU";
+            txtDBName.Text = "DBProject.Net";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //string serverName = txtServerName.Text;
-            //string dbName = txtDBName.Text;
-            //string connectionString = $"Data Source={serverName};Initial Catalog={dbName};Integrated Security=True;Trust Server Certificate=True";
+            if (txtServerName.Text == "")
+            {
+                MessageBox.Show("Please enter a server name!");
+                return;
+            }
+
+            if (txtDBName.Text == "")
+            {
+                MessageBox.Show("Please enter a database name!");
+                return;
+            }
+
+            serverName = txtServerName.Text;
+            dbName = txtDBName.Text;
+
             MainForm frm = new MainForm();
             frm.Show();
         }

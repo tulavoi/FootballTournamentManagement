@@ -64,6 +64,7 @@
             this.txtServerName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.txtServerName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
             this.txtServerName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtServerName.ForeColor = System.Drawing.Color.White;
             this.txtServerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
             this.txtServerName.Location = new System.Drawing.Point(21, 232);
             this.txtServerName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -90,6 +91,7 @@
             this.txtDBName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.txtDBName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
             this.txtDBName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDBName.ForeColor = System.Drawing.Color.White;
             this.txtDBName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
             this.txtDBName.Location = new System.Drawing.Point(21, 299);
             this.txtDBName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -173,6 +175,8 @@
             this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox3.ForeColor = System.Drawing.Color.Black;
+            this.guna2ControlBox3.HoverState.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox3.Location = new System.Drawing.Point(622, 12);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
@@ -185,6 +189,8 @@
             this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2ControlBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox1.ForeColor = System.Drawing.Color.Black;
+            this.guna2ControlBox1.HoverState.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.Location = new System.Drawing.Point(673, 12);
             this.guna2ControlBox1.Name = "guna2ControlBox1";

@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web.UI.WebControls;
 
 namespace DAL
 {
     public class PlayersDAL
     {
-        ConnectDatabase connectDB = new ConnectDatabase();
-        public string connectionString = "Data Source=LAPTOP-5I4BGSNV\\HOANGVU;Initial Catalog=DBProject.Net;Integrated Security=True";
-        public SqlConnection connection = null;
-
         public List<Player> LoadDataByClubID(int clubID)
         {
             List<Player> players = new List<Player>();
@@ -182,53 +179,27 @@ namespace DAL
             List<Player> players = new List<Player>();
             using (DBProjetDataContext db = new DBProjetDataContext())
             {
-                try
-                {
-                    connectDB.OpenConnect();
+                var query = from p in db.Players
+                            where p.ClubID == clubID &&
+                            (p.PlayerName.Contains(keyword) || p.Country.Contains(keyword))
+                            select p;
 
-                    SqlCommand cmd = connectDB.CreateCommand("usp_SearchPlayer", CommandType.StoredProcedure);
-                    cmd.Parameters.AddWithValue("@Keyword", keyword);
-                    cmd.Parameters.AddWithValue("@ClubID", clubID);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        players = ReadDatasFromReader(reader);
-                    }
-                }
-                catch (Exception ex)
+                foreach (var item in query)
                 {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    connectDB.CloseConnect();
+                    Player player = new Player();
+                    player.PlayerID = item.PlayerID;
+                    player.PlayerName = item.PlayerName;
+                    player.ClubID = item.ClubID;
+                    player.Image = item.Image;
+                    player.Number = item.Number;
+                    player.Country = item.Country;
+                    player.DOB = item.DOB;
+                    player.Position = item.Position;
+
+                    players.Add(player);
                 }
             }
             return players;
         }
-
-        // Đọc dữ liệu từ SqlDataReader và chuyển đổi thành danh sách các đối tượng Player.
-        private List<Player> ReadDatasFromReader(SqlDataReader reader)
-        {
-            List<Player> players = new List<Player>();
-            while (reader.Read())
-            {
-                Player player = new Player();
-                player.PlayerID = Convert.ToInt32(reader["PlayerID"]);
-                player.Image = reader["Image"].ToString();
-                player.PlayerName = reader["PlayerName"].ToString();
-                player.ClubID = Convert.ToInt32(reader["ClubID"]);
-                player.Number = Convert.ToInt32(reader["Number"]);
-                player.Country = reader["Country"].ToString();
-                player.DOB = Convert.ToDateTime(reader["DOB"]);
-                player.Position = reader["Position"].ToString();
-
-                players.Add(player);
-            }
-            return players;
-        }
-
-        
-
-        
     }
 }

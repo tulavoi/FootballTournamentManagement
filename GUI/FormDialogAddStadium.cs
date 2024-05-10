@@ -32,6 +32,8 @@ namespace GUI
 
         private void FormDialogAddStadium_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             pictureBoxClubLogo.Image = clubLogo;
         }
 

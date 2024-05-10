@@ -27,6 +27,8 @@ namespace GUI
 
         private void FormDialogEditClub_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             Club club = clubsBLL.LoadDataByID(clubID);
             txtClubName.Text = club.ClubName;
             pictureBoxClubLogo.Image = Image.FromFile($"Images\\Logos\\{club.Logo}");

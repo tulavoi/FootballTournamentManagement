@@ -79,6 +79,8 @@ namespace GUI
 
         private void FormDialogEditManager_Load(object sender, EventArgs e)
         {
+            guna2ShadowForm1.SetShadowForm(this);
+
             pictureBoxClubLogo.Image = clubLogo;
 
             Manager manager = managersBLL.LoadDataByManagerID(managerID);

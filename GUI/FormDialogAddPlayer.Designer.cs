@@ -667,6 +667,7 @@
             this.Name = "FormDialogAddPlayer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormDialogAddPlayer";
+            this.Load += new System.EventHandler(this.FormDialogAddPlayer_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelContent.ResumeLayout(false);

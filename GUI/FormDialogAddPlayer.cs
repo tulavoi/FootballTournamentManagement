@@ -26,6 +26,11 @@ namespace GUI
             this.clubLogo = clubLogo;
         }
 
+        private void FormDialogAddPlayer_Load(object sender, EventArgs e)
+        {
+            guna2ShadowForm1.SetShadowForm(this);
+        }
+
         private void ClearControls()
         {
             txtPlayerName.Clear();
@@ -315,5 +320,6 @@ namespace GUI
             ClearControls();
         }
 
+        
     }
 }

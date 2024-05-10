@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class EditPlayerWindow : Form
+    public partial class MatchForm : Form
     {
-        public EditPlayerWindow()
+        public MatchForm()
         {
             InitializeComponent();
-        }
-
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

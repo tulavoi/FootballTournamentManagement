@@ -53,6 +53,7 @@
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
@@ -152,12 +153,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditPlayerWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditPlayerWindow.Designer.cs">
-      <DependentUpon>EditPlayerWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -171,6 +166,7 @@
     <Compile Include="RefereeForm.Designer.cs">
       <DependentUpon>RefereeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlHelper.cs" />
     <None Include="Resources\photo-missing.png" />
     <None Include="Resources\salah.png" />
     <EmbeddedResource Include="FormDialogAddManager.resx">
@@ -201,9 +197,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClubForm.resx">
       <DependentUpon>ClubForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditPlayerWindow.resx">
-      <DependentUpon>EditPlayerWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogEditClub.resx">
       <DependentUpon>FormDialogEditClub.cs</DependentUpon>

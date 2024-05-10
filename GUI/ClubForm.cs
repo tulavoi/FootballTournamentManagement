@@ -476,18 +476,13 @@ namespace GUI
             }
         }
 
-        // Tìm kiếm
+        // Tìm kiếm player
         private void txtSearchPlayer_TextChanged(object sender, EventArgs e)
         {
             string keyword = txtSearchPlayer.Text.ToLower();
             List<Player> players = playersBLL.SearchPlayer(keyword, selectedClubID);
 
             DisplayPlayersToDatagridview(players);
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void DisplayPlayersToDatagridview(List<Player> players)
@@ -734,6 +729,7 @@ namespace GUI
 
             LoadDataOfStaidumToControlsInTabStadium(selectedClubID);
         }
+
 
         #endregion
 

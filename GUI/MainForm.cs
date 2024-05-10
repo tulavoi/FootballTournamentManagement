@@ -1,6 +1,7 @@
 ﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,8 +12,6 @@ namespace GUI
         Guna2GradientButton currentBtn;
 
         private Image imgHomeBtnBeforeHover = Properties.Resources.home;
-
-        private Image imgPlayerBtnBeforeHover = Properties.Resources.soccer_player;
 
         private Image imgClubBtnBeforeHover = Properties.Resources.club__1_;
 
@@ -25,18 +24,7 @@ namespace GUI
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void ActiveButton(object sender)
-        {
-            if (sender != null)
-            {
-                currentBtn = (Guna2GradientButton)sender;
-                currentBtn.FillColor = Color.FromArgb(160, 20, 110);
-                currentBtn.FillColor2 = Color.FromArgb(50, 0, 60);
-                currentBtn.ForeColor = Color.White;
-                currentBtn.Image = currentBtn.HoverState.Image;
-            }
+            
         }
 
         /// <summary>
@@ -83,6 +71,9 @@ namespace GUI
         private void MainForm_Load(object sender, EventArgs e)
         {
             guna2ShadowForm1.SetShadowForm(this);
+
+            //string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            //MessageBox.Show(connectionString);
         }
         
 

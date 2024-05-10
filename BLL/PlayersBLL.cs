@@ -9,6 +9,7 @@ namespace BLL
 {
     public class PlayersBLL
     {
+        string serverName, dbName;
         PlayersDAL playersDAL = new PlayersDAL();
 
         public List<Player> LoadDataByClubID(int clubID)
