@@ -152,7 +152,7 @@ namespace GUI
         {
             labelValue.Text = "Matches";
             iconForm.Image = btnOpenMatchForm.HoverState.Image;
-            //Container(new MatchForm());
+            Container(new MatchForm());
             btnOpenMatchForm.FillColor = Color.FromArgb(160, 20, 110);
             btnOpenMatchForm.FillColor2 = Color.FromArgb(50, 0, 60);
             btnOpenMatchForm.ForeColor = Color.White;

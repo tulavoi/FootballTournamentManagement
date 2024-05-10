@@ -57,9 +57,6 @@ namespace DAL
     partial void InsertSeason(Season instance);
     partial void UpdateSeason(Season instance);
     partial void DeleteSeason(Season instance);
-    partial void InsertRound(Round instance);
-    partial void UpdateRound(Round instance);
-    partial void DeleteRound(Round instance);
     partial void InsertSeasonClub(SeasonClub instance);
     partial void UpdateSeasonClub(SeasonClub instance);
     partial void DeleteSeasonClub(SeasonClub instance);
@@ -69,6 +66,9 @@ namespace DAL
     partial void InsertStanding(Standing instance);
     partial void UpdateStanding(Standing instance);
     partial void DeleteStanding(Standing instance);
+    partial void InsertRound(Round instance);
+    partial void UpdateRound(Round instance);
+    partial void DeleteRound(Round instance);
     #endregion
 		
 		public DBProjetDataContext() : 
@@ -173,14 +173,6 @@ namespace DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Round> Rounds
-		{
-			get
-			{
-				return this.GetTable<Round>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SeasonClub> SeasonClubs
 		{
 			get
@@ -202,6 +194,14 @@ namespace DAL
 			get
 			{
 				return this.GetTable<Standing>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Round> Rounds
+		{
+			get
+			{
+				return this.GetTable<Round>();
 			}
 		}
 	}
@@ -2749,6 +2749,8 @@ namespace DAL
 		
 		private EntitySet<SeasonClub> _SeasonClubs;
 		
+		private EntitySet<Round> _Rounds;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2767,6 +2769,7 @@ namespace DAL
 		{
 			this._Matches = new EntitySet<Match>(new Action<Match>(this.attach_Matches), new Action<Match>(this.detach_Matches));
 			this._SeasonClubs = new EntitySet<SeasonClub>(new Action<SeasonClub>(this.attach_SeasonClubs), new Action<SeasonClub>(this.detach_SeasonClubs));
+			this._Rounds = new EntitySet<Round>(new Action<Round>(this.attach_Rounds), new Action<Round>(this.detach_Rounds));
 			OnCreated();
 		}
 		
@@ -2876,6 +2879,19 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Season_Round", Storage="_Rounds", ThisKey="SeasonID", OtherKey="SeasonID")]
+		public EntitySet<Round> Rounds
+		{
+			get
+			{
+				return this._Rounds;
+			}
+			set
+			{
+				this._Rounds.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2919,119 +2935,17 @@ namespace DAL
 			this.SendPropertyChanging();
 			entity.Season = null;
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rounds")]
-	public partial class Round : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _RoundID;
-		
-		private string _RoundName;
-		
-		private EntitySet<Match> _Matches;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRoundIDChanging(string value);
-    partial void OnRoundIDChanged();
-    partial void OnRoundNameChanging(string value);
-    partial void OnRoundNameChanged();
-    #endregion
-		
-		public Round()
-		{
-			this._Matches = new EntitySet<Match>(new Action<Match>(this.attach_Matches), new Action<Match>(this.detach_Matches));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundID", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string RoundID
-		{
-			get
-			{
-				return this._RoundID;
-			}
-			set
-			{
-				if ((this._RoundID != value))
-				{
-					this.OnRoundIDChanging(value);
-					this.SendPropertyChanging();
-					this._RoundID = value;
-					this.SendPropertyChanged("RoundID");
-					this.OnRoundIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundName", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
-		public string RoundName
-		{
-			get
-			{
-				return this._RoundName;
-			}
-			set
-			{
-				if ((this._RoundName != value))
-				{
-					this.OnRoundNameChanging(value);
-					this.SendPropertyChanging();
-					this._RoundName = value;
-					this.SendPropertyChanged("RoundName");
-					this.OnRoundNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Round_Match", Storage="_Matches", ThisKey="RoundID", OtherKey="RoundID")]
-		public EntitySet<Match> Matches
-		{
-			get
-			{
-				return this._Matches;
-			}
-			set
-			{
-				this._Matches.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Matches(Match entity)
+		private void attach_Rounds(Round entity)
 		{
 			this.SendPropertyChanging();
-			entity.Round = this;
+			entity.Season = this;
 		}
 		
-		private void detach_Matches(Match entity)
+		private void detach_Rounds(Round entity)
 		{
 			this.SendPropertyChanging();
-			entity.Round = null;
+			entity.Season = null;
 		}
 	}
 	
@@ -3472,12 +3386,7 @@ namespace DAL
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-
-        public static implicit operator List<object>(Stadium v)
-        {
-            throw new NotImplementedException();
-        }
-    }
+	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Standings")]
 	public partial class Standing : INotifyPropertyChanging, INotifyPropertyChanged
@@ -3795,6 +3704,185 @@ namespace DAL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rounds")]
+	public partial class Round : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _RoundID;
+		
+		private System.Nullable<int> _SeasonID;
+		
+		private string _RoundName;
+		
+		private EntitySet<Match> _Matches;
+		
+		private EntityRef<Season> _Season;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRoundIDChanging(string value);
+    partial void OnRoundIDChanged();
+    partial void OnSeasonIDChanging(System.Nullable<int> value);
+    partial void OnSeasonIDChanged();
+    partial void OnRoundNameChanging(string value);
+    partial void OnRoundNameChanged();
+    #endregion
+		
+		public Round()
+		{
+			this._Matches = new EntitySet<Match>(new Action<Match>(this.attach_Matches), new Action<Match>(this.detach_Matches));
+			this._Season = default(EntityRef<Season>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundID", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string RoundID
+		{
+			get
+			{
+				return this._RoundID;
+			}
+			set
+			{
+				if ((this._RoundID != value))
+				{
+					this.OnRoundIDChanging(value);
+					this.SendPropertyChanging();
+					this._RoundID = value;
+					this.SendPropertyChanged("RoundID");
+					this.OnRoundIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SeasonID", DbType="Int")]
+		public System.Nullable<int> SeasonID
+		{
+			get
+			{
+				return this._SeasonID;
+			}
+			set
+			{
+				if ((this._SeasonID != value))
+				{
+					if (this._Season.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSeasonIDChanging(value);
+					this.SendPropertyChanging();
+					this._SeasonID = value;
+					this.SendPropertyChanged("SeasonID");
+					this.OnSeasonIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoundName", DbType="NVarChar(30) NOT NULL", CanBeNull=false)]
+		public string RoundName
+		{
+			get
+			{
+				return this._RoundName;
+			}
+			set
+			{
+				if ((this._RoundName != value))
+				{
+					this.OnRoundNameChanging(value);
+					this.SendPropertyChanging();
+					this._RoundName = value;
+					this.SendPropertyChanged("RoundName");
+					this.OnRoundNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Round_Match", Storage="_Matches", ThisKey="RoundID", OtherKey="RoundID")]
+		public EntitySet<Match> Matches
+		{
+			get
+			{
+				return this._Matches;
+			}
+			set
+			{
+				this._Matches.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Season_Round", Storage="_Season", ThisKey="SeasonID", OtherKey="SeasonID", IsForeignKey=true)]
+		public Season Season
+		{
+			get
+			{
+				return this._Season.Entity;
+			}
+			set
+			{
+				Season previousValue = this._Season.Entity;
+				if (((previousValue != value) 
+							|| (this._Season.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Season.Entity = null;
+						previousValue.Rounds.Remove(this);
+					}
+					this._Season.Entity = value;
+					if ((value != null))
+					{
+						value.Rounds.Add(this);
+						this._SeasonID = value.SeasonID;
+					}
+					else
+					{
+						this._SeasonID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Season");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Matches(Match entity)
+		{
+			this.SendPropertyChanging();
+			entity.Round = this;
+		}
+		
+		private void detach_Matches(Match entity)
+		{
+			this.SendPropertyChanging();
+			entity.Round = null;
 		}
 	}
 }

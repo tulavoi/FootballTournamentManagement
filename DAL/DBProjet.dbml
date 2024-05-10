@@ -121,13 +121,7 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="Season_Match" Member="Matches" ThisKey="SeasonID" OtherKey="SeasonID" Type="Match" />
       <Association Name="Season_SeasonClub" Member="SeasonClubs" ThisKey="SeasonID" OtherKey="SeasonID" Type="SeasonClub" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Rounds" Member="Rounds">
-    <Type Name="Round">
-      <Column Name="RoundID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="RoundName" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
-      <Association Name="Round_Match" Member="Matches" ThisKey="RoundID" OtherKey="RoundID" Type="Match" />
+      <Association Name="Season_Round" Member="Rounds" ThisKey="SeasonID" OtherKey="SeasonID" Type="Round" />
     </Type>
   </Table>
   <Table Name="dbo.SeasonClubs" Member="SeasonClubs">
@@ -164,6 +158,15 @@
       <Column Name="GoalDifference" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Points" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Club_Standing" Member="Club" ThisKey="ClubID" OtherKey="ClubID" Type="Club" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rounds" Member="Rounds">
+    <Type Name="Round">
+      <Column Name="RoundID" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SeasonID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoundName" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Round_Match" Member="Matches" ThisKey="RoundID" OtherKey="RoundID" Type="Match" />
+      <Association Name="Season_Round" Member="Season" ThisKey="SeasonID" OtherKey="SeasonID" Type="Season" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

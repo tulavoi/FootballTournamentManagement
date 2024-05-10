@@ -56,6 +56,7 @@
     </Compile>
     <Compile Include="ManagersDAL.cs" />
     <Compile Include="RefereesDAL.cs" />
+    <Compile Include="RoundsDAL.cs" />
     <Compile Include="SeasonClubsDAL.cs" />
     <Compile Include="SeasonsDAL.cs" />
     <Compile Include="PlayersDAL.cs" />
