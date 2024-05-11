@@ -31,5 +31,55 @@ namespace DAL
 
             return clubs;
         }
+
+        public bool DeleteDataByClubID(int clubID, int seasonID)
+        {
+            try
+            {
+                using (DBProjetDataContext db = new DBProjetDataContext())
+                {
+                    var query = db.SeasonClubs.Where(c => c.ClubID == clubID && c.SeasonID == seasonID).FirstOrDefault();
+                    if (query != null)
+                    {
+                        db.SeasonClubs.DeleteOnSubmit(query);
+                        db.SubmitChanges();
+
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public bool AddData(int clubID, int seasonID)
+        {
+            try
+            {
+                using (DBProjetDataContext db = new DBProjetDataContext())
+                {
+                    // Kiểm tra số lượng đội bóng trong season có đạt giới hạn chưa (max là 20 club)
+                    bool canAdd = db.SeasonClubs.Count(sc => sc.SeasonID == seasonID) < 20;
+                    if (canAdd)
+                    {
+                        SeasonClub sc = new SeasonClub { ClubID = clubID, SeasonID = seasonID };
+                        db.SeasonClubs.InsertOnSubmit(sc);
+                        db.SubmitChanges();
+
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }

@@ -15,5 +15,15 @@ namespace BLL
         {
             return ssClubsDAL.LoadDataBySeasonID(seasonID);
         }
+
+        public bool DeleteDataByClubID(int clubID, int seasonID)
+        {
+            return ssClubsDAL.DeleteDataByClubID(clubID, seasonID);
+        }
+
+        public bool AddData(int clubID, int seasonID)
+        {
+            return ssClubsDAL.AddData(clubID, seasonID);
+        }
     }
 }

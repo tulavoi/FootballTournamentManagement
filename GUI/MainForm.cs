@@ -11,16 +11,6 @@ namespace GUI
     {
         Guna2GradientButton currentBtn;
 
-        private Image imgHomeBtnBeforeHover = Properties.Resources.home;
-
-        private Image imgClubBtnBeforeHover = Properties.Resources.club__1_;
-
-        private Image imgMatchBtnBeforeHover = Properties.Resources.football;
-
-        private Image imgRefereeBtnBeforeHover = Properties.Resources.referee;
-
-        private Image imgSettingBtnBeforeHover = Properties.Resources.setting;
-
         public MainForm()
         {
             InitializeComponent();
@@ -80,177 +70,147 @@ namespace GUI
         private void btnOpenHomeForm_Click(object sender, EventArgs e)
         {
             labelValue.Text = "Home";
-            iconForm.Image = btnOpenHomeForm.HoverState.Image;
             Container(new HomeForm());
             btnOpenHomeForm.FillColor = Color.FromArgb(160, 20, 110);
             btnOpenHomeForm.FillColor2 = Color.FromArgb(50, 0, 60);
             btnOpenHomeForm.ForeColor = Color.White;
-            btnOpenHomeForm.Image = btnOpenHomeForm.HoverState.Image;
 
             // Btn club 
             btnOpenClubForm.FillColor = Color.White;
             btnOpenClubForm.FillColor2 = Color.White;
             btnOpenClubForm.ForeColor = Color.Black;
-            btnOpenClubForm.Image = imgClubBtnBeforeHover;
 
             // Btn match
             btnOpenMatchForm.FillColor = Color.White;
             btnOpenMatchForm.FillColor2 = Color.White;
             btnOpenMatchForm.ForeColor = Color.Black;
-            btnOpenMatchForm.Image = imgMatchBtnBeforeHover;
 
             // Btn referee
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
-            btnOpenRefereeForm.Image = imgRefereeBtnBeforeHover;
 
             // Btn setting
-            btnOpenSettingForm.FillColor = Color.White;
-            btnOpenSettingForm.FillColor2 = Color.White;
-            btnOpenSettingForm.ForeColor = Color.Black;
-            btnOpenSettingForm.Image = imgSettingBtnBeforeHover;
+            btnOpenSeasonForm.FillColor = Color.White;
+            btnOpenSeasonForm.FillColor2 = Color.White;
+            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
 
         internal void btnOpenClubForm_Click(object sender, EventArgs e)
         {
             labelValue.Text = "Clubs";
-            iconForm.Image = btnOpenClubForm.HoverState.Image;
             Container(new ClubForm());
             btnOpenClubForm.FillColor = Color.FromArgb(160, 20, 110);
             btnOpenClubForm.FillColor2 = Color.FromArgb(50, 0, 60);
             btnOpenClubForm.ForeColor = Color.White;
-            btnOpenClubForm.Image = btnOpenClubForm.HoverState.Image;
 
             // Btn home
             btnOpenHomeForm.FillColor = Color.White;
             btnOpenHomeForm.FillColor2 = Color.White;
             btnOpenHomeForm.ForeColor = Color.Black;
-            btnOpenHomeForm.Image = imgHomeBtnBeforeHover;
 
             // Btn match
             btnOpenMatchForm.FillColor = Color.White;
             btnOpenMatchForm.FillColor2 = Color.White;
             btnOpenMatchForm.ForeColor = Color.Black;
-            btnOpenMatchForm.Image = imgMatchBtnBeforeHover;
 
             // Btn referee
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
-            btnOpenRefereeForm.Image = imgRefereeBtnBeforeHover;
 
             // Btn setting
-            btnOpenSettingForm.FillColor = Color.White;
-            btnOpenSettingForm.FillColor2 = Color.White;
-            btnOpenSettingForm.ForeColor = Color.Black;
-            btnOpenSettingForm.Image = imgSettingBtnBeforeHover;
+            btnOpenSeasonForm.FillColor = Color.White;
+            btnOpenSeasonForm.FillColor2 = Color.White;
+            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
         private void btnOpenMatchForm_Click(object sender, EventArgs e)
         {
             labelValue.Text = "Matches";
-            iconForm.Image = btnOpenMatchForm.HoverState.Image;
             Container(new MatchForm());
             btnOpenMatchForm.FillColor = Color.FromArgb(160, 20, 110);
             btnOpenMatchForm.FillColor2 = Color.FromArgb(50, 0, 60);
             btnOpenMatchForm.ForeColor = Color.White;
-            btnOpenMatchForm.Image = btnOpenMatchForm.HoverState.Image;
 
             // Btn home
             btnOpenHomeForm.FillColor = Color.White;
             btnOpenHomeForm.FillColor2 = Color.White;
             btnOpenHomeForm.ForeColor = Color.Black;
-            btnOpenHomeForm.Image = imgHomeBtnBeforeHover;
 
             // Btn club
             btnOpenClubForm.FillColor = Color.White;
             btnOpenClubForm.FillColor2 = Color.White;
             btnOpenClubForm.ForeColor = Color.Black;
-            btnOpenClubForm.Image = imgClubBtnBeforeHover;
 
             // Btn referee
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
-            btnOpenRefereeForm.Image = imgRefereeBtnBeforeHover;
 
             // Btn setting
-            btnOpenSettingForm.FillColor = Color.White;
-            btnOpenSettingForm.FillColor2 = Color.White;
-            btnOpenSettingForm.ForeColor = Color.Black;
-            btnOpenSettingForm.Image = imgSettingBtnBeforeHover;
+            btnOpenSeasonForm.FillColor = Color.White;
+            btnOpenSeasonForm.FillColor2 = Color.White;
+            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
         private void btnOpenRefereeForm_Click(object sender, EventArgs e)
         {
             labelValue.Text = "Referee";
-            iconForm.Image = btnOpenRefereeForm.HoverState.Image;
             Container(new RefereeForm());
             btnOpenRefereeForm.FillColor = Color.FromArgb(160, 20, 110);
             btnOpenRefereeForm.FillColor2 = Color.FromArgb(50, 0, 60);
             btnOpenRefereeForm.ForeColor = Color.White;
-            btnOpenRefereeForm.Image = btnOpenRefereeForm.HoverState.Image;
 
             // Btn home
             btnOpenHomeForm.FillColor = Color.White;
             btnOpenHomeForm.FillColor2 = Color.White;
             btnOpenHomeForm.ForeColor = Color.Black;
-            btnOpenHomeForm.Image = imgHomeBtnBeforeHover;
 
             // Btn club
             btnOpenClubForm.FillColor = Color.White;
             btnOpenClubForm.FillColor2 = Color.White;
             btnOpenClubForm.ForeColor = Color.Black;
-            btnOpenClubForm.Image = imgClubBtnBeforeHover;
 
             // Btn match
             btnOpenMatchForm.FillColor = Color.White;
             btnOpenMatchForm.FillColor2 = Color.White;
             btnOpenMatchForm.ForeColor = Color.Black;
-            btnOpenMatchForm.Image = imgMatchBtnBeforeHover;
 
             // Btn setting
-            btnOpenSettingForm.FillColor = Color.White;
-            btnOpenSettingForm.FillColor2 = Color.White;
-            btnOpenSettingForm.ForeColor = Color.Black;
-            btnOpenSettingForm.Image = imgSettingBtnBeforeHover;
+            btnOpenSeasonForm.FillColor = Color.White;
+            btnOpenSeasonForm.FillColor2 = Color.White;
+            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
         private void btnOpenSettingForm_Click(object sender, EventArgs e)
         {
-            labelValue.Text = "Setting";
-            iconForm.Image = btnOpenSettingForm.HoverState.Image;
-            //Container(new SettingForm());
-            btnOpenSettingForm.FillColor = Color.FromArgb(160, 20, 110);
-            btnOpenSettingForm.FillColor2 = Color.FromArgb(50, 0, 60);
-            btnOpenSettingForm.ForeColor = Color.White;
-            btnOpenSettingForm.Image = btnOpenSettingForm.HoverState.Image;
+            labelValue.Text = "Season";
+            //Container(new SeasonForm());
+            btnOpenSeasonForm.FillColor = Color.FromArgb(160, 20, 110);
+            btnOpenSeasonForm.FillColor2 = Color.FromArgb(50, 0, 60);
+            btnOpenSeasonForm.ForeColor = Color.White;
 
             // Btn home
             btnOpenHomeForm.FillColor = Color.White;
             btnOpenHomeForm.FillColor2 = Color.White;
             btnOpenHomeForm.ForeColor = Color.Black;
-            btnOpenHomeForm.Image = imgHomeBtnBeforeHover;
 
             // Btn club
             btnOpenClubForm.FillColor = Color.White;
             btnOpenClubForm.FillColor2 = Color.White;
             btnOpenClubForm.ForeColor = Color.Black;
-            btnOpenClubForm.Image = imgClubBtnBeforeHover;
 
             // Btn match
             btnOpenMatchForm.FillColor = Color.White;
             btnOpenMatchForm.FillColor2 = Color.White;
             btnOpenMatchForm.ForeColor = Color.Black;
-            btnOpenMatchForm.Image = imgMatchBtnBeforeHover;
 
             // Btn referee
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
-            btnOpenRefereeForm.Image = imgRefereeBtnBeforeHover;
         }
     }
 }

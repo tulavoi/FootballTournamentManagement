@@ -50,7 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RefereesBLL.cs" />
     <Compile Include="RoundsBLL.cs" />
-    <Compile Include="SeasonBLL.cs" />
+    <Compile Include="SeasonsBLL.cs" />
     <Compile Include="SeasonClubsBLL.cs" />
     <Compile Include="StadiumsBLL.cs" />
   </ItemGroup>

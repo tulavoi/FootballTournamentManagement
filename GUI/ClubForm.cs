@@ -10,7 +10,7 @@ namespace GUI
 {
     public partial class ClubForm : Form
     {
-        SeasonBLL seasonBLL = new SeasonBLL();
+        SeasonsBLL seasonBLL = new SeasonsBLL();
 
         SeasonClubsBLL ssClubsBLL = new SeasonClubsBLL();
 

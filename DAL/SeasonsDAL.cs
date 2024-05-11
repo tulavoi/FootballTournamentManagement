@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
     public class SeasonsDAL
     {
+        RoundsDAL roundsDAL = new RoundsDAL();
         public List<Season> LoadData()
         {
             List<Season> seasons = new List<Season>();
             using (DBProjetDataContext db = new DBProjetDataContext())
             {
                 var query = from ss in db.Seasons
+                            orderby ss.SeasonID descending
                             select ss;
 
                 foreach (var item in query)
@@ -28,6 +28,27 @@ namespace DAL
                 }
             }
             return seasons;
+        }
+
+        public bool AddData(Season season)
+        {
+            try
+            {
+                using (DBProjetDataContext db = new DBProjetDataContext())
+                {
+                    db.Seasons.InsertOnSubmit(season);
+                    db.SubmitChanges();
+
+                    // Tự động tạo rounds sau khi tạo mới 1 season
+                    roundsDAL.CreateData(season.SeasonID);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }

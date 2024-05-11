@@ -42,7 +42,7 @@
             this.guna2Panel_Left = new Guna.UI2.WinForms.Guna2Panel();
             this.btnOpenRefereeForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenHomeForm = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnOpenSettingForm = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnOpenSeasonForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenMatchForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenClubForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -50,6 +50,7 @@
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.panelContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2Panel_Top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconForm)).BeginInit();
             this.guna2Panel_Left.SuspendLayout();
@@ -187,7 +188,7 @@
             // 
             this.guna2Panel_Left.Controls.Add(this.btnOpenRefereeForm);
             this.guna2Panel_Left.Controls.Add(this.btnOpenHomeForm);
-            this.guna2Panel_Left.Controls.Add(this.btnOpenSettingForm);
+            this.guna2Panel_Left.Controls.Add(this.btnOpenSeasonForm);
             this.guna2Panel_Left.Controls.Add(this.btnOpenMatchForm);
             this.guna2Panel_Left.Controls.Add(this.btnOpenClubForm);
             this.guna2Panel_Left.Controls.Add(this.guna2PictureBox2);
@@ -215,8 +216,6 @@
             this.btnOpenRefereeForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
             this.btnOpenRefereeForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnOpenRefereeForm.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenRefereeForm.HoverState.Image = global::GUI.Properties.Resources.referee__1_;
-            this.btnOpenRefereeForm.Image = global::GUI.Properties.Resources.referee;
             this.btnOpenRefereeForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOpenRefereeForm.ImageOffset = new System.Drawing.Point(4, 0);
             this.btnOpenRefereeForm.ImageSize = new System.Drawing.Size(39, 39);
@@ -225,7 +224,6 @@
             this.btnOpenRefereeForm.Size = new System.Drawing.Size(253, 67);
             this.btnOpenRefereeForm.TabIndex = 28;
             this.btnOpenRefereeForm.Text = "Referees";
-            this.btnOpenRefereeForm.TextOffset = new System.Drawing.Point(11, 0);
             this.btnOpenRefereeForm.Click += new System.EventHandler(this.btnOpenRefereeForm_Click);
             // 
             // btnOpenHomeForm
@@ -256,34 +254,31 @@
             this.btnOpenHomeForm.Text = "Home";
             this.btnOpenHomeForm.Click += new System.EventHandler(this.btnOpenHomeForm_Click);
             // 
-            // btnOpenSettingForm
+            // btnOpenSeasonForm
             // 
-            this.btnOpenSettingForm.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.btnOpenSettingForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnOpenSettingForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnOpenSettingForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOpenSettingForm.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOpenSettingForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnOpenSettingForm.FillColor = System.Drawing.Color.White;
-            this.btnOpenSettingForm.FillColor2 = System.Drawing.Color.White;
-            this.btnOpenSettingForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnOpenSettingForm.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenSettingForm.HoverState.BorderColor = System.Drawing.Color.Purple;
-            this.btnOpenSettingForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
-            this.btnOpenSettingForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnOpenSettingForm.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenSettingForm.HoverState.Image = global::GUI.Properties.Resources.settings;
-            this.btnOpenSettingForm.Image = global::GUI.Properties.Resources.setting;
-            this.btnOpenSettingForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnOpenSettingForm.ImageOffset = new System.Drawing.Point(8, 0);
-            this.btnOpenSettingForm.ImageSize = new System.Drawing.Size(33, 33);
-            this.btnOpenSettingForm.Location = new System.Drawing.Point(0, 429);
-            this.btnOpenSettingForm.Name = "btnOpenSettingForm";
-            this.btnOpenSettingForm.Size = new System.Drawing.Size(253, 67);
-            this.btnOpenSettingForm.TabIndex = 29;
-            this.btnOpenSettingForm.Text = "Setting";
-            this.btnOpenSettingForm.TextOffset = new System.Drawing.Point(5, 0);
-            this.btnOpenSettingForm.Click += new System.EventHandler(this.btnOpenSettingForm_Click);
+            this.btnOpenSeasonForm.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 8);
+            this.btnOpenSeasonForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenSeasonForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenSeasonForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOpenSeasonForm.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOpenSeasonForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOpenSeasonForm.FillColor = System.Drawing.Color.White;
+            this.btnOpenSeasonForm.FillColor2 = System.Drawing.Color.White;
+            this.btnOpenSeasonForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnOpenSeasonForm.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenSeasonForm.HoverState.BorderColor = System.Drawing.Color.Purple;
+            this.btnOpenSeasonForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
+            this.btnOpenSeasonForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.btnOpenSeasonForm.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnOpenSeasonForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOpenSeasonForm.ImageOffset = new System.Drawing.Point(8, 0);
+            this.btnOpenSeasonForm.ImageSize = new System.Drawing.Size(33, 33);
+            this.btnOpenSeasonForm.Location = new System.Drawing.Point(0, 429);
+            this.btnOpenSeasonForm.Name = "btnOpenSeasonForm";
+            this.btnOpenSeasonForm.Size = new System.Drawing.Size(253, 67);
+            this.btnOpenSeasonForm.TabIndex = 29;
+            this.btnOpenSeasonForm.Text = "Season";
+            this.btnOpenSeasonForm.Click += new System.EventHandler(this.btnOpenSettingForm_Click);
             // 
             // btnOpenMatchForm
             // 
@@ -301,17 +296,13 @@
             this.btnOpenMatchForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
             this.btnOpenMatchForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnOpenMatchForm.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenMatchForm.HoverState.Image = global::GUI.Properties.Resources.football__1_;
-            this.btnOpenMatchForm.Image = global::GUI.Properties.Resources.football;
             this.btnOpenMatchForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnOpenMatchForm.ImageOffset = new System.Drawing.Point(-2, 0);
             this.btnOpenMatchForm.ImageSize = new System.Drawing.Size(53, 53);
             this.btnOpenMatchForm.Location = new System.Drawing.Point(0, 359);
             this.btnOpenMatchForm.Name = "btnOpenMatchForm";
             this.btnOpenMatchForm.Size = new System.Drawing.Size(253, 67);
             this.btnOpenMatchForm.TabIndex = 27;
             this.btnOpenMatchForm.Text = "Matches";
-            this.btnOpenMatchForm.TextOffset = new System.Drawing.Point(10, 0);
             this.btnOpenMatchForm.Click += new System.EventHandler(this.btnOpenMatchForm_Click);
             // 
             // btnOpenClubForm
@@ -330,8 +321,6 @@
             this.btnOpenClubForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
             this.btnOpenClubForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnOpenClubForm.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenClubForm.HoverState.Image = global::GUI.Properties.Resources.club;
-            this.btnOpenClubForm.Image = global::GUI.Properties.Resources.club__1_;
             this.btnOpenClubForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnOpenClubForm.ImageOffset = new System.Drawing.Point(5, 0);
             this.btnOpenClubForm.ImageSize = new System.Drawing.Size(38, 38);
@@ -340,7 +329,6 @@
             this.btnOpenClubForm.Size = new System.Drawing.Size(253, 67);
             this.btnOpenClubForm.TabIndex = 26;
             this.btnOpenClubForm.Text = "Clubs";
-            this.btnOpenClubForm.TextOffset = new System.Drawing.Point(-3, 0);
             this.btnOpenClubForm.Click += new System.EventHandler(this.btnOpenClubForm_Click);
             // 
             // guna2PictureBox2
@@ -380,6 +368,12 @@
             // 
             this.guna2AnimateWindow1.AnimationType = Guna.UI2.WinForms.Guna2AnimateWindow.AnimateWindowType.AW_SLIDE;
             this.guna2AnimateWindow1.TargetForm = this;
+            // 
+            // guna2DragControl2
+            // 
+            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl2.TargetControl = this.guna2Panel_Left;
+            this.guna2DragControl2.UseTransparentDrag = true;
             // 
             // MainForm
             // 
@@ -421,7 +415,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenClubForm;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenMatchForm;
-        private Guna.UI2.WinForms.Guna2GradientButton btnOpenSettingForm;
+        private Guna.UI2.WinForms.Guna2GradientButton btnOpenSeasonForm;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenRefereeForm;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenHomeForm;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
@@ -429,6 +423,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox iconForm;
         private Guna.UI2.WinForms.Guna2HtmlLabel labelValue;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
     }
 }
 
