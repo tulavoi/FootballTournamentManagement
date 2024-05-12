@@ -23,6 +23,8 @@ namespace GUI
 
         int seasonID;
 
+        string selectedMatchID;
+
         public MatchForm()
         {
             InitializeComponent();
@@ -181,6 +183,10 @@ namespace GUI
                 string seasonName = cboSeason.Text;
                 FormDialogCreateMatches frm = new FormDialogCreateMatches(seasonID, seasonName);
                 frm.ShowDialog();
+
+                // Gọi lại hàm này để gọi LoadMatchesToDgvMatches()
+                // Cũng có thể dùng hàm LoadMatchesToDgvMatches() thay vì cboRound_SelectedIndexChanged()
+                cboRound_SelectedIndexChanged(sender, e);
             }
             if (dgvClubs.Rows.Count < 20)
             {
@@ -265,6 +271,40 @@ namespace GUI
         private void dgvMatches_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            if (e.RowIndex >= 0 && e.RowIndex < dgvMatches.Rows.Count)
+            {
+                DataGridViewRow selectedRow = dgvMatches.Rows[e.RowIndex];
+
+                selectedMatchID = selectedRow.Cells["MatchID"].Tag.ToString();
+                Console.WriteLine(selectedMatchID);
+                AssignClubLogoToPictureBoxes(selectedRow);
+
+                AssignClubNameToLabels(selectedRow);
+
+                // Sau khi double click chọn 1 match trong datagridview thì chuyển sang tab control match detail
+                tabControlMatchForm.SelectedIndex = 1;
+
+            }
+        }
+
+        private void AssignClubNameToLabels(DataGridViewRow selectedRow)
+        {
+            // Tab match detail
+            lblHomeClubName.Text = selectedRow.Cells["HomeClubName"].Value.ToString();
+            lblAwayClubName.Text = selectedRow.Cells["AwayClubName"].Value.ToString();
+        }
+
+        private void AssignClubLogoToPictureBoxes(DataGridViewRow selectedRow)
+        {
+            // Tab match detail
+            pictureBoxHomeClubLogo.Image = (Bitmap)selectedRow.Cells["HomeClubLogo"].Value;
+            pictureBoxAwayClubLogo.Image = (Bitmap)selectedRow.Cells["AwayClubLogo"].Value;
+        }
+
+        private void tabControlMatchForm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(selectedMatchID))
+                tabControlMatchForm.SelectedIndex = 0;
         }
     }
 }

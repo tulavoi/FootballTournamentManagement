@@ -124,6 +124,12 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnSaveClub = new Guna.UI2.WinForms.Guna2Button();
             this.dgvClubs = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.playerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LogoFileName = new System.Windows.Forms.DataGridViewImageColumn();
+            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -133,12 +139,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumOfClubs = new System.Windows.Forms.Label();
             this.tabControlClubForm = new Guna.UI2.WinForms.Guna2TabControl();
-            this.playerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LogoFileName = new System.Windows.Forms.DataGridViewImageColumn();
-            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabClub.SuspendLayout();
             this.tabControlClubDetail.SuspendLayout();
             this.tabPlayers.SuspendLayout();
@@ -1222,7 +1222,7 @@
             this.tabList.Padding = new System.Windows.Forms.Padding(3);
             this.tabList.Size = new System.Drawing.Size(1509, 795);
             this.tabList.TabIndex = 0;
-            this.tabList.Text = "Club List";
+            this.tabList.Text = "Clubs";
             // 
             // panelAddClub
             // 
@@ -1471,6 +1471,85 @@
             this.dgvClubs.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClubs_CellDoubleClick);
             this.dgvClubs.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvClubs_CellFormatting);
             // 
+            // playerID
+            // 
+            this.playerID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.playerID.DataPropertyName = "PlayerID";
+            this.playerID.FillWeight = 60.79636F;
+            this.playerID.Frozen = true;
+            this.playerID.HeaderText = "";
+            this.playerID.MinimumWidth = 6;
+            this.playerID.Name = "playerID";
+            this.playerID.ReadOnly = true;
+            this.playerID.Width = 30;
+            // 
+            // LogoFileName
+            // 
+            this.LogoFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LogoFileName.FillWeight = 213.9037F;
+            this.LogoFileName.Frozen = true;
+            this.LogoFileName.HeaderText = "";
+            this.LogoFileName.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.LogoFileName.MinimumWidth = 6;
+            this.LogoFileName.Name = "LogoFileName";
+            this.LogoFileName.ReadOnly = true;
+            this.LogoFileName.Width = 70;
+            // 
+            // a
+            // 
+            this.a.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.a.Frozen = true;
+            this.a.HeaderText = "";
+            this.a.MinimumWidth = 6;
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            this.a.Width = 30;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column4.DataPropertyName = "ClubName";
+            this.Column4.FillWeight = 53.63456F;
+            this.Column4.HeaderText = "Club";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(20)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(20)))), ((int)(((byte)(80)))));
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle17;
+            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column1.HeaderText = "";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Text = "Edit";
+            this.Column1.UseColumnTextForButtonValue = true;
+            this.Column1.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(40)))), ((int)(((byte)(130)))));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(40)))), ((int)(((byte)(130)))));
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle18;
+            this.Column3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Column3.HeaderText = "";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Text = "Delete";
+            this.Column3.UseColumnTextForButtonValue = true;
+            this.Column3.Width = 80;
+            // 
             // guna2Panel2
             // 
             this.guna2Panel2.Controls.Add(this.guna2Panel11);
@@ -1622,85 +1701,6 @@
             this.tabControlClubForm.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
             this.tabControlClubForm.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             this.tabControlClubForm.SelectedIndexChanged += new System.EventHandler(this.tabControlClubForm_SelectedIndexChanged_1);
-            // 
-            // playerID
-            // 
-            this.playerID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.playerID.DataPropertyName = "PlayerID";
-            this.playerID.FillWeight = 60.79636F;
-            this.playerID.Frozen = true;
-            this.playerID.HeaderText = "";
-            this.playerID.MinimumWidth = 6;
-            this.playerID.Name = "playerID";
-            this.playerID.ReadOnly = true;
-            this.playerID.Width = 30;
-            // 
-            // LogoFileName
-            // 
-            this.LogoFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.LogoFileName.FillWeight = 213.9037F;
-            this.LogoFileName.Frozen = true;
-            this.LogoFileName.HeaderText = "";
-            this.LogoFileName.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.LogoFileName.MinimumWidth = 6;
-            this.LogoFileName.Name = "LogoFileName";
-            this.LogoFileName.ReadOnly = true;
-            this.LogoFileName.Width = 70;
-            // 
-            // a
-            // 
-            this.a.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.a.Frozen = true;
-            this.a.HeaderText = "";
-            this.a.MinimumWidth = 6;
-            this.a.Name = "a";
-            this.a.ReadOnly = true;
-            this.a.Width = 30;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column4.DataPropertyName = "ClubName";
-            this.Column4.FillWeight = 53.63456F;
-            this.Column4.HeaderText = "Club";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(20)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(20)))), ((int)(((byte)(80)))));
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Column1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Column1.HeaderText = "";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Text = "Edit";
-            this.Column1.UseColumnTextForButtonValue = true;
-            this.Column1.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(40)))), ((int)(((byte)(130)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(40)))), ((int)(((byte)(130)))));
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle18;
-            this.Column3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Column3.HeaderText = "";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Text = "Delete";
-            this.Column3.UseColumnTextForButtonValue = true;
-            this.Column3.Width = 80;
             // 
             // ClubForm
             // 

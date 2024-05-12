@@ -48,7 +48,7 @@ namespace DAL
                         string matchName = $"{homeName} - {awayName}";
 
                         // Tạo matchID
-                        string matchID = $"{roundID}_{i.ToString().PadLeft(2, '0')}";
+                        string matchID = $"{roundID.Trim()}_{i.ToString().PadLeft(2, '0')}";
 
                         Match match = new Match();
                         match.MatchID = matchID;
