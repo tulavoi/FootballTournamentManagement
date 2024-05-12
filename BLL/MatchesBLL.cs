@@ -14,5 +14,10 @@ namespace BLL
         {
             return matchesDAL.AddData(roundID, seasonID);
         }
+
+        public List<Match> GetDataByRoundID(string roundID, int seasonID)
+        {
+            return matchesDAL.GetDataByRoundID(roundID, seasonID);
+        }
     }
 }

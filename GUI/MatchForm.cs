@@ -17,6 +17,8 @@ namespace GUI
 
         ClubsBLL clubsBLL = new ClubsBLL();
 
+        MatchesBLL matchesBLL = new MatchesBLL();
+
         private string shortcutLogoPath = "Images\\Logos\\";
 
         int seasonID;
@@ -33,6 +35,21 @@ namespace GUI
 
             // Chỉnh lại font size header text của datagridviews
             dgvClubs.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI SemiBold", 10);
+            dgvMatches.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI SemiBold", 10);
+
+            // Căn chỉnh header text của dgvMatches ở chính giữa
+            CustomDgvMatches();
+        }
+
+        private void CustomDgvMatches()
+        {
+            dgvMatches.Columns["HomeClubName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvMatches.Columns["HomeClubName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvMatches.Columns["AwayClubName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvMatches.Columns["MatchID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvMatches.Columns["MatchID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         /// <summary>
@@ -60,7 +77,7 @@ namespace GUI
                 // Gọi hàm để hiển thị danh sách các Round dựa vào SeasonID
                 BindRoundCombobox(seasonID);
 
-                LoadClubBySeasonID();
+                LoadClubToDgvClubsBySeasonID();
             }
 
             // Kiểm tra nếu như có đủ 20 club trong 1 season thì sẽ hiển thị nút tạo trận đấu,
@@ -71,10 +88,51 @@ namespace GUI
                 btnOpenFormCreateMatches.Text = "Create Matches";
         }
 
+        private void cboRound_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvMatches.Rows.Clear();
+            if (cboRounds.SelectedIndex != -1)
+            {
+                Round selectedRound = (Round)cboRounds.SelectedItem;
+
+                // Lấy RoundID từ đối tượng Season được chọn
+                string roundID = selectedRound.RoundID;
+
+                LoadMatchesToDgvMatches(roundID);
+            }
+            
+        }
+
+        private void LoadMatchesToDgvMatches(string roundID)
+        {
+            List<Match> matches = matchesBLL.GetDataByRoundID(roundID, seasonID);
+            int i = 1;
+            foreach (Match match in matches)
+            {
+                int rowIndex = dgvMatches.Rows.Add();
+
+                // Kiểm tra nếu có đủ hàng trong DataGridView
+                if (rowIndex != -1 && rowIndex < dgvMatches.Rows.Count)
+                {
+                    dgvMatches.Rows[rowIndex].Cells["Number"].Value = i++;
+                    dgvMatches.Rows[rowIndex].Cells["HomeID"].Tag = match.HomeID;
+                    dgvMatches.Rows[rowIndex].Cells["HomeClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.Club.Logo);
+                    dgvMatches.Rows[rowIndex].Cells["HomeClubName"].Value = match.Club.ClubName;
+
+                    dgvMatches.Rows[rowIndex].Cells["MatchID"].Value = "-";
+                    dgvMatches.Rows[rowIndex].Cells["MatchID"].Tag = match.MatchID;
+
+                    dgvMatches.Rows[rowIndex].Cells["AwayClubName"].Value = match.Club1.ClubName;
+                    dgvMatches.Rows[rowIndex].Cells["AwayClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.Club1.Logo);
+                    dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.AwayID;
+                }
+            }
+        }
+
         /// <summary>
         /// Load dữ liệu vào dgvClubs dựa theo season id được chọn từ cboSeason.
         /// </summary>
-        private void LoadClubBySeasonID()
+        private void LoadClubToDgvClubsBySeasonID()
         {
             List<Club> clubs = ssClubsBLL.LoadDataBySeasonID(seasonID);
             lblNumOfClubs.Text = clubs.Count.ToString();
@@ -111,9 +169,9 @@ namespace GUI
             List<Round> rounds = roundsBLL.LoadDataBySeasonID(seasonID);
 
             // Thêm lựa chọn All vào đầu danh sách cboSeason 
-            cboRound.DataSource = rounds;
-            cboRound.ValueMember = "RoundID";
-            cboRound.DisplayMember = "RoundName";
+            cboRounds.DataSource = rounds;
+            cboRounds.ValueMember = "RoundID";
+            cboRounds.DisplayMember = "RoundName";
         }
 
         private void btnOpenFormCreateMatches_Click(object sender, EventArgs e)
@@ -130,7 +188,7 @@ namespace GUI
                 FormDialogAddClubToSeason frm = new FormDialogAddClubToSeason(seasonID, seasonName);
                 frm.ShowDialog();
 
-                LoadClubBySeasonID();
+                LoadClubToDgvClubsBySeasonID();
             }
         }
 
@@ -202,6 +260,11 @@ namespace GUI
             frm.ShowDialog();
 
             BindSeasonCombobox();
+        }
+
+        private void dgvMatches_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

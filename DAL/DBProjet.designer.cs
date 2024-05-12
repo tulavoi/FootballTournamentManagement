@@ -3501,15 +3501,15 @@ namespace DAL
 		private int _AwayID;
 		
 		private string _MatchName;
-		
-		private EntitySet<PlayersInMatch> _PlayersInMatches;
+
+        private EntitySet<PlayersInMatch> _PlayersInMatches;
 		
 		private EntitySet<MatchDetail> _MatchDetails;
 		
 		private EntityRef<Club> _Club;
 		
 		private EntityRef<Club> _Club1;
-		
+
 		private EntityRef<Round> _Round;
 		
 		private EntityRef<Season> _Season;

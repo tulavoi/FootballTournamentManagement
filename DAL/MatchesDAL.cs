@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Instrumentation;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.Security;
 
 namespace DAL
 {
@@ -62,7 +66,7 @@ namespace DAL
             }
 			catch (Exception ex)
 			{
-				throw ex;
+				//throw ex;
                 Console.WriteLine(ex.Message);
                 return false;
             }
@@ -76,6 +80,48 @@ namespace DAL
 
                 return numOfMatch < 10;
             }
+        }
+
+        public List<Match> GetDataByRoundID(string roundID, int seasonID)
+        {
+            List<Match> matches = new List<Match>();
+            using (DBProjetDataContext db = new DBProjetDataContext())
+            {
+                var query = from m in db.Matches
+                            join homeClub in db.Clubs on m.HomeID equals homeClub.ClubID
+                            join awayClub in db.Clubs on m.AwayID equals awayClub.ClubID
+                            where m.RoundID == roundID && m.SeasonID == seasonID
+                            select new
+                            {
+                                matchID = m.MatchID,
+                                roundID = m.RoundID,
+                                seasonID = m.SeasonID,
+                                homeID = m.HomeID,
+                                awayID = m.AwayID,
+                                matchName = m.MatchName,
+                                homeClubName = homeClub.ClubName,
+                                awayClubName = awayClub.ClubName,
+                                homeClubLogo = homeClub.Logo,
+                                awayClubLogo = awayClub.Logo
+                            };
+
+                foreach (var item in query)
+                {
+                    Match match = new Match();
+                    match.MatchID = item.matchID;
+                    match.RoundID = item.roundID;
+                    match.SeasonID = item.seasonID;
+                    match.HomeID = item.homeID;
+                    match.AwayID = item.awayID;
+                    match.MatchName = item.matchName;
+
+                    match.Club = new Club { ClubName = item.homeClubName, Logo = item.homeClubLogo };
+                    match.Club1 = new Club { ClubName = item.awayClubName, Logo = item.awayClubLogo };
+
+                    matches.Add(match);
+                }
+            }
+            return matches;
         }
     }
 }
