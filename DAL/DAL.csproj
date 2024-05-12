@@ -55,6 +55,7 @@
       <DependentUpon>DBProjet.dbml</DependentUpon>
     </Compile>
     <Compile Include="ManagersDAL.cs" />
+    <Compile Include="MatchesDAL.cs" />
     <Compile Include="RefereesDAL.cs" />
     <Compile Include="RoundsDAL.cs" />
     <Compile Include="SeasonClubsDAL.cs" />

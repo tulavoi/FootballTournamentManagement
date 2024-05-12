@@ -120,7 +120,8 @@ namespace GUI
         {
             if (dgvClubs.Rows.Count == 20)
             {
-                FormDialogCreateMatches frm = new FormDialogCreateMatches();
+                string seasonName = cboSeason.Text;
+                FormDialogCreateMatches frm = new FormDialogCreateMatches(seasonID, seasonName);
                 frm.ShowDialog();
             }
             if (dgvClubs.Rows.Count < 20)

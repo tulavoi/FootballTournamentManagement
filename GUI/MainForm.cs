@@ -14,7 +14,6 @@ namespace GUI
         public MainForm()
         {
             InitializeComponent();
-            
         }
 
         /// <summary>
@@ -62,8 +61,7 @@ namespace GUI
         {
             guna2ShadowForm1.SetShadowForm(this);
 
-            //string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
-            //MessageBox.Show(connectionString);
+            btnOpenHomeForm_Click(sender, e);
         }
         
 
@@ -211,6 +209,31 @@ namespace GUI
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
+        }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra xem phím người dùng nhấn có phải là phím Enter không (mã ASCII của phím Enter là 13)
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (txtSearch.Text.ToLower() == btnOpenClubForm.Text.ToLower())
+                    btnOpenClubForm_Click(sender, e);
+
+                if (txtSearch.Text.ToLower() == btnOpenRefereeForm.Text.ToLower())
+                    btnOpenRefereeForm_Click(sender, e);
+
+                if (txtSearch.Text.ToLower() == btnOpenMatchForm.Text.ToLower())
+                    btnOpenMatchForm_Click(sender, e);
+
+                if (txtSearch.Text.ToLower() == btnOpenHomeForm.Text.ToLower())
+                    btnOpenHomeForm_Click(sender, e);
+
+                // Xoá nội dung trong TextBox để chuẩn bị cho việc nhập liệu tiếp theo
+                txtSearch.Text = "";
+
+                // Ngăn việc xử lý sự kiện Enter tiếp theo (nếu có) để tránh việc xử lý hai lần
+                e.Handled = true;
+            }
         }
     }
 }

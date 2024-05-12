@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ClubsBLL.cs" />
     <Compile Include="ManagersBLL.cs" />
+    <Compile Include="MatchesBLL.cs" />
     <Compile Include="PlayersBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RefereesBLL.cs" />
