@@ -51,6 +51,7 @@
             this.panelContainer = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2Panel_Top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconForm)).BeginInit();
             this.guna2Panel_Left.SuspendLayout();
@@ -376,6 +377,12 @@
             this.guna2DragControl2.TargetControl = this.guna2Panel_Left;
             this.guna2DragControl2.UseTransparentDrag = true;
             // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -425,6 +432,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel labelValue;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }
 

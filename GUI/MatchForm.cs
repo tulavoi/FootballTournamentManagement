@@ -268,25 +268,6 @@ namespace GUI
             BindSeasonCombobox();
         }
 
-        private void dgvMatches_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (e.RowIndex >= 0 && e.RowIndex < dgvMatches.Rows.Count)
-            {
-                DataGridViewRow selectedRow = dgvMatches.Rows[e.RowIndex];
-
-                selectedMatchID = selectedRow.Cells["MatchID"].Tag.ToString();
-                Console.WriteLine(selectedMatchID);
-                AssignClubLogoToPictureBoxes(selectedRow);
-
-                AssignClubNameToLabels(selectedRow);
-
-                // Sau khi double click chọn 1 match trong datagridview thì chuyển sang tab control match detail
-                tabControlMatchForm.SelectedIndex = 1;
-
-            }
-        }
-
         private void AssignClubNameToLabels(DataGridViewRow selectedRow)
         {
             // Tab match detail
@@ -305,6 +286,24 @@ namespace GUI
         {
             if (string.IsNullOrEmpty(selectedMatchID))
                 tabControlMatchForm.SelectedIndex = 0;
+        }
+
+        private void dgvMatches_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvMatches.Rows.Count)
+            {
+                DataGridViewRow selectedRow = dgvMatches.Rows[e.RowIndex];
+
+                selectedMatchID = selectedRow.Cells["MatchID"].Tag.ToString();
+                Console.WriteLine(selectedMatchID);
+                AssignClubLogoToPictureBoxes(selectedRow);
+
+                AssignClubNameToLabels(selectedRow);
+
+                // Sau khi double click chọn 1 match trong datagridview thì chuyển sang tab control match detail
+                tabControlMatchForm.SelectedIndex = 1;
+
+            }
         }
     }
 }

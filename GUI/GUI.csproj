@@ -83,12 +83,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddPlayerWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddPlayerWindow.Designer.cs">
-      <DependentUpon>AddPlayerWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormDialogAddClubToSeason.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\back-btn.png" />
     <None Include="Resources\back-btn2.png" />
-    <EmbeddedResource Include="AddPlayerWindow.resx">
-      <DependentUpon>AddPlayerWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ClubForm.resx">
       <DependentUpon>ClubForm.cs</DependentUpon>
     </EmbeddedResource>
