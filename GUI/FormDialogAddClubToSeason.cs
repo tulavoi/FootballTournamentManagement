@@ -95,7 +95,6 @@ namespace GUI
         private void LoadClubBySeasonID()
         {
             List<Club> clubs = ssClubsBLL.LoadDataBySeasonID(seasonID);
-            lblNumOfClubs.Text = clubs.Count.ToString();
 
             dgvClubInSeason.Rows.Clear();
             int i = 1;
@@ -114,6 +113,7 @@ namespace GUI
                     dgvClubInSeason.Rows[rowIndex].Cells[4].Value = club.ClubName;
                 }
             }
+            lblNumOfClubs.Text = dgvClubInSeason.Rows.Count.ToString();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

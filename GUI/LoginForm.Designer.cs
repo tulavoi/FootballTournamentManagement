@@ -76,6 +76,7 @@
             this.txtUsername.Size = new System.Drawing.Size(322, 50);
             this.txtUsername.TabIndex = 3;
             this.txtUsername.TextOffset = new System.Drawing.Point(8, 0);
+            this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
             // 
             // txtPassword
             // 
@@ -103,6 +104,7 @@
             this.txtPassword.Size = new System.Drawing.Size(322, 50);
             this.txtPassword.TabIndex = 4;
             this.txtPassword.TextOffset = new System.Drawing.Point(8, 0);
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // btnLogin
             // 
@@ -237,6 +239,7 @@
             this.toggleSwitchRemember.UncheckedState.FillColor = System.Drawing.Color.White;
             this.toggleSwitchRemember.UncheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
             this.toggleSwitchRemember.UncheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
+            this.toggleSwitchRemember.CheckedChanged += new System.EventHandler(this.toggleSwitchRemember_CheckedChanged);
             // 
             // LoginForm
             // 
