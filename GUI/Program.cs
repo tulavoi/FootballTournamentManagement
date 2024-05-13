@@ -19,7 +19,7 @@ namespace GUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new LoginForm());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

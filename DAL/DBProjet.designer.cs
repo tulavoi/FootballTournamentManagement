@@ -42,9 +42,6 @@ namespace DAL
     partial void InsertPlayer(Player instance);
     partial void UpdatePlayer(Player instance);
     partial void DeletePlayer(Player instance);
-    partial void InsertPlayersInMatch(PlayersInMatch instance);
-    partial void UpdatePlayersInMatch(PlayersInMatch instance);
-    partial void DeletePlayersInMatch(PlayersInMatch instance);
     partial void InsertReferee(Referee instance);
     partial void UpdateReferee(Referee instance);
     partial void DeleteReferee(Referee instance);
@@ -63,12 +60,15 @@ namespace DAL
     partial void InsertRound(Round instance);
     partial void UpdateRound(Round instance);
     partial void DeleteRound(Round instance);
-    partial void InsertMatchDetail(MatchDetail instance);
-    partial void UpdateMatchDetail(MatchDetail instance);
-    partial void DeleteMatchDetail(MatchDetail instance);
     partial void InsertMatch(Match instance);
     partial void UpdateMatch(Match instance);
     partial void DeleteMatch(Match instance);
+    partial void InsertMatchDetail(MatchDetail instance);
+    partial void UpdateMatchDetail(MatchDetail instance);
+    partial void DeleteMatchDetail(MatchDetail instance);
+    partial void InsertPlayersInMatch(PlayersInMatch instance);
+    partial void UpdatePlayersInMatch(PlayersInMatch instance);
+    partial void DeletePlayersInMatch(PlayersInMatch instance);
     #endregion
 		
 		public DBProjetDataContext() : 
@@ -133,14 +133,6 @@ namespace DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<PlayersInMatch> PlayersInMatches
-		{
-			get
-			{
-				return this.GetTable<PlayersInMatch>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Referee> Referees
 		{
 			get
@@ -189,6 +181,14 @@ namespace DAL
 			}
 		}
 		
+		public System.Data.Linq.Table<Match> Matches
+		{
+			get
+			{
+				return this.GetTable<Match>();
+			}
+		}
+		
 		public System.Data.Linq.Table<MatchDetail> MatchDetails
 		{
 			get
@@ -197,11 +197,11 @@ namespace DAL
 			}
 		}
 		
-		public System.Data.Linq.Table<Match> Matches
+		public System.Data.Linq.Table<PlayersInMatch> PlayersInMatches
 		{
 			get
 			{
-				return this.GetTable<Match>();
+				return this.GetTable<PlayersInMatch>();
 			}
 		}
 	}
@@ -899,13 +899,9 @@ namespace DAL
 		
 		private string _Foot;
 		
-		private EntitySet<PlayersInMatch> _PlayersInMatches;
-		
 		private EntitySet<MatchDetail> _MatchDetails;
 		
-		private EntitySet<MatchDetail> _MatchDetails1;
-		
-		private EntitySet<MatchDetail> _MatchDetails2;
+		private EntitySet<PlayersInMatch> _PlayersInMatches;
 		
 		private EntityRef<Club> _Club;
 		
@@ -941,10 +937,8 @@ namespace DAL
 		
 		public Player()
 		{
-			this._PlayersInMatches = new EntitySet<PlayersInMatch>(new Action<PlayersInMatch>(this.attach_PlayersInMatches), new Action<PlayersInMatch>(this.detach_PlayersInMatches));
 			this._MatchDetails = new EntitySet<MatchDetail>(new Action<MatchDetail>(this.attach_MatchDetails), new Action<MatchDetail>(this.detach_MatchDetails));
-			this._MatchDetails1 = new EntitySet<MatchDetail>(new Action<MatchDetail>(this.attach_MatchDetails1), new Action<MatchDetail>(this.detach_MatchDetails1));
-			this._MatchDetails2 = new EntitySet<MatchDetail>(new Action<MatchDetail>(this.attach_MatchDetails2), new Action<MatchDetail>(this.detach_MatchDetails2));
+			this._PlayersInMatches = new EntitySet<PlayersInMatch>(new Action<PlayersInMatch>(this.attach_PlayersInMatches), new Action<PlayersInMatch>(this.detach_PlayersInMatches));
 			this._Club = default(EntityRef<Club>);
 			OnCreated();
 		}
@@ -1193,20 +1187,7 @@ namespace DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_PlayersInMatch", Storage="_PlayersInMatches", ThisKey="PlayerID", OtherKey="PlayerID")]
-		public EntitySet<PlayersInMatch> PlayersInMatches
-		{
-			get
-			{
-				return this._PlayersInMatches;
-			}
-			set
-			{
-				this._PlayersInMatches.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail", Storage="_MatchDetails", ThisKey="PlayerID", OtherKey="AwayCapID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail", Storage="_MatchDetails", ThisKey="PlayerID", OtherKey="MotmID")]
 		public EntitySet<MatchDetail> MatchDetails
 		{
 			get
@@ -1219,29 +1200,16 @@ namespace DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail1", Storage="_MatchDetails1", ThisKey="PlayerID", OtherKey="HomeCapID")]
-		public EntitySet<MatchDetail> MatchDetails1
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_PlayersInMatch", Storage="_PlayersInMatches", ThisKey="PlayerID", OtherKey="PlayerID")]
+		public EntitySet<PlayersInMatch> PlayersInMatches
 		{
 			get
 			{
-				return this._MatchDetails1;
+				return this._PlayersInMatches;
 			}
 			set
 			{
-				this._MatchDetails1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail2", Storage="_MatchDetails2", ThisKey="PlayerID", OtherKey="MotmID")]
-		public EntitySet<MatchDetail> MatchDetails2
-		{
-			get
-			{
-				return this._MatchDetails2;
-			}
-			set
-			{
-				this._MatchDetails2.Assign(value);
+				this._PlayersInMatches.Assign(value);
 			}
 		}
 		
@@ -1299,18 +1267,6 @@ namespace DAL
 			}
 		}
 		
-		private void attach_PlayersInMatches(PlayersInMatch entity)
-		{
-			this.SendPropertyChanging();
-			entity.Player = this;
-		}
-		
-		private void detach_PlayersInMatches(PlayersInMatch entity)
-		{
-			this.SendPropertyChanging();
-			entity.Player = null;
-		}
-		
 		private void attach_MatchDetails(MatchDetail entity)
 		{
 			this.SendPropertyChanging();
@@ -1323,340 +1279,16 @@ namespace DAL
 			entity.Player = null;
 		}
 		
-		private void attach_MatchDetails1(MatchDetail entity)
+		private void attach_PlayersInMatches(PlayersInMatch entity)
 		{
 			this.SendPropertyChanging();
-			entity.Player1 = this;
+			entity.Player = this;
 		}
 		
-		private void detach_MatchDetails1(MatchDetail entity)
+		private void detach_PlayersInMatches(PlayersInMatch entity)
 		{
 			this.SendPropertyChanging();
-			entity.Player1 = null;
-		}
-		
-		private void attach_MatchDetails2(MatchDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Player2 = this;
-		}
-		
-		private void detach_MatchDetails2(MatchDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Player2 = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PlayersInMatch")]
-	public partial class PlayersInMatch : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _MatchID;
-		
-		private int _PlayerID;
-		
-		private int _IsHomeTeam;
-		
-		private string _Position;
-		
-		private System.Nullable<int> _Goal;
-		
-		private System.Nullable<int> _YellowCard;
-		
-		private System.Nullable<int> _RedCard;
-		
-		private System.Nullable<int> _OwnGoal;
-		
-		private EntityRef<Player> _Player;
-		
-		private EntityRef<Match> _Match;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMatchIDChanging(string value);
-    partial void OnMatchIDChanged();
-    partial void OnPlayerIDChanging(int value);
-    partial void OnPlayerIDChanged();
-    partial void OnIsHomeTeamChanging(int value);
-    partial void OnIsHomeTeamChanged();
-    partial void OnPositionChanging(string value);
-    partial void OnPositionChanged();
-    partial void OnGoalChanging(System.Nullable<int> value);
-    partial void OnGoalChanged();
-    partial void OnYellowCardChanging(System.Nullable<int> value);
-    partial void OnYellowCardChanged();
-    partial void OnRedCardChanging(System.Nullable<int> value);
-    partial void OnRedCardChanged();
-    partial void OnOwnGoalChanging(System.Nullable<int> value);
-    partial void OnOwnGoalChanged();
-    #endregion
-		
-		public PlayersInMatch()
-		{
-			this._Player = default(EntityRef<Player>);
-			this._Match = default(EntityRef<Match>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchID", DbType="Char(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MatchID
-		{
-			get
-			{
-				return this._MatchID;
-			}
-			set
-			{
-				if ((this._MatchID != value))
-				{
-					if (this._Match.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMatchIDChanging(value);
-					this.SendPropertyChanging();
-					this._MatchID = value;
-					this.SendPropertyChanged("MatchID");
-					this.OnMatchIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int PlayerID
-		{
-			get
-			{
-				return this._PlayerID;
-			}
-			set
-			{
-				if ((this._PlayerID != value))
-				{
-					if (this._Player.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPlayerIDChanging(value);
-					this.SendPropertyChanging();
-					this._PlayerID = value;
-					this.SendPropertyChanged("PlayerID");
-					this.OnPlayerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsHomeTeam", DbType="Int NOT NULL")]
-		public int IsHomeTeam
-		{
-			get
-			{
-				return this._IsHomeTeam;
-			}
-			set
-			{
-				if ((this._IsHomeTeam != value))
-				{
-					this.OnIsHomeTeamChanging(value);
-					this.SendPropertyChanging();
-					this._IsHomeTeam = value;
-					this.SendPropertyChanged("IsHomeTeam");
-					this.OnIsHomeTeamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="NVarChar(20)")]
-		public string Position
-		{
-			get
-			{
-				return this._Position;
-			}
-			set
-			{
-				if ((this._Position != value))
-				{
-					this.OnPositionChanging(value);
-					this.SendPropertyChanging();
-					this._Position = value;
-					this.SendPropertyChanged("Position");
-					this.OnPositionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Goal", DbType="Int")]
-		public System.Nullable<int> Goal
-		{
-			get
-			{
-				return this._Goal;
-			}
-			set
-			{
-				if ((this._Goal != value))
-				{
-					this.OnGoalChanging(value);
-					this.SendPropertyChanging();
-					this._Goal = value;
-					this.SendPropertyChanged("Goal");
-					this.OnGoalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YellowCard", DbType="Int")]
-		public System.Nullable<int> YellowCard
-		{
-			get
-			{
-				return this._YellowCard;
-			}
-			set
-			{
-				if ((this._YellowCard != value))
-				{
-					this.OnYellowCardChanging(value);
-					this.SendPropertyChanging();
-					this._YellowCard = value;
-					this.SendPropertyChanged("YellowCard");
-					this.OnYellowCardChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RedCard", DbType="Int")]
-		public System.Nullable<int> RedCard
-		{
-			get
-			{
-				return this._RedCard;
-			}
-			set
-			{
-				if ((this._RedCard != value))
-				{
-					this.OnRedCardChanging(value);
-					this.SendPropertyChanging();
-					this._RedCard = value;
-					this.SendPropertyChanged("RedCard");
-					this.OnRedCardChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnGoal", DbType="Int")]
-		public System.Nullable<int> OwnGoal
-		{
-			get
-			{
-				return this._OwnGoal;
-			}
-			set
-			{
-				if ((this._OwnGoal != value))
-				{
-					this.OnOwnGoalChanging(value);
-					this.SendPropertyChanging();
-					this._OwnGoal = value;
-					this.SendPropertyChanged("OwnGoal");
-					this.OnOwnGoalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_PlayersInMatch", Storage="_Player", ThisKey="PlayerID", OtherKey="PlayerID", IsForeignKey=true)]
-		public Player Player
-		{
-			get
-			{
-				return this._Player.Entity;
-			}
-			set
-			{
-				Player previousValue = this._Player.Entity;
-				if (((previousValue != value) 
-							|| (this._Player.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Player.Entity = null;
-						previousValue.PlayersInMatches.Remove(this);
-					}
-					this._Player.Entity = value;
-					if ((value != null))
-					{
-						value.PlayersInMatches.Add(this);
-						this._PlayerID = value.PlayerID;
-					}
-					else
-					{
-						this._PlayerID = default(int);
-					}
-					this.SendPropertyChanged("Player");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_PlayersInMatch", Storage="_Match", ThisKey="MatchID", OtherKey="MatchID", IsForeignKey=true)]
-		public Match Match
-		{
-			get
-			{
-				return this._Match.Entity;
-			}
-			set
-			{
-				Match previousValue = this._Match.Entity;
-				if (((previousValue != value) 
-							|| (this._Match.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Match.Entity = null;
-						previousValue.PlayersInMatches.Remove(this);
-					}
-					this._Match.Entity = value;
-					if ((value != null))
-					{
-						value.PlayersInMatches.Add(this);
-						this._MatchID = value.MatchID;
-					}
-					else
-					{
-						this._MatchID = default(string);
-					}
-					this.SendPropertyChanged("Match");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			entity.Player = null;
 		}
 	}
 	
@@ -3001,489 +2633,6 @@ namespace DAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MatchDetail")]
-	public partial class MatchDetail : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _MatchID;
-		
-		private int _MotmID;
-		
-		private System.Nullable<int> _HomeGoals;
-		
-		private System.Nullable<int> _AwayGoals;
-		
-		private int _HomeCapID;
-		
-		private int _AwayCapID;
-		
-		private string _HomeTactical;
-		
-		private string _AwayTactical;
-		
-		private int _RefereeID;
-		
-		private System.Nullable<System.DateTime> _MatchTime;
-		
-		private EntityRef<Player> _Player;
-		
-		private EntityRef<Player> _Player1;
-		
-		private EntityRef<Player> _Player2;
-		
-		private EntityRef<Referee> _Referee;
-		
-		private EntityRef<Match> _Match;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMatchIDChanging(string value);
-    partial void OnMatchIDChanged();
-    partial void OnMotmIDChanging(int value);
-    partial void OnMotmIDChanged();
-    partial void OnHomeGoalsChanging(System.Nullable<int> value);
-    partial void OnHomeGoalsChanged();
-    partial void OnAwayGoalsChanging(System.Nullable<int> value);
-    partial void OnAwayGoalsChanged();
-    partial void OnHomeCapIDChanging(int value);
-    partial void OnHomeCapIDChanged();
-    partial void OnAwayCapIDChanging(int value);
-    partial void OnAwayCapIDChanged();
-    partial void OnHomeTacticalChanging(string value);
-    partial void OnHomeTacticalChanged();
-    partial void OnAwayTacticalChanging(string value);
-    partial void OnAwayTacticalChanged();
-    partial void OnRefereeIDChanging(int value);
-    partial void OnRefereeIDChanged();
-    partial void OnMatchTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnMatchTimeChanged();
-    #endregion
-		
-		public MatchDetail()
-		{
-			this._Player = default(EntityRef<Player>);
-			this._Player1 = default(EntityRef<Player>);
-			this._Player2 = default(EntityRef<Player>);
-			this._Referee = default(EntityRef<Referee>);
-			this._Match = default(EntityRef<Match>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchID", DbType="Char(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MatchID
-		{
-			get
-			{
-				return this._MatchID;
-			}
-			set
-			{
-				if ((this._MatchID != value))
-				{
-					if (this._Match.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMatchIDChanging(value);
-					this.SendPropertyChanging();
-					this._MatchID = value;
-					this.SendPropertyChanged("MatchID");
-					this.OnMatchIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MotmID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MotmID
-		{
-			get
-			{
-				return this._MotmID;
-			}
-			set
-			{
-				if ((this._MotmID != value))
-				{
-					if (this._Player2.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMotmIDChanging(value);
-					this.SendPropertyChanging();
-					this._MotmID = value;
-					this.SendPropertyChanged("MotmID");
-					this.OnMotmIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomeGoals", DbType="Int")]
-		public System.Nullable<int> HomeGoals
-		{
-			get
-			{
-				return this._HomeGoals;
-			}
-			set
-			{
-				if ((this._HomeGoals != value))
-				{
-					this.OnHomeGoalsChanging(value);
-					this.SendPropertyChanging();
-					this._HomeGoals = value;
-					this.SendPropertyChanged("HomeGoals");
-					this.OnHomeGoalsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwayGoals", DbType="Int")]
-		public System.Nullable<int> AwayGoals
-		{
-			get
-			{
-				return this._AwayGoals;
-			}
-			set
-			{
-				if ((this._AwayGoals != value))
-				{
-					this.OnAwayGoalsChanging(value);
-					this.SendPropertyChanging();
-					this._AwayGoals = value;
-					this.SendPropertyChanged("AwayGoals");
-					this.OnAwayGoalsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomeCapID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int HomeCapID
-		{
-			get
-			{
-				return this._HomeCapID;
-			}
-			set
-			{
-				if ((this._HomeCapID != value))
-				{
-					if (this._Player1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnHomeCapIDChanging(value);
-					this.SendPropertyChanging();
-					this._HomeCapID = value;
-					this.SendPropertyChanged("HomeCapID");
-					this.OnHomeCapIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwayCapID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int AwayCapID
-		{
-			get
-			{
-				return this._AwayCapID;
-			}
-			set
-			{
-				if ((this._AwayCapID != value))
-				{
-					if (this._Player.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAwayCapIDChanging(value);
-					this.SendPropertyChanging();
-					this._AwayCapID = value;
-					this.SendPropertyChanged("AwayCapID");
-					this.OnAwayCapIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomeTactical", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string HomeTactical
-		{
-			get
-			{
-				return this._HomeTactical;
-			}
-			set
-			{
-				if ((this._HomeTactical != value))
-				{
-					this.OnHomeTacticalChanging(value);
-					this.SendPropertyChanging();
-					this._HomeTactical = value;
-					this.SendPropertyChanged("HomeTactical");
-					this.OnHomeTacticalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwayTactical", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string AwayTactical
-		{
-			get
-			{
-				return this._AwayTactical;
-			}
-			set
-			{
-				if ((this._AwayTactical != value))
-				{
-					this.OnAwayTacticalChanging(value);
-					this.SendPropertyChanging();
-					this._AwayTactical = value;
-					this.SendPropertyChanged("AwayTactical");
-					this.OnAwayTacticalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefereeID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int RefereeID
-		{
-			get
-			{
-				return this._RefereeID;
-			}
-			set
-			{
-				if ((this._RefereeID != value))
-				{
-					if (this._Referee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnRefereeIDChanging(value);
-					this.SendPropertyChanging();
-					this._RefereeID = value;
-					this.SendPropertyChanged("RefereeID");
-					this.OnRefereeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> MatchTime
-		{
-			get
-			{
-				return this._MatchTime;
-			}
-			set
-			{
-				if ((this._MatchTime != value))
-				{
-					this.OnMatchTimeChanging(value);
-					this.SendPropertyChanging();
-					this._MatchTime = value;
-					this.SendPropertyChanged("MatchTime");
-					this.OnMatchTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail", Storage="_Player", ThisKey="AwayCapID", OtherKey="PlayerID", IsForeignKey=true)]
-		public Player Player
-		{
-			get
-			{
-				return this._Player.Entity;
-			}
-			set
-			{
-				Player previousValue = this._Player.Entity;
-				if (((previousValue != value) 
-							|| (this._Player.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Player.Entity = null;
-						previousValue.MatchDetails.Remove(this);
-					}
-					this._Player.Entity = value;
-					if ((value != null))
-					{
-						value.MatchDetails.Add(this);
-						this._AwayCapID = value.PlayerID;
-					}
-					else
-					{
-						this._AwayCapID = default(int);
-					}
-					this.SendPropertyChanged("Player");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail1", Storage="_Player1", ThisKey="HomeCapID", OtherKey="PlayerID", IsForeignKey=true)]
-		public Player Player1
-		{
-			get
-			{
-				return this._Player1.Entity;
-			}
-			set
-			{
-				Player previousValue = this._Player1.Entity;
-				if (((previousValue != value) 
-							|| (this._Player1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Player1.Entity = null;
-						previousValue.MatchDetails1.Remove(this);
-					}
-					this._Player1.Entity = value;
-					if ((value != null))
-					{
-						value.MatchDetails1.Add(this);
-						this._HomeCapID = value.PlayerID;
-					}
-					else
-					{
-						this._HomeCapID = default(int);
-					}
-					this.SendPropertyChanged("Player1");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail2", Storage="_Player2", ThisKey="MotmID", OtherKey="PlayerID", IsForeignKey=true)]
-		public Player Player2
-		{
-			get
-			{
-				return this._Player2.Entity;
-			}
-			set
-			{
-				Player previousValue = this._Player2.Entity;
-				if (((previousValue != value) 
-							|| (this._Player2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Player2.Entity = null;
-						previousValue.MatchDetails2.Remove(this);
-					}
-					this._Player2.Entity = value;
-					if ((value != null))
-					{
-						value.MatchDetails2.Add(this);
-						this._MotmID = value.PlayerID;
-					}
-					else
-					{
-						this._MotmID = default(int);
-					}
-					this.SendPropertyChanged("Player2");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Referee_MatchDetail", Storage="_Referee", ThisKey="RefereeID", OtherKey="RefereeID", IsForeignKey=true)]
-		public Referee Referee
-		{
-			get
-			{
-				return this._Referee.Entity;
-			}
-			set
-			{
-				Referee previousValue = this._Referee.Entity;
-				if (((previousValue != value) 
-							|| (this._Referee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Referee.Entity = null;
-						previousValue.MatchDetails.Remove(this);
-					}
-					this._Referee.Entity = value;
-					if ((value != null))
-					{
-						value.MatchDetails.Add(this);
-						this._RefereeID = value.RefereeID;
-					}
-					else
-					{
-						this._RefereeID = default(int);
-					}
-					this.SendPropertyChanged("Referee");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_MatchDetail", Storage="_Match", ThisKey="MatchID", OtherKey="MatchID", IsForeignKey=true)]
-		public Match Match
-		{
-			get
-			{
-				return this._Match.Entity;
-			}
-			set
-			{
-				Match previousValue = this._Match.Entity;
-				if (((previousValue != value) 
-							|| (this._Match.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Match.Entity = null;
-						previousValue.MatchDetails.Remove(this);
-					}
-					this._Match.Entity = value;
-					if ((value != null))
-					{
-						value.MatchDetails.Add(this);
-						this._MatchID = value.MatchID;
-					}
-					else
-					{
-						this._MatchID = default(string);
-					}
-					this.SendPropertyChanged("Match");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Matches")]
 	public partial class Match : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3501,15 +2650,15 @@ namespace DAL
 		private int _AwayID;
 		
 		private string _MatchName;
-
-        private EntitySet<PlayersInMatch> _PlayersInMatches;
 		
 		private EntitySet<MatchDetail> _MatchDetails;
+		
+		private EntitySet<PlayersInMatch> _PlayersInMatches;
 		
 		private EntityRef<Club> _Club;
 		
 		private EntityRef<Club> _Club1;
-
+		
 		private EntityRef<Round> _Round;
 		
 		private EntityRef<Season> _Season;
@@ -3534,8 +2683,8 @@ namespace DAL
 		
 		public Match()
 		{
-			this._PlayersInMatches = new EntitySet<PlayersInMatch>(new Action<PlayersInMatch>(this.attach_PlayersInMatches), new Action<PlayersInMatch>(this.detach_PlayersInMatches));
 			this._MatchDetails = new EntitySet<MatchDetail>(new Action<MatchDetail>(this.attach_MatchDetails), new Action<MatchDetail>(this.detach_MatchDetails));
+			this._PlayersInMatches = new EntitySet<PlayersInMatch>(new Action<PlayersInMatch>(this.attach_PlayersInMatches), new Action<PlayersInMatch>(this.detach_PlayersInMatches));
 			this._Club = default(EntityRef<Club>);
 			this._Club1 = default(EntityRef<Club>);
 			this._Round = default(EntityRef<Round>);
@@ -3679,19 +2828,6 @@ namespace DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_PlayersInMatch", Storage="_PlayersInMatches", ThisKey="MatchID", OtherKey="MatchID")]
-		public EntitySet<PlayersInMatch> PlayersInMatches
-		{
-			get
-			{
-				return this._PlayersInMatches;
-			}
-			set
-			{
-				this._PlayersInMatches.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_MatchDetail", Storage="_MatchDetails", ThisKey="MatchID", OtherKey="MatchID")]
 		public EntitySet<MatchDetail> MatchDetails
 		{
@@ -3702,6 +2838,19 @@ namespace DAL
 			set
 			{
 				this._MatchDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_PlayersInMatch", Storage="_PlayersInMatches", ThisKey="MatchID", OtherKey="MatchID")]
+		public EntitySet<PlayersInMatch> PlayersInMatches
+		{
+			get
+			{
+				return this._PlayersInMatches;
+			}
+			set
+			{
+				this._PlayersInMatches.Assign(value);
 			}
 		}
 		
@@ -3861,6 +3010,18 @@ namespace DAL
 			}
 		}
 		
+		private void attach_MatchDetails(MatchDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Match = this;
+		}
+		
+		private void detach_MatchDetails(MatchDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Match = null;
+		}
+		
 		private void attach_PlayersInMatches(PlayersInMatch entity)
 		{
 			this.SendPropertyChanging();
@@ -3872,17 +3033,694 @@ namespace DAL
 			this.SendPropertyChanging();
 			entity.Match = null;
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MatchDetail")]
+	public partial class MatchDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		private void attach_MatchDetails(MatchDetail entity)
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MatchID;
+		
+		private int _MotmID;
+		
+		private System.Nullable<int> _HomeGoals;
+		
+		private System.Nullable<int> _AwayGoals;
+		
+		private string _HomeTactical;
+		
+		private string _AwayTactical;
+		
+		private int _RefereeID;
+		
+		private System.Nullable<System.DateTime> _MatchTime;
+		
+		private EntityRef<Match> _Match;
+		
+		private EntityRef<Player> _Player;
+		
+		private EntityRef<Referee> _Referee;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMatchIDChanging(string value);
+    partial void OnMatchIDChanged();
+    partial void OnMotmIDChanging(int value);
+    partial void OnMotmIDChanged();
+    partial void OnHomeGoalsChanging(System.Nullable<int> value);
+    partial void OnHomeGoalsChanged();
+    partial void OnAwayGoalsChanging(System.Nullable<int> value);
+    partial void OnAwayGoalsChanged();
+    partial void OnHomeTacticalChanging(string value);
+    partial void OnHomeTacticalChanged();
+    partial void OnAwayTacticalChanging(string value);
+    partial void OnAwayTacticalChanged();
+    partial void OnRefereeIDChanging(int value);
+    partial void OnRefereeIDChanged();
+    partial void OnMatchTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnMatchTimeChanged();
+    #endregion
+		
+		public MatchDetail()
 		{
-			this.SendPropertyChanging();
-			entity.Match = this;
+			this._Match = default(EntityRef<Match>);
+			this._Player = default(EntityRef<Player>);
+			this._Referee = default(EntityRef<Referee>);
+			OnCreated();
 		}
 		
-		private void detach_MatchDetails(MatchDetail entity)
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchID", DbType="Char(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MatchID
 		{
-			this.SendPropertyChanging();
-			entity.Match = null;
+			get
+			{
+				return this._MatchID;
+			}
+			set
+			{
+				if ((this._MatchID != value))
+				{
+					if (this._Match.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMatchIDChanging(value);
+					this.SendPropertyChanging();
+					this._MatchID = value;
+					this.SendPropertyChanged("MatchID");
+					this.OnMatchIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MotmID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MotmID
+		{
+			get
+			{
+				return this._MotmID;
+			}
+			set
+			{
+				if ((this._MotmID != value))
+				{
+					if (this._Player.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMotmIDChanging(value);
+					this.SendPropertyChanging();
+					this._MotmID = value;
+					this.SendPropertyChanged("MotmID");
+					this.OnMotmIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomeGoals", DbType="Int")]
+		public System.Nullable<int> HomeGoals
+		{
+			get
+			{
+				return this._HomeGoals;
+			}
+			set
+			{
+				if ((this._HomeGoals != value))
+				{
+					this.OnHomeGoalsChanging(value);
+					this.SendPropertyChanging();
+					this._HomeGoals = value;
+					this.SendPropertyChanged("HomeGoals");
+					this.OnHomeGoalsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwayGoals", DbType="Int")]
+		public System.Nullable<int> AwayGoals
+		{
+			get
+			{
+				return this._AwayGoals;
+			}
+			set
+			{
+				if ((this._AwayGoals != value))
+				{
+					this.OnAwayGoalsChanging(value);
+					this.SendPropertyChanging();
+					this._AwayGoals = value;
+					this.SendPropertyChanged("AwayGoals");
+					this.OnAwayGoalsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomeTactical", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string HomeTactical
+		{
+			get
+			{
+				return this._HomeTactical;
+			}
+			set
+			{
+				if ((this._HomeTactical != value))
+				{
+					this.OnHomeTacticalChanging(value);
+					this.SendPropertyChanging();
+					this._HomeTactical = value;
+					this.SendPropertyChanged("HomeTactical");
+					this.OnHomeTacticalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AwayTactical", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string AwayTactical
+		{
+			get
+			{
+				return this._AwayTactical;
+			}
+			set
+			{
+				if ((this._AwayTactical != value))
+				{
+					this.OnAwayTacticalChanging(value);
+					this.SendPropertyChanging();
+					this._AwayTactical = value;
+					this.SendPropertyChanged("AwayTactical");
+					this.OnAwayTacticalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefereeID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int RefereeID
+		{
+			get
+			{
+				return this._RefereeID;
+			}
+			set
+			{
+				if ((this._RefereeID != value))
+				{
+					if (this._Referee.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRefereeIDChanging(value);
+					this.SendPropertyChanging();
+					this._RefereeID = value;
+					this.SendPropertyChanged("RefereeID");
+					this.OnRefereeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MatchTime
+		{
+			get
+			{
+				return this._MatchTime;
+			}
+			set
+			{
+				if ((this._MatchTime != value))
+				{
+					this.OnMatchTimeChanging(value);
+					this.SendPropertyChanging();
+					this._MatchTime = value;
+					this.SendPropertyChanged("MatchTime");
+					this.OnMatchTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_MatchDetail", Storage="_Match", ThisKey="MatchID", OtherKey="MatchID", IsForeignKey=true)]
+		public Match Match
+		{
+			get
+			{
+				return this._Match.Entity;
+			}
+			set
+			{
+				Match previousValue = this._Match.Entity;
+				if (((previousValue != value) 
+							|| (this._Match.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Match.Entity = null;
+						previousValue.MatchDetails.Remove(this);
+					}
+					this._Match.Entity = value;
+					if ((value != null))
+					{
+						value.MatchDetails.Add(this);
+						this._MatchID = value.MatchID;
+					}
+					else
+					{
+						this._MatchID = default(string);
+					}
+					this.SendPropertyChanged("Match");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_MatchDetail", Storage="_Player", ThisKey="MotmID", OtherKey="PlayerID", IsForeignKey=true)]
+		public Player Player
+		{
+			get
+			{
+				return this._Player.Entity;
+			}
+			set
+			{
+				Player previousValue = this._Player.Entity;
+				if (((previousValue != value) 
+							|| (this._Player.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Player.Entity = null;
+						previousValue.MatchDetails.Remove(this);
+					}
+					this._Player.Entity = value;
+					if ((value != null))
+					{
+						value.MatchDetails.Add(this);
+						this._MotmID = value.PlayerID;
+					}
+					else
+					{
+						this._MotmID = default(int);
+					}
+					this.SendPropertyChanged("Player");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Referee_MatchDetail", Storage="_Referee", ThisKey="RefereeID", OtherKey="RefereeID", IsForeignKey=true)]
+		public Referee Referee
+		{
+			get
+			{
+				return this._Referee.Entity;
+			}
+			set
+			{
+				Referee previousValue = this._Referee.Entity;
+				if (((previousValue != value) 
+							|| (this._Referee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Referee.Entity = null;
+						previousValue.MatchDetails.Remove(this);
+					}
+					this._Referee.Entity = value;
+					if ((value != null))
+					{
+						value.MatchDetails.Add(this);
+						this._RefereeID = value.RefereeID;
+					}
+					else
+					{
+						this._RefereeID = default(int);
+					}
+					this.SendPropertyChanged("Referee");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PlayersInMatch")]
+	public partial class PlayersInMatch : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MatchID;
+		
+		private int _PlayerID;
+		
+		private int _IsHomeTeam;
+		
+		private string _Position;
+		
+		private System.Nullable<int> _Goal;
+		
+		private System.Nullable<int> _YellowCard;
+		
+		private System.Nullable<int> _RedCard;
+		
+		private System.Nullable<int> _OwnGoal;
+		
+		private int _IsCaptain;
+		
+		private EntityRef<Match> _Match;
+		
+		private EntityRef<Player> _Player;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMatchIDChanging(string value);
+    partial void OnMatchIDChanged();
+    partial void OnPlayerIDChanging(int value);
+    partial void OnPlayerIDChanged();
+    partial void OnIsHomeTeamChanging(int value);
+    partial void OnIsHomeTeamChanged();
+    partial void OnPositionChanging(string value);
+    partial void OnPositionChanged();
+    partial void OnGoalChanging(System.Nullable<int> value);
+    partial void OnGoalChanged();
+    partial void OnYellowCardChanging(System.Nullable<int> value);
+    partial void OnYellowCardChanged();
+    partial void OnRedCardChanging(System.Nullable<int> value);
+    partial void OnRedCardChanged();
+    partial void OnOwnGoalChanging(System.Nullable<int> value);
+    partial void OnOwnGoalChanged();
+    partial void OnIsCaptainChanging(int value);
+    partial void OnIsCaptainChanged();
+    #endregion
+		
+		public PlayersInMatch()
+		{
+			this._Match = default(EntityRef<Match>);
+			this._Player = default(EntityRef<Player>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchID", DbType="Char(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MatchID
+		{
+			get
+			{
+				return this._MatchID;
+			}
+			set
+			{
+				if ((this._MatchID != value))
+				{
+					if (this._Match.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMatchIDChanging(value);
+					this.SendPropertyChanging();
+					this._MatchID = value;
+					this.SendPropertyChanged("MatchID");
+					this.OnMatchIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int PlayerID
+		{
+			get
+			{
+				return this._PlayerID;
+			}
+			set
+			{
+				if ((this._PlayerID != value))
+				{
+					if (this._Player.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPlayerIDChanging(value);
+					this.SendPropertyChanging();
+					this._PlayerID = value;
+					this.SendPropertyChanged("PlayerID");
+					this.OnPlayerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsHomeTeam", DbType="Int NOT NULL")]
+		public int IsHomeTeam
+		{
+			get
+			{
+				return this._IsHomeTeam;
+			}
+			set
+			{
+				if ((this._IsHomeTeam != value))
+				{
+					this.OnIsHomeTeamChanging(value);
+					this.SendPropertyChanging();
+					this._IsHomeTeam = value;
+					this.SendPropertyChanged("IsHomeTeam");
+					this.OnIsHomeTeamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="NVarChar(20)")]
+		public string Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this.OnPositionChanging(value);
+					this.SendPropertyChanging();
+					this._Position = value;
+					this.SendPropertyChanged("Position");
+					this.OnPositionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Goal", DbType="Int")]
+		public System.Nullable<int> Goal
+		{
+			get
+			{
+				return this._Goal;
+			}
+			set
+			{
+				if ((this._Goal != value))
+				{
+					this.OnGoalChanging(value);
+					this.SendPropertyChanging();
+					this._Goal = value;
+					this.SendPropertyChanged("Goal");
+					this.OnGoalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YellowCard", DbType="Int")]
+		public System.Nullable<int> YellowCard
+		{
+			get
+			{
+				return this._YellowCard;
+			}
+			set
+			{
+				if ((this._YellowCard != value))
+				{
+					this.OnYellowCardChanging(value);
+					this.SendPropertyChanging();
+					this._YellowCard = value;
+					this.SendPropertyChanged("YellowCard");
+					this.OnYellowCardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RedCard", DbType="Int")]
+		public System.Nullable<int> RedCard
+		{
+			get
+			{
+				return this._RedCard;
+			}
+			set
+			{
+				if ((this._RedCard != value))
+				{
+					this.OnRedCardChanging(value);
+					this.SendPropertyChanging();
+					this._RedCard = value;
+					this.SendPropertyChanged("RedCard");
+					this.OnRedCardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OwnGoal", DbType="Int")]
+		public System.Nullable<int> OwnGoal
+		{
+			get
+			{
+				return this._OwnGoal;
+			}
+			set
+			{
+				if ((this._OwnGoal != value))
+				{
+					this.OnOwnGoalChanging(value);
+					this.SendPropertyChanging();
+					this._OwnGoal = value;
+					this.SendPropertyChanged("OwnGoal");
+					this.OnOwnGoalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsCaptain", DbType="Int NOT NULL")]
+		public int IsCaptain
+		{
+			get
+			{
+				return this._IsCaptain;
+			}
+			set
+			{
+				if ((this._IsCaptain != value))
+				{
+					this.OnIsCaptainChanging(value);
+					this.SendPropertyChanging();
+					this._IsCaptain = value;
+					this.SendPropertyChanged("IsCaptain");
+					this.OnIsCaptainChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_PlayersInMatch", Storage="_Match", ThisKey="MatchID", OtherKey="MatchID", IsForeignKey=true)]
+		public Match Match
+		{
+			get
+			{
+				return this._Match.Entity;
+			}
+			set
+			{
+				Match previousValue = this._Match.Entity;
+				if (((previousValue != value) 
+							|| (this._Match.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Match.Entity = null;
+						previousValue.PlayersInMatches.Remove(this);
+					}
+					this._Match.Entity = value;
+					if ((value != null))
+					{
+						value.PlayersInMatches.Add(this);
+						this._MatchID = value.MatchID;
+					}
+					else
+					{
+						this._MatchID = default(string);
+					}
+					this.SendPropertyChanged("Match");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_PlayersInMatch", Storage="_Player", ThisKey="PlayerID", OtherKey="PlayerID", IsForeignKey=true)]
+		public Player Player
+		{
+			get
+			{
+				return this._Player.Entity;
+			}
+			set
+			{
+				Player previousValue = this._Player.Entity;
+				if (((previousValue != value) 
+							|| (this._Player.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Player.Entity = null;
+						previousValue.PlayersInMatches.Remove(this);
+					}
+					this._Player.Entity = value;
+					if ((value != null))
+					{
+						value.PlayersInMatches.Add(this);
+						this._PlayerID = value.PlayerID;
+					}
+					else
+					{
+						this._PlayerID = default(int);
+					}
+					this.SendPropertyChanged("Player");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

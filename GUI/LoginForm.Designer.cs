@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.txtServerName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtDBName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -50,59 +50,59 @@
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtServerName
+            // txtUsername
             // 
-            this.txtServerName.BorderColor = System.Drawing.Color.White;
-            this.txtServerName.BorderRadius = 6;
-            this.txtServerName.BorderThickness = 2;
-            this.txtServerName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtServerName.DefaultText = "";
-            this.txtServerName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtServerName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtServerName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtServerName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtServerName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtServerName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
-            this.txtServerName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtServerName.ForeColor = System.Drawing.Color.White;
-            this.txtServerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
-            this.txtServerName.Location = new System.Drawing.Point(21, 232);
-            this.txtServerName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtServerName.Name = "txtServerName";
-            this.txtServerName.PasswordChar = '\0';
-            this.txtServerName.PlaceholderForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtServerName.PlaceholderText = "Server Name";
-            this.txtServerName.SelectedText = "";
-            this.txtServerName.Size = new System.Drawing.Size(322, 50);
-            this.txtServerName.TabIndex = 3;
-            this.txtServerName.TextOffset = new System.Drawing.Point(8, 0);
+            this.txtUsername.BorderColor = System.Drawing.Color.White;
+            this.txtUsername.BorderRadius = 6;
+            this.txtUsername.BorderThickness = 2;
+            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUsername.DefaultText = "";
+            this.txtUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUsername.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtUsername.ForeColor = System.Drawing.Color.White;
+            this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
+            this.txtUsername.Location = new System.Drawing.Point(21, 232);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.PasswordChar = '\0';
+            this.txtUsername.PlaceholderForeColor = System.Drawing.Color.WhiteSmoke;
+            this.txtUsername.PlaceholderText = "Username";
+            this.txtUsername.SelectedText = "";
+            this.txtUsername.Size = new System.Drawing.Size(322, 50);
+            this.txtUsername.TabIndex = 3;
+            this.txtUsername.TextOffset = new System.Drawing.Point(8, 0);
             // 
-            // txtDBName
+            // txtPassword
             // 
-            this.txtDBName.BorderColor = System.Drawing.Color.White;
-            this.txtDBName.BorderRadius = 6;
-            this.txtDBName.BorderThickness = 2;
-            this.txtDBName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDBName.DefaultText = "";
-            this.txtDBName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtDBName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtDBName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDBName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDBName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtDBName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
-            this.txtDBName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtDBName.ForeColor = System.Drawing.Color.White;
-            this.txtDBName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
-            this.txtDBName.Location = new System.Drawing.Point(21, 299);
-            this.txtDBName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtDBName.Name = "txtDBName";
-            this.txtDBName.PasswordChar = '\0';
-            this.txtDBName.PlaceholderForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDBName.PlaceholderText = "Database Name";
-            this.txtDBName.SelectedText = "";
-            this.txtDBName.Size = new System.Drawing.Size(322, 50);
-            this.txtDBName.TabIndex = 4;
-            this.txtDBName.TextOffset = new System.Drawing.Point(8, 0);
+            this.txtPassword.BorderColor = System.Drawing.Color.White;
+            this.txtPassword.BorderRadius = 6;
+            this.txtPassword.BorderThickness = 2;
+            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPassword.DefaultText = "";
+            this.txtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPassword.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPassword.ForeColor = System.Drawing.Color.White;
+            this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(2)))), ((int)(((byte)(98)))));
+            this.txtPassword.Location = new System.Drawing.Point(21, 299);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.PlaceholderForeColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPassword.PlaceholderText = "Password";
+            this.txtPassword.SelectedText = "";
+            this.txtPassword.Size = new System.Drawing.Size(322, 50);
+            this.txtPassword.TabIndex = 4;
+            this.txtPassword.TextOffset = new System.Drawing.Point(8, 0);
             // 
             // btnLogin
             // 
@@ -214,8 +214,8 @@
             this.guna2Panel2.Controls.Add(this.btnLogin);
             this.guna2Panel2.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel2.Controls.Add(this.label1);
-            this.guna2Panel2.Controls.Add(this.txtServerName);
-            this.guna2Panel2.Controls.Add(this.txtDBName);
+            this.guna2Panel2.Controls.Add(this.txtUsername);
+            this.guna2Panel2.Controls.Add(this.txtPassword);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Name = "guna2Panel2";
@@ -263,8 +263,8 @@
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2TextBox txtServerName;
-        private Guna.UI2.WinForms.Guna2TextBox txtDBName;
+        private Guna.UI2.WinForms.Guna2TextBox txtUsername;
+        private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;

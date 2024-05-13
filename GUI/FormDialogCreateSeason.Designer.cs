@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelContent = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtEndYear = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtEndMonth = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtEndDay = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtStartYear = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtStartMonth = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtStartDay = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
@@ -37,13 +44,6 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox4 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtStartYear = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtStartMonth = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtStartDay = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtEndYear = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtEndMonth = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtEndDay = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
@@ -72,202 +72,6 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(553, 536);
             this.panelContent.TabIndex = 33;
-            // 
-            // guna2HtmlLabel7
-            // 
-            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.guna2HtmlLabel7.Location = new System.Drawing.Point(150, 99);
-            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(91, 30);
-            this.guna2HtmlLabel7.TabIndex = 70;
-            this.guna2HtmlLabel7.Text = "Start Date";
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.Transparent;
-            this.btnClear.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnClear.BorderRadius = 3;
-            this.btnClear.BorderThickness = 2;
-            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnClear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnClear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnClear.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnClear.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnClear.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnClear.Location = new System.Drawing.Point(298, 372);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(110, 40);
-            this.btnClear.TabIndex = 13;
-            this.btnClear.Text = "Clear";
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnSave.BorderRadius = 3;
-            this.btnSave.BorderThickness = 2;
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSave.FillColor = System.Drawing.Color.White;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnSave.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnSave.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnSave.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(150, 372);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(110, 40);
-            this.btnSave.TabIndex = 12;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // panelTop
-            // 
-            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.panelTop.Controls.Add(this.guna2HtmlLabel1);
-            this.panelTop.Controls.Add(this.guna2ControlBox4);
-            this.panelTop.Controls.Add(this.guna2ControlBox3);
-            this.panelTop.CustomBorderThickness = new System.Windows.Forms.Padding(1);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(574, 147);
-            this.panelTop.TabIndex = 32;
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(48, 57);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(150, 33);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Create Season";
-            // 
-            // guna2ControlBox4
-            // 
-            this.guna2ControlBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox4.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2ControlBox4.ForeColor = System.Drawing.Color.White;
-            this.guna2ControlBox4.HoverState.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2ControlBox4.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.guna2ControlBox4.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox4.Location = new System.Drawing.Point(511, 0);
-            this.guna2ControlBox4.Name = "guna2ControlBox4";
-            this.guna2ControlBox4.Size = new System.Drawing.Size(63, 43);
-            this.guna2ControlBox4.TabIndex = 1;
-            // 
-            // guna2ControlBox3
-            // 
-            this.guna2ControlBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
-            this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2ControlBox3.ForeColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.HoverState.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(448, 0);
-            this.guna2ControlBox3.Name = "guna2ControlBox3";
-            this.guna2ControlBox3.Size = new System.Drawing.Size(63, 43);
-            this.guna2ControlBox3.TabIndex = 0;
-            // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(150, 218);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(82, 30);
-            this.guna2HtmlLabel2.TabIndex = 72;
-            this.guna2HtmlLabel2.Text = "End Date";
-            // 
-            // txtStartYear
-            // 
-            this.txtStartYear.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtStartYear.BorderRadius = 3;
-            this.txtStartYear.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStartYear.DefaultText = "";
-            this.txtStartYear.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtStartYear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtStartYear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStartYear.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStartYear.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtStartYear.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtStartYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtStartYear.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtStartYear.Location = new System.Drawing.Point(326, 136);
-            this.txtStartYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtStartYear.Name = "txtStartYear";
-            this.txtStartYear.PasswordChar = '\0';
-            this.txtStartYear.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtStartYear.PlaceholderText = "Year";
-            this.txtStartYear.SelectedText = "";
-            this.txtStartYear.Size = new System.Drawing.Size(82, 34);
-            this.txtStartYear.TabIndex = 75;
-            // 
-            // txtStartMonth
-            // 
-            this.txtStartMonth.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtStartMonth.BorderRadius = 3;
-            this.txtStartMonth.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStartMonth.DefaultText = "";
-            this.txtStartMonth.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtStartMonth.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtStartMonth.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStartMonth.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStartMonth.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtStartMonth.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtStartMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtStartMonth.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtStartMonth.Location = new System.Drawing.Point(238, 136);
-            this.txtStartMonth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtStartMonth.Name = "txtStartMonth";
-            this.txtStartMonth.PasswordChar = '\0';
-            this.txtStartMonth.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtStartMonth.PlaceholderText = "Month";
-            this.txtStartMonth.SelectedText = "";
-            this.txtStartMonth.Size = new System.Drawing.Size(82, 34);
-            this.txtStartMonth.TabIndex = 74;
-            // 
-            // txtStartDay
-            // 
-            this.txtStartDay.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtStartDay.BorderRadius = 3;
-            this.txtStartDay.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStartDay.DefaultText = "";
-            this.txtStartDay.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtStartDay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtStartDay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStartDay.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtStartDay.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtStartDay.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtStartDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtStartDay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtStartDay.Location = new System.Drawing.Point(150, 136);
-            this.txtStartDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtStartDay.Name = "txtStartDay";
-            this.txtStartDay.PasswordChar = '\0';
-            this.txtStartDay.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.txtStartDay.PlaceholderText = "Day";
-            this.txtStartDay.SelectedText = "";
-            this.txtStartDay.Size = new System.Drawing.Size(82, 34);
-            this.txtStartDay.TabIndex = 73;
             // 
             // txtEndYear
             // 
@@ -341,6 +145,205 @@
             this.txtEndDay.Size = new System.Drawing.Size(82, 34);
             this.txtEndDay.TabIndex = 76;
             // 
+            // txtStartYear
+            // 
+            this.txtStartYear.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtStartYear.BorderRadius = 3;
+            this.txtStartYear.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStartYear.DefaultText = "";
+            this.txtStartYear.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtStartYear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtStartYear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStartYear.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStartYear.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtStartYear.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtStartYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtStartYear.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtStartYear.Location = new System.Drawing.Point(326, 136);
+            this.txtStartYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtStartYear.Name = "txtStartYear";
+            this.txtStartYear.PasswordChar = '\0';
+            this.txtStartYear.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtStartYear.PlaceholderText = "Year";
+            this.txtStartYear.SelectedText = "";
+            this.txtStartYear.Size = new System.Drawing.Size(82, 34);
+            this.txtStartYear.TabIndex = 75;
+            // 
+            // txtStartMonth
+            // 
+            this.txtStartMonth.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtStartMonth.BorderRadius = 3;
+            this.txtStartMonth.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStartMonth.DefaultText = "";
+            this.txtStartMonth.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtStartMonth.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtStartMonth.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStartMonth.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStartMonth.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtStartMonth.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtStartMonth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtStartMonth.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtStartMonth.Location = new System.Drawing.Point(238, 136);
+            this.txtStartMonth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtStartMonth.Name = "txtStartMonth";
+            this.txtStartMonth.PasswordChar = '\0';
+            this.txtStartMonth.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtStartMonth.PlaceholderText = "Month";
+            this.txtStartMonth.SelectedText = "";
+            this.txtStartMonth.Size = new System.Drawing.Size(82, 34);
+            this.txtStartMonth.TabIndex = 74;
+            // 
+            // txtStartDay
+            // 
+            this.txtStartDay.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtStartDay.BorderRadius = 3;
+            this.txtStartDay.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtStartDay.DefaultText = "";
+            this.txtStartDay.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtStartDay.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtStartDay.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStartDay.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtStartDay.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtStartDay.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtStartDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtStartDay.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.txtStartDay.Location = new System.Drawing.Point(150, 136);
+            this.txtStartDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtStartDay.Name = "txtStartDay";
+            this.txtStartDay.PasswordChar = '\0';
+            this.txtStartDay.PlaceholderForeColor = System.Drawing.Color.Gray;
+            this.txtStartDay.PlaceholderText = "Day";
+            this.txtStartDay.SelectedText = "";
+            this.txtStartDay.Size = new System.Drawing.Size(82, 34);
+            this.txtStartDay.TabIndex = 73;
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.AutoSize = false;
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(150, 218);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(82, 30);
+            this.guna2HtmlLabel2.TabIndex = 72;
+            this.guna2HtmlLabel2.Text = "End Date";
+            // 
+            // guna2HtmlLabel7
+            // 
+            this.guna2HtmlLabel7.AutoSize = false;
+            this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.guna2HtmlLabel7.Location = new System.Drawing.Point(150, 99);
+            this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(91, 30);
+            this.guna2HtmlLabel7.TabIndex = 70;
+            this.guna2HtmlLabel7.Text = "Start Date";
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Transparent;
+            this.btnClear.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnClear.BorderRadius = 3;
+            this.btnClear.BorderThickness = 2;
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClear.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnClear.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnClear.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnClear.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnClear.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnClear.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnClear.Location = new System.Drawing.Point(298, 372);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(110, 40);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear";
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.btnSave.BorderRadius = 3;
+            this.btnSave.BorderThickness = 2;
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.White;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.btnSave.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.btnSave.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.btnSave.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(150, 372);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(110, 40);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // panelTop
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.panelTop.Controls.Add(this.guna2HtmlLabel1);
+            this.panelTop.Controls.Add(this.guna2ControlBox4);
+            this.panelTop.Controls.Add(this.guna2ControlBox3);
+            this.panelTop.CustomBorderThickness = new System.Windows.Forms.Padding(1);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(0, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(574, 147);
+            this.panelTop.TabIndex = 32;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.AutoSize = false;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(48, 57);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(150, 33);
+            this.guna2HtmlLabel1.TabIndex = 0;
+            this.guna2HtmlLabel1.Text = "Create Season";
+            // 
+            // guna2ControlBox4
+            // 
+            this.guna2ControlBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox4.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ControlBox4.ForeColor = System.Drawing.Color.White;
+            this.guna2ControlBox4.HoverState.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2ControlBox4.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.guna2ControlBox4.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox4.Location = new System.Drawing.Point(511, 0);
+            this.guna2ControlBox4.Name = "guna2ControlBox4";
+            this.guna2ControlBox4.Size = new System.Drawing.Size(63, 43);
+            this.guna2ControlBox4.TabIndex = 1;
+            // 
+            // guna2ControlBox3
+            // 
+            this.guna2ControlBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.guna2ControlBox3.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ControlBox3.ForeColor = System.Drawing.Color.White;
+            this.guna2ControlBox3.HoverState.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
+            this.guna2ControlBox3.Location = new System.Drawing.Point(448, 0);
+            this.guna2ControlBox3.Name = "guna2ControlBox3";
+            this.guna2ControlBox3.Size = new System.Drawing.Size(63, 43);
+            this.guna2ControlBox3.TabIndex = 0;
+            // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
@@ -366,9 +369,7 @@
             this.Text = "FormDialogCreateSeason";
             this.Load += new System.EventHandler(this.FormDialogCreateSeason_Load);
             this.panelContent.ResumeLayout(false);
-            this.panelContent.PerformLayout();
             this.panelTop.ResumeLayout(false);
-            this.panelTop.PerformLayout();
             this.ResumeLayout(false);
 
         }

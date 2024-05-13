@@ -42,7 +42,6 @@
             this.guna2Panel_Left = new Guna.UI2.WinForms.Guna2Panel();
             this.btnOpenRefereeForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenHomeForm = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnOpenSeasonForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenMatchForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnOpenClubForm = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -115,6 +114,7 @@
             this.guna2ControlBox4.Name = "guna2ControlBox4";
             this.guna2ControlBox4.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox4.TabIndex = 17;
+            this.guna2ControlBox4.Click += new System.EventHandler(this.guna2ControlBox4_Click);
             // 
             // txtSearch
             // 
@@ -190,7 +190,6 @@
             // 
             this.guna2Panel_Left.Controls.Add(this.btnOpenRefereeForm);
             this.guna2Panel_Left.Controls.Add(this.btnOpenHomeForm);
-            this.guna2Panel_Left.Controls.Add(this.btnOpenSeasonForm);
             this.guna2Panel_Left.Controls.Add(this.btnOpenMatchForm);
             this.guna2Panel_Left.Controls.Add(this.btnOpenClubForm);
             this.guna2Panel_Left.Controls.Add(this.guna2PictureBox2);
@@ -255,32 +254,6 @@
             this.btnOpenHomeForm.TabIndex = 30;
             this.btnOpenHomeForm.Text = "Home";
             this.btnOpenHomeForm.Click += new System.EventHandler(this.btnOpenHomeForm_Click);
-            // 
-            // btnOpenSeasonForm
-            // 
-            this.btnOpenSeasonForm.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 8);
-            this.btnOpenSeasonForm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnOpenSeasonForm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnOpenSeasonForm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOpenSeasonForm.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOpenSeasonForm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnOpenSeasonForm.FillColor = System.Drawing.Color.White;
-            this.btnOpenSeasonForm.FillColor2 = System.Drawing.Color.White;
-            this.btnOpenSeasonForm.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnOpenSeasonForm.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenSeasonForm.HoverState.BorderColor = System.Drawing.Color.Purple;
-            this.btnOpenSeasonForm.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(20)))), ((int)(((byte)(110)))));
-            this.btnOpenSeasonForm.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnOpenSeasonForm.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenSeasonForm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnOpenSeasonForm.ImageOffset = new System.Drawing.Point(8, 0);
-            this.btnOpenSeasonForm.ImageSize = new System.Drawing.Size(33, 33);
-            this.btnOpenSeasonForm.Location = new System.Drawing.Point(0, 429);
-            this.btnOpenSeasonForm.Name = "btnOpenSeasonForm";
-            this.btnOpenSeasonForm.Size = new System.Drawing.Size(253, 67);
-            this.btnOpenSeasonForm.TabIndex = 29;
-            this.btnOpenSeasonForm.Text = "Season";
-            this.btnOpenSeasonForm.Click += new System.EventHandler(this.btnOpenSettingForm_Click);
             // 
             // btnOpenMatchForm
             // 
@@ -395,7 +368,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(1850, 1000);
             this.MinimumSize = new System.Drawing.Size(1850, 1000);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -423,7 +395,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenClubForm;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenMatchForm;
-        private Guna.UI2.WinForms.Guna2GradientButton btnOpenSeasonForm;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenRefereeForm;
         private Guna.UI2.WinForms.Guna2GradientButton btnOpenHomeForm;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;

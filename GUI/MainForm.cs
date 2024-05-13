@@ -87,11 +87,6 @@ namespace GUI
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
-
-            // Btn setting
-            btnOpenSeasonForm.FillColor = Color.White;
-            btnOpenSeasonForm.FillColor2 = Color.White;
-            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
 
@@ -117,11 +112,6 @@ namespace GUI
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
-
-            // Btn setting
-            btnOpenSeasonForm.FillColor = Color.White;
-            btnOpenSeasonForm.FillColor2 = Color.White;
-            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
         private void btnOpenMatchForm_Click(object sender, EventArgs e)
@@ -146,11 +136,6 @@ namespace GUI
             btnOpenRefereeForm.FillColor = Color.White;
             btnOpenRefereeForm.FillColor2 = Color.White;
             btnOpenRefereeForm.ForeColor = Color.Black;
-
-            // Btn setting
-            btnOpenSeasonForm.FillColor = Color.White;
-            btnOpenSeasonForm.FillColor2 = Color.White;
-            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
         private void btnOpenRefereeForm_Click(object sender, EventArgs e)
@@ -175,42 +160,9 @@ namespace GUI
             btnOpenMatchForm.FillColor = Color.White;
             btnOpenMatchForm.FillColor2 = Color.White;
             btnOpenMatchForm.ForeColor = Color.Black;
-
-            // Btn setting
-            btnOpenSeasonForm.FillColor = Color.White;
-            btnOpenSeasonForm.FillColor2 = Color.White;
-            btnOpenSeasonForm.ForeColor = Color.Black;
         }
 
-        private void btnOpenSettingForm_Click(object sender, EventArgs e)
-        {
-            labelValue.Text = "Season";
-            //Container(new SeasonForm());
-            btnOpenSeasonForm.FillColor = Color.FromArgb(160, 20, 110);
-            btnOpenSeasonForm.FillColor2 = Color.FromArgb(50, 0, 60);
-            btnOpenSeasonForm.ForeColor = Color.White;
-
-            // Btn home
-            btnOpenHomeForm.FillColor = Color.White;
-            btnOpenHomeForm.FillColor2 = Color.White;
-            btnOpenHomeForm.ForeColor = Color.Black;
-
-            // Btn club
-            btnOpenClubForm.FillColor = Color.White;
-            btnOpenClubForm.FillColor2 = Color.White;
-            btnOpenClubForm.ForeColor = Color.Black;
-
-            // Btn match
-            btnOpenMatchForm.FillColor = Color.White;
-            btnOpenMatchForm.FillColor2 = Color.White;
-            btnOpenMatchForm.ForeColor = Color.Black;
-
-            // Btn referee
-            btnOpenRefereeForm.FillColor = Color.White;
-            btnOpenRefereeForm.FillColor2 = Color.White;
-            btnOpenRefereeForm.ForeColor = Color.Black;
-        }
-
+        
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Kiểm tra xem phím người dùng nhấn có phải là phím Enter không (mã ASCII của phím Enter là 13)
@@ -234,6 +186,11 @@ namespace GUI
                 // Ngăn việc xử lý sự kiện Enter tiếp theo (nếu có) để tránh việc xử lý hai lần
                 e.Handled = true;
             }
+        }
+
+        private void guna2ControlBox4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

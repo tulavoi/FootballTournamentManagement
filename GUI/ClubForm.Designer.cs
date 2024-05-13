@@ -139,6 +139,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumOfClubs = new System.Windows.Forms.Label();
             this.tabControlClubForm = new Guna.UI2.WinForms.Guna2TabControl();
+            this.panelPaddingLeft = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelPaddingTop = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelPaddingRight = new Guna.UI2.WinForms.Guna2Panel();
+            this.panelPaddingBottom = new Guna.UI2.WinForms.Guna2Panel();
             this.tabClub.SuspendLayout();
             this.tabControlClubDetail.SuspendLayout();
             this.tabPlayers.SuspendLayout();
@@ -1214,20 +1218,22 @@
             // tabList
             // 
             this.tabList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.tabList.Controls.Add(this.panelAddClub);
             this.tabList.Controls.Add(this.dgvClubs);
+            this.tabList.Controls.Add(this.panelAddClub);
+            this.tabList.Controls.Add(this.panelPaddingBottom);
+            this.tabList.Controls.Add(this.panelPaddingRight);
+            this.tabList.Controls.Add(this.panelPaddingLeft);
+            this.tabList.Controls.Add(this.panelPaddingTop);
             this.tabList.Controls.Add(this.guna2Panel2);
             this.tabList.Location = new System.Drawing.Point(4, 49);
             this.tabList.Name = "tabList";
             this.tabList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabList.Size = new System.Drawing.Size(1589, 863);
+            this.tabList.Size = new System.Drawing.Size(1392, 863);
             this.tabList.TabIndex = 0;
             this.tabList.Text = "Clubs";
             // 
             // panelAddClub
             // 
-            this.panelAddClub.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.panelAddClub.Controls.Add(this.btnClear);
             this.panelAddClub.Controls.Add(this.pictureBoxClubLogo);
             this.panelAddClub.Controls.Add(this.btnBrowseClubLogo);
@@ -1236,10 +1242,11 @@
             this.panelAddClub.Controls.Add(this.guna2HtmlLabel2);
             this.panelAddClub.Controls.Add(this.guna2HtmlLabel1);
             this.panelAddClub.Controls.Add(this.btnSaveClub);
+            this.panelAddClub.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelAddClub.FillColor = System.Drawing.Color.White;
-            this.panelAddClub.Location = new System.Drawing.Point(777, 86);
+            this.panelAddClub.Location = new System.Drawing.Point(759, 108);
             this.panelAddClub.Name = "panelAddClub";
-            this.panelAddClub.Size = new System.Drawing.Size(600, 771);
+            this.panelAddClub.Size = new System.Drawing.Size(600, 722);
             this.panelAddClub.TabIndex = 26;
             // 
             // btnClear
@@ -1260,7 +1267,7 @@
             this.btnClear.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnClear.HoverState.FillColor = System.Drawing.Color.White;
             this.btnClear.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnClear.Location = new System.Drawing.Point(271, 549);
+            this.btnClear.Location = new System.Drawing.Point(271, 523);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(110, 40);
             this.btnClear.TabIndex = 32;
@@ -1274,7 +1281,7 @@
             this.pictureBoxClubLogo.BorderRadius = 3;
             this.pictureBoxClubLogo.FillColor = System.Drawing.Color.WhiteSmoke;
             this.pictureBoxClubLogo.ImageRotate = 0F;
-            this.pictureBoxClubLogo.Location = new System.Drawing.Point(231, 381);
+            this.pictureBoxClubLogo.Location = new System.Drawing.Point(231, 355);
             this.pictureBoxClubLogo.Name = "pictureBoxClubLogo";
             this.pictureBoxClubLogo.Size = new System.Drawing.Size(235, 115);
             this.pictureBoxClubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -1298,7 +1305,7 @@
             this.btnBrowseClubLogo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnBrowseClubLogo.HoverState.FillColor = System.Drawing.Color.White;
             this.btnBrowseClubLogo.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.btnBrowseClubLogo.Location = new System.Drawing.Point(231, 319);
+            this.btnBrowseClubLogo.Location = new System.Drawing.Point(231, 293);
             this.btnBrowseClubLogo.Name = "btnBrowseClubLogo";
             this.btnBrowseClubLogo.Size = new System.Drawing.Size(235, 34);
             this.btnBrowseClubLogo.TabIndex = 30;
@@ -1320,7 +1327,7 @@
             this.txtClubName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtClubName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtClubName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.txtClubName.Location = new System.Drawing.Point(231, 243);
+            this.txtClubName.Location = new System.Drawing.Point(231, 217);
             this.txtClubName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtClubName.Name = "txtClubName";
             this.txtClubName.PasswordChar = '\0';
@@ -1335,7 +1342,7 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(134, 319);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(134, 293);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(48, 30);
             this.guna2HtmlLabel3.TabIndex = 28;
@@ -1347,7 +1354,7 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(134, 243);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(134, 217);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(55, 30);
             this.guna2HtmlLabel2.TabIndex = 27;
@@ -1359,7 +1366,7 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(134, 119);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(134, 93);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(99, 33);
             this.guna2HtmlLabel1.TabIndex = 26;
@@ -1383,7 +1390,7 @@
             this.btnSaveClub.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnSaveClub.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnSaveClub.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnSaveClub.Location = new System.Drawing.Point(134, 549);
+            this.btnSaveClub.Location = new System.Drawing.Point(134, 523);
             this.btnSaveClub.Name = "btnSaveClub";
             this.btnSaveClub.Size = new System.Drawing.Size(110, 40);
             this.btnSaveClub.TabIndex = 25;
@@ -1396,8 +1403,6 @@
             this.dgvClubs.AllowUserToDeleteRows = false;
             dataGridViewCellStyle57.BackColor = System.Drawing.Color.White;
             this.dgvClubs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle57;
-            this.dgvClubs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvClubs.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
             dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
@@ -1423,8 +1428,9 @@
             dataGridViewCellStyle61.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvClubs.DefaultCellStyle = dataGridViewCellStyle61;
+            this.dgvClubs.Dock = System.Windows.Forms.DockStyle.Left;
             this.dgvClubs.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.dgvClubs.Location = new System.Drawing.Point(33, 96);
+            this.dgvClubs.Location = new System.Drawing.Point(33, 108);
             this.dgvClubs.MaximumSize = new System.Drawing.Size(603, 771);
             this.dgvClubs.Name = "dgvClubs";
             this.dgvClubs.ReadOnly = true;
@@ -1444,7 +1450,7 @@
             this.dgvClubs.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dgvClubs.RowTemplate.DividerHeight = 7;
             this.dgvClubs.RowTemplate.Height = 55;
-            this.dgvClubs.Size = new System.Drawing.Size(525, 771);
+            this.dgvClubs.Size = new System.Drawing.Size(525, 722);
             this.dgvClubs.TabIndex = 24;
             this.dgvClubs.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvClubs.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -1562,16 +1568,16 @@
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(3, 3);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1583, 75);
+            this.guna2Panel2.Size = new System.Drawing.Size(1386, 75);
             this.guna2Panel2.TabIndex = 21;
             this.guna2Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
             // guna2Panel11
             // 
-            this.guna2Panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2Panel11.Controls.Add(this.label5);
             this.guna2Panel11.Controls.Add(this.cboSeason);
-            this.guna2Panel11.Location = new System.Drawing.Point(379, 25);
+            this.guna2Panel11.Location = new System.Drawing.Point(324, 26);
             this.guna2Panel11.Name = "guna2Panel11";
             this.guna2Panel11.Size = new System.Drawing.Size(240, 30);
             this.guna2Panel11.TabIndex = 28;
@@ -1684,7 +1690,7 @@
             this.tabControlClubForm.Location = new System.Drawing.Point(0, 0);
             this.tabControlClubForm.Name = "tabControlClubForm";
             this.tabControlClubForm.SelectedIndex = 0;
-            this.tabControlClubForm.Size = new System.Drawing.Size(1597, 916);
+            this.tabControlClubForm.Size = new System.Drawing.Size(1400, 916);
             this.tabControlClubForm.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.tabControlClubForm.TabButtonHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(10)))), ((int)(((byte)(70)))));
             this.tabControlClubForm.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -1706,12 +1712,44 @@
             this.tabControlClubForm.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             this.tabControlClubForm.SelectedIndexChanged += new System.EventHandler(this.tabControlClubForm_SelectedIndexChanged_1);
             // 
+            // panelPaddingLeft
+            // 
+            this.panelPaddingLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelPaddingLeft.Location = new System.Drawing.Point(3, 108);
+            this.panelPaddingLeft.Name = "panelPaddingLeft";
+            this.panelPaddingLeft.Size = new System.Drawing.Size(30, 752);
+            this.panelPaddingLeft.TabIndex = 30;
+            // 
+            // panelPaddingTop
+            // 
+            this.panelPaddingTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPaddingTop.Location = new System.Drawing.Point(3, 78);
+            this.panelPaddingTop.Name = "panelPaddingTop";
+            this.panelPaddingTop.Size = new System.Drawing.Size(1386, 30);
+            this.panelPaddingTop.TabIndex = 29;
+            // 
+            // panelPaddingRight
+            // 
+            this.panelPaddingRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelPaddingRight.Location = new System.Drawing.Point(1359, 108);
+            this.panelPaddingRight.Name = "panelPaddingRight";
+            this.panelPaddingRight.Size = new System.Drawing.Size(30, 752);
+            this.panelPaddingRight.TabIndex = 32;
+            // 
+            // panelPaddingBottom
+            // 
+            this.panelPaddingBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelPaddingBottom.Location = new System.Drawing.Point(33, 830);
+            this.panelPaddingBottom.Name = "panelPaddingBottom";
+            this.panelPaddingBottom.Size = new System.Drawing.Size(1326, 30);
+            this.panelPaddingBottom.TabIndex = 33;
+            // 
             // ClubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1597, 916);
+            this.ClientSize = new System.Drawing.Size(1400, 916);
             this.Controls.Add(this.tabControlClubForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClubForm";
@@ -1845,5 +1883,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.DataGridViewButtonColumn Column3;
+        private Guna.UI2.WinForms.Guna2Panel panelPaddingLeft;
+        private Guna.UI2.WinForms.Guna2Panel panelPaddingTop;
+        private Guna.UI2.WinForms.Guna2Panel panelPaddingRight;
+        private Guna.UI2.WinForms.Guna2Panel panelPaddingBottom;
     }
 }

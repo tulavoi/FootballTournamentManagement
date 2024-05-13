@@ -15,8 +15,7 @@ namespace GUI
 {
     public partial class LoginForm : Form
     {
-        string serverName;
-        string dbName;
+        AccountsBLL accountsBLL = new AccountsBLL();
 
         public LoginForm()
         {
@@ -26,30 +25,59 @@ namespace GUI
         private void LoginForm_Load(object sender, EventArgs e)
         {
             guna2ShadowForm1.SetShadowForm(this);
-
-            txtServerName.Text = "LAPTOP-5I4BGSNV\\HOANGVU";
-            txtDBName.Text = "DBProject.Net";
+            txtPassword.PasswordChar = '*';
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtServerName.Text == "")
+            HandleLogin();
+        }
+
+        // Nhấn enter để login nhưng bị lỗi 
+        //private void btnLogin_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (e.KeyChar == (char)Keys.Enter)
+        //    {
+        //        e.Handled = true;
+
+        //        HandleLogin();
+        //    }
+        //}
+
+        private void HandleLogin()
+        {
+            string userName = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            Account acc = new Account
             {
-                MessageBox.Show("Please enter a server name!");
-                return;
+                Email = userName,
+                Password = password
+            };
+
+            bool isLoginSuccess = accountsBLL.CheckLogin(acc);
+            if (isLoginSuccess)
+            {
+                MainForm frm = new MainForm();
+
+                //// Gán sự kiện FormClosing cho form hiện tại
+                //this.FormClosing += (s, args) =>
+                //{
+                //    // Đảm bảo rằng ứng dụng sẽ không đóng nếu form đang đóng là MainForm
+                //    if (frm != null && !frm.IsDisposed)
+                //    {
+                //        frm.Show();
+                //    }
+                //};
+
+                // Ẩn form hiện tại
+                Hide();
+
+                frm.Show();
             }
 
-            if (txtDBName.Text == "")
-            {
-                MessageBox.Show("Please enter a database name!");
-                return;
-            }
-
-            serverName = txtServerName.Text;
-            dbName = txtDBName.Text;
-
-            MainForm frm = new MainForm();
-            frm.Show();
+            else
+                MessageBox.Show("Login failed!");
         }
     }
 }

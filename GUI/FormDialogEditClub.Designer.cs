@@ -92,6 +92,7 @@
             // 
             // guna2HtmlLabel1
             // 
+            this.guna2HtmlLabel1.AutoSize = false;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
@@ -175,23 +176,25 @@
             // 
             // guna2HtmlLabel3
             // 
+            this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(122, 178);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(48, 30);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(306, 30);
             this.guna2HtmlLabel3.TabIndex = 34;
             this.guna2HtmlLabel3.Text = "Logo";
             // 
             // guna2HtmlLabel2
             // 
+            this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(122, 58);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(59, 30);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(306, 30);
             this.guna2HtmlLabel2.TabIndex = 33;
             this.guna2HtmlLabel2.Text = "Name:";
             // 
@@ -242,9 +245,7 @@
             this.Text = "FormDialogEditClub";
             this.Load += new System.EventHandler(this.FormDialogEditClub_Load);
             this.panelTop.ResumeLayout(false);
-            this.panelTop.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).EndInit();
             this.ResumeLayout(false);
 

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountsBLL.cs" />
     <Compile Include="ClubsBLL.cs" />
     <Compile Include="ManagersBLL.cs" />
     <Compile Include="MatchesBLL.cs" />

@@ -43,6 +43,7 @@
             this.txtCapacity = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pictureBoxStadium = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.pictureBoxClubLogo = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnBrowseStadiumImg = new Guna.UI2.WinForms.Guna2Button();
             this.txtStadiumName = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -53,11 +54,10 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox4 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.pictureBoxClubLogo = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStadium)).BeginInit();
-            this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).BeginInit();
+            this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtYear
@@ -118,12 +118,13 @@
             // 
             // guna2HtmlLabel6
             // 
+            this.guna2HtmlLabel6.AutoSize = false;
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel6.Location = new System.Drawing.Point(754, 217);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(89, 30);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(232, 30);
             this.guna2HtmlLabel6.TabIndex = 8;
             this.guna2HtmlLabel6.Text = "Built Year:";
             // 
@@ -154,12 +155,13 @@
             // 
             // guna2HtmlLabel5
             // 
+            this.guna2HtmlLabel5.AutoSize = false;
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel5.Location = new System.Drawing.Point(497, 217);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(42, 30);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(232, 30);
             this.guna2HtmlLabel5.TabIndex = 6;
             this.guna2HtmlLabel5.Text = "Size:";
             // 
@@ -241,12 +243,13 @@
             // 
             // guna2HtmlLabel7
             // 
+            this.guna2HtmlLabel7.AutoSize = false;
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel7.Location = new System.Drawing.Point(497, 426);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(82, 30);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(232, 30);
             this.guna2HtmlLabel7.TabIndex = 70;
             this.guna2HtmlLabel7.Text = "Location:";
             // 
@@ -276,12 +279,13 @@
             // 
             // guna2HtmlLabel4
             // 
+            this.guna2HtmlLabel4.AutoSize = false;
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel4.Location = new System.Drawing.Point(497, 322);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(82, 30);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(232, 30);
             this.guna2HtmlLabel4.TabIndex = 68;
             this.guna2HtmlLabel4.Text = "Capacity:";
             // 
@@ -298,6 +302,16 @@
             this.pictureBoxStadium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxStadium.TabIndex = 66;
             this.pictureBoxStadium.TabStop = false;
+            // 
+            // pictureBoxClubLogo
+            // 
+            this.pictureBoxClubLogo.ImageRotate = 0F;
+            this.pictureBoxClubLogo.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxClubLogo.Name = "pictureBoxClubLogo";
+            this.pictureBoxClubLogo.Size = new System.Drawing.Size(63, 66);
+            this.pictureBoxClubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxClubLogo.TabIndex = 62;
+            this.pictureBoxClubLogo.TabStop = false;
             // 
             // btnBrowseStadiumImg
             // 
@@ -347,23 +361,25 @@
             // 
             // guna2HtmlLabel3
             // 
+            this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(754, 120);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(57, 30);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(232, 30);
             this.guna2HtmlLabel3.TabIndex = 2;
             this.guna2HtmlLabel3.Text = "Image";
             // 
             // guna2HtmlLabel2
             // 
+            this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(497, 120);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(59, 30);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(232, 30);
             this.guna2HtmlLabel2.TabIndex = 0;
             this.guna2HtmlLabel2.Text = "Name:";
             // 
@@ -412,6 +428,7 @@
             // 
             // guna2HtmlLabel1
             // 
+            this.guna2HtmlLabel1.AutoSize = false;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
@@ -452,16 +469,6 @@
             this.guna2ControlBox3.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox3.TabIndex = 0;
             // 
-            // pictureBoxClubLogo
-            // 
-            this.pictureBoxClubLogo.ImageRotate = 0F;
-            this.pictureBoxClubLogo.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxClubLogo.Name = "pictureBoxClubLogo";
-            this.pictureBoxClubLogo.Size = new System.Drawing.Size(63, 66);
-            this.pictureBoxClubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxClubLogo.TabIndex = 62;
-            this.pictureBoxClubLogo.TabStop = false;
-            // 
             // FormDialogAddStadium
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -475,11 +482,9 @@
             this.Text = "FormDialogAddStadium";
             this.Load += new System.EventHandler(this.FormDialogAddStadium_Load);
             this.panelContent.ResumeLayout(false);
-            this.panelContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStadium)).EndInit();
-            this.panelTop.ResumeLayout(false);
-            this.panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).EndInit();
+            this.panelTop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

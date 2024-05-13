@@ -47,25 +47,9 @@
       <Column Name="Salary" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Position" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
       <Column Name="Foot" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Player_MatchDetail" Member="MatchDetails" ThisKey="PlayerID" OtherKey="MotmID" Type="MatchDetail" />
       <Association Name="Player_PlayersInMatch" Member="PlayersInMatches" ThisKey="PlayerID" OtherKey="PlayerID" Type="PlayersInMatch" />
-      <Association Name="Player_MatchDetail" Member="MatchDetails" ThisKey="PlayerID" OtherKey="AwayCapID" Type="MatchDetail" />
-      <Association Name="Player_MatchDetail1" Member="MatchDetails1" ThisKey="PlayerID" OtherKey="HomeCapID" Type="MatchDetail" />
-      <Association Name="Player_MatchDetail2" Member="MatchDetails2" ThisKey="PlayerID" OtherKey="MotmID" Type="MatchDetail" />
       <Association Name="Club_Player" Member="Club" ThisKey="ClubID" OtherKey="ClubID" Type="Club" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PlayersInMatch" Member="PlayersInMatches">
-    <Type Name="PlayersInMatch">
-      <Column Name="MatchID" Type="System.String" DbType="Char(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PlayerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="IsHomeTeam" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Position" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Goal" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="YellowCard" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RedCard" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OwnGoal" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Player_PlayersInMatch" Member="Player" ThisKey="PlayerID" OtherKey="PlayerID" Type="Player" IsForeignKey="true" />
-      <Association Name="Match_PlayersInMatch" Member="Match" ThisKey="MatchID" OtherKey="MatchID" Type="Match" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Referees" Member="Referees">
@@ -134,25 +118,6 @@
       <Association Name="Season_Round" Member="Season" ThisKey="SeasonID" OtherKey="SeasonID" Type="Season" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.MatchDetail" Member="MatchDetails">
-    <Type Name="MatchDetail">
-      <Column Name="MatchID" Type="System.String" DbType="Char(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MotmID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HomeGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AwayGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HomeCapID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="AwayCapID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HomeTactical" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="AwayTactical" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="RefereeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MatchTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="Player_MatchDetail" Member="Player" ThisKey="AwayCapID" OtherKey="PlayerID" Type="Player" IsForeignKey="true" />
-      <Association Name="Player_MatchDetail1" Member="Player1" ThisKey="HomeCapID" OtherKey="PlayerID" Type="Player" IsForeignKey="true" />
-      <Association Name="Player_MatchDetail2" Member="Player2" ThisKey="MotmID" OtherKey="PlayerID" Type="Player" IsForeignKey="true" />
-      <Association Name="Referee_MatchDetail" Member="Referee" ThisKey="RefereeID" OtherKey="RefereeID" Type="Referee" IsForeignKey="true" />
-      <Association Name="Match_MatchDetail" Member="Match" ThisKey="MatchID" OtherKey="MatchID" Type="Match" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Matches" Member="Matches">
     <Type Name="Match">
       <Column Name="MatchID" Type="System.String" DbType="Char(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -161,12 +126,42 @@
       <Column Name="HomeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="AwayID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="MatchName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Match_PlayersInMatch" Member="PlayersInMatches" ThisKey="MatchID" OtherKey="MatchID" Type="PlayersInMatch" />
       <Association Name="Match_MatchDetail" Member="MatchDetails" ThisKey="MatchID" OtherKey="MatchID" Type="MatchDetail" />
+      <Association Name="Match_PlayersInMatch" Member="PlayersInMatches" ThisKey="MatchID" OtherKey="MatchID" Type="PlayersInMatch" />
       <Association Name="Club_Match" Member="Club" ThisKey="AwayID" OtherKey="ClubID" Type="Club" IsForeignKey="true" />
       <Association Name="Club_Match1" Member="Club1" ThisKey="HomeID" OtherKey="ClubID" Type="Club" IsForeignKey="true" />
       <Association Name="Round_Match" Member="Round" ThisKey="RoundID" OtherKey="RoundID" Type="Round" IsForeignKey="true" />
       <Association Name="Season_Match" Member="Season" ThisKey="SeasonID" OtherKey="SeasonID" Type="Season" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MatchDetail" Member="MatchDetails">
+    <Type Name="MatchDetail">
+      <Column Name="MatchID" Type="System.String" DbType="Char(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MotmID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HomeGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AwayGoals" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HomeTactical" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AwayTactical" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RefereeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MatchTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Match_MatchDetail" Member="Match" ThisKey="MatchID" OtherKey="MatchID" Type="Match" IsForeignKey="true" />
+      <Association Name="Player_MatchDetail" Member="Player" ThisKey="MotmID" OtherKey="PlayerID" Type="Player" IsForeignKey="true" />
+      <Association Name="Referee_MatchDetail" Member="Referee" ThisKey="RefereeID" OtherKey="RefereeID" Type="Referee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PlayersInMatch" Member="PlayersInMatches">
+    <Type Name="PlayersInMatch">
+      <Column Name="MatchID" Type="System.String" DbType="Char(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlayerID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsHomeTeam" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Goal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YellowCard" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RedCard" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OwnGoal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsCaptain" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Match_PlayersInMatch" Member="Match" ThisKey="MatchID" OtherKey="MatchID" Type="Match" IsForeignKey="true" />
+      <Association Name="Player_PlayersInMatch" Member="Player" ThisKey="PlayerID" OtherKey="PlayerID" Type="Player" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
