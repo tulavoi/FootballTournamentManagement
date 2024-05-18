@@ -74,9 +74,9 @@
             this.guna2Panel_Top.Controls.Add(this.guna2ControlBox3);
             this.guna2Panel_Top.Controls.Add(this.guna2ControlBox1);
             this.guna2Panel_Top.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel_Top.Location = new System.Drawing.Point(253, 0);
+            this.guna2Panel_Top.Location = new System.Drawing.Point(229, 0);
             this.guna2Panel_Top.Name = "guna2Panel_Top";
-            this.guna2Panel_Top.Size = new System.Drawing.Size(1597, 84);
+            this.guna2Panel_Top.Size = new System.Drawing.Size(1271, 84);
             this.guna2Panel_Top.TabIndex = 1;
             // 
             // iconForm
@@ -110,7 +110,7 @@
             this.guna2ControlBox4.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox4.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox4.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox4.Location = new System.Drawing.Point(1534, 0);
+            this.guna2ControlBox4.Location = new System.Drawing.Point(1208, 0);
             this.guna2ControlBox4.Name = "guna2ControlBox4";
             this.guna2ControlBox4.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox4.TabIndex = 17;
@@ -130,7 +130,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.txtSearch.IconLeftOffset = new System.Drawing.Point(10, 0);
-            this.txtSearch.Location = new System.Drawing.Point(1024, 24);
+            this.txtSearch.Location = new System.Drawing.Point(698, 24);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.PasswordChar = '\0';
@@ -152,7 +152,7 @@
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1471, 0);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1145, 0);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox2.TabIndex = 14;
@@ -168,7 +168,7 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1408, 0);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1082, 0);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox3.TabIndex = 13;
@@ -181,7 +181,7 @@
             this.guna2ControlBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ControlBox1.ForeColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1586, 0);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1260, 0);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(63, 43);
             this.guna2ControlBox1.TabIndex = 12;
@@ -198,7 +198,7 @@
             this.guna2Panel_Left.FillColor = System.Drawing.Color.White;
             this.guna2Panel_Left.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel_Left.Name = "guna2Panel_Left";
-            this.guna2Panel_Left.Size = new System.Drawing.Size(253, 1000);
+            this.guna2Panel_Left.Size = new System.Drawing.Size(229, 900);
             this.guna2Panel_Left.TabIndex = 0;
             // 
             // btnOpenRefereeForm
@@ -222,7 +222,7 @@
             this.btnOpenRefereeForm.ImageSize = new System.Drawing.Size(39, 39);
             this.btnOpenRefereeForm.Location = new System.Drawing.Point(0, 292);
             this.btnOpenRefereeForm.Name = "btnOpenRefereeForm";
-            this.btnOpenRefereeForm.Size = new System.Drawing.Size(253, 67);
+            this.btnOpenRefereeForm.Size = new System.Drawing.Size(229, 67);
             this.btnOpenRefereeForm.TabIndex = 28;
             this.btnOpenRefereeForm.Text = "Referees";
             this.btnOpenRefereeForm.Click += new System.EventHandler(this.btnOpenRefereeForm_Click);
@@ -250,7 +250,7 @@
             this.btnOpenHomeForm.ImageSize = new System.Drawing.Size(30, 30);
             this.btnOpenHomeForm.Location = new System.Drawing.Point(0, 161);
             this.btnOpenHomeForm.Name = "btnOpenHomeForm";
-            this.btnOpenHomeForm.Size = new System.Drawing.Size(253, 67);
+            this.btnOpenHomeForm.Size = new System.Drawing.Size(229, 67);
             this.btnOpenHomeForm.TabIndex = 30;
             this.btnOpenHomeForm.Text = "Home";
             this.btnOpenHomeForm.Click += new System.EventHandler(this.btnOpenHomeForm_Click);
@@ -275,7 +275,7 @@
             this.btnOpenMatchForm.ImageSize = new System.Drawing.Size(53, 53);
             this.btnOpenMatchForm.Location = new System.Drawing.Point(0, 359);
             this.btnOpenMatchForm.Name = "btnOpenMatchForm";
-            this.btnOpenMatchForm.Size = new System.Drawing.Size(253, 67);
+            this.btnOpenMatchForm.Size = new System.Drawing.Size(229, 67);
             this.btnOpenMatchForm.TabIndex = 27;
             this.btnOpenMatchForm.Text = "Matches";
             this.btnOpenMatchForm.Click += new System.EventHandler(this.btnOpenMatchForm_Click);
@@ -301,7 +301,7 @@
             this.btnOpenClubForm.ImageSize = new System.Drawing.Size(38, 38);
             this.btnOpenClubForm.Location = new System.Drawing.Point(0, 228);
             this.btnOpenClubForm.Name = "btnOpenClubForm";
-            this.btnOpenClubForm.Size = new System.Drawing.Size(253, 67);
+            this.btnOpenClubForm.Size = new System.Drawing.Size(229, 67);
             this.btnOpenClubForm.TabIndex = 26;
             this.btnOpenClubForm.Text = "Clubs";
             this.btnOpenClubForm.Click += new System.EventHandler(this.btnOpenClubForm_Click);
@@ -334,9 +334,11 @@
             // panelContainer
             // 
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(253, 84);
+            this.panelContainer.Location = new System.Drawing.Point(229, 84);
+            this.panelContainer.MaximumSize = new System.Drawing.Size(1271, 816);
+            this.panelContainer.MinimumSize = new System.Drawing.Size(1271, 816);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(1597, 916);
+            this.panelContainer.Size = new System.Drawing.Size(1271, 816);
             this.panelContainer.TabIndex = 2;
             // 
             // guna2AnimateWindow1
@@ -361,14 +363,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1850, 1000);
+            this.ClientSize = new System.Drawing.Size(1500, 900);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.guna2Panel_Top);
             this.Controls.Add(this.guna2Panel_Left);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(1850, 1000);
+            this.MaximumSize = new System.Drawing.Size(1500, 900);
+            this.MinimumSize = new System.Drawing.Size(1500, 900);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);

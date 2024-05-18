@@ -3,6 +3,7 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GUI
@@ -19,11 +20,16 @@ namespace GUI
 
         MatchesBLL matchesBLL = new MatchesBLL();
 
+        MatchDetailBLL matchDetailBLL = new MatchDetailBLL();
+
         private string shortcutLogoPath = "Images\\Logos\\";
+
+        private string shortcutPlayerImgPath = "Images\\Players\\";
 
         int seasonID;
 
         string selectedMatchID;
+
 
         public MatchForm()
         {
@@ -273,6 +279,9 @@ namespace GUI
             // Tab match detail
             lblHomeClubName.Text = selectedRow.Cells["HomeClubName"].Value.ToString();
             lblAwayClubName.Text = selectedRow.Cells["AwayClubName"].Value.ToString();
+
+            // Tab home players
+            lblClubNameInHomePLayersTab.Text = selectedRow.Cells["HomeClubName"].Value.ToString();
         }
 
         private void AssignClubLogoToPictureBoxes(DataGridViewRow selectedRow)
@@ -280,6 +289,9 @@ namespace GUI
             // Tab match detail
             pictureBoxHomeClubLogo.Image = (Bitmap)selectedRow.Cells["HomeClubLogo"].Value;
             pictureBoxAwayClubLogo.Image = (Bitmap)selectedRow.Cells["AwayClubLogo"].Value;
+
+            // Tab home players
+            pictureBoxClubLogoDetailInHomePlayerTab.Image = (Bitmap)selectedRow.Cells["HomeClubLogo"].Value;
         }
 
         private void tabControlMatchForm_SelectedIndexChanged(object sender, EventArgs e)
@@ -295,7 +307,7 @@ namespace GUI
                 DataGridViewRow selectedRow = dgvMatches.Rows[e.RowIndex];
 
                 selectedMatchID = selectedRow.Cells["MatchID"].Tag.ToString();
-                Console.WriteLine(selectedMatchID);
+
                 AssignClubLogoToPictureBoxes(selectedRow);
 
                 AssignClubNameToLabels(selectedRow);
@@ -303,7 +315,43 @@ namespace GUI
                 // Sau khi double click chọn 1 match trong datagridview thì chuyển sang tab control match detail
                 tabControlMatchForm.SelectedIndex = 1;
 
+                AssginDataOfMatchDetailToControlsInTabMatchDetail();
             }
+        }
+
+        private void AssginDataOfMatchDetailToControlsInTabMatchDetail()
+        {
+            MatchDetail matchDetail = matchDetailBLL.LoadDataByMatchID(selectedMatchID);
+
+            lblHomeTactic.Text = matchDetail.HomeTactical;
+            lblAwayTactic.Text = matchDetail.AwayTactical;
+
+            lblHomeScore.Text = matchDetail.HomeGoals.ToString();
+            lblAwayScore.Text = matchDetail.AwayGoals.ToString();
+
+            DateTime matchDate = (DateTime)matchDetail.MatchTime;
+
+            string matchDay = matchDate.ToString("dd/MM/yyyy");
+            string matchTime = matchDate.ToString("HH:mm:ss");
+
+            lblMatchTime.Text = matchTime;
+            lblMatchDay.Text = matchDay;
+
+            lblMOTMNameAndID.Text = matchDetail.Player.PlayerName;
+            if (File.Exists(shortcutPlayerImgPath + matchDetail.Player.Image))
+                pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + matchDetail.Player.Image);
+            else
+                pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
+        }
+
+        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2Panel11_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

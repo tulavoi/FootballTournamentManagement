@@ -299,5 +299,10 @@ namespace GUI
                     MessageBox.Show($"Delete player \"{refereeName}\" failed!");
             }
         }
+
+        private void panelAddClub_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

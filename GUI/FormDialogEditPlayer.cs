@@ -171,6 +171,19 @@ namespace GUI
             if (!ValidateWeight())
                 return false;
 
+            if (!ValidateSalary())
+                return false;
+
+            return true;
+        }
+
+        private bool ValidateSalary()
+        {
+            if (txtSalary.Text.Length > 9)
+            {
+                MessageBox.Show("Invalid salary!");
+                return false;
+            }
             return true;
         }
 
@@ -385,6 +398,7 @@ namespace GUI
                 player.Height = 0;
 
             player.Weight = txtWeight.Text != "" ? Convert.ToInt32(txtWeight.Text) : 0;
+            // catch loi
             player.Salary = txtSalary.Text != "" ? int.Parse(txtSalary.Text) : 0;
 
             player.DOB = getDOB();

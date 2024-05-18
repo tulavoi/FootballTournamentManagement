@@ -47,6 +47,7 @@
     <Compile Include="AccountsBLL.cs" />
     <Compile Include="ClubsBLL.cs" />
     <Compile Include="ManagersBLL.cs" />
+    <Compile Include="MatchDetailBLL.cs" />
     <Compile Include="MatchesBLL.cs" />
     <Compile Include="PlayersBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -33,19 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b" />
-    <Reference Include="Bunifu.UI.WinForms.1.5.3">
-      <HintPath>..\..\..\..\..\..\..\..\Bunifu\BunifuCrackV5\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
-    </Reference>
-    <Reference Include="Bunifu.UI.WinForms.BunifuButton">
-      <HintPath>..\..\..\..\..\..\..\..\Bunifu\BunifuCrackV5\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
-    </Reference>
-    <Reference Include="Bunifu.UI.WinForms.BunifuCheckBox">
-      <HintPath>..\..\..\..\..\..\..\..\Bunifu\BunifuCrackV5\Bunifu.UI.WinForms.BunifuCheckBox.dll</HintPath>
-    </Reference>
-    <Reference Include="Bunifu.UI.WinForms.BunifuLabel">
-      <HintPath>..\..\..\..\..\..\..\..\Bunifu\BunifuCrackV5\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
-    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -179,6 +166,12 @@
     <Compile Include="MatchForm.Designer.cs">
       <DependentUpon>MatchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDialogAddHomePlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDialogAddHomePlayer.Designer.cs">
+      <DependentUpon>FormDialogAddHomePlayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -198,7 +191,9 @@
     <Compile Include="SeasonForm.Designer.cs">
       <DependentUpon>SeasonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlHelper.cs" />
+    <EmbeddedResource Include="FormDialogAddHomePlayer.resx">
+      <DependentUpon>FormDialogAddHomePlayer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeasonForm.resx">
       <DependentUpon>SeasonForm.cs</DependentUpon>
     </EmbeddedResource>
