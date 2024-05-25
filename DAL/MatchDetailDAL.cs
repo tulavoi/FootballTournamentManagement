@@ -18,6 +18,7 @@ namespace DAL
                 var query = from md in db.MatchDetails
                             join p in db.Players on md.MotmID equals p.PlayerID
                             join r in db.Referees on md.RefereeID equals r.RefereeID
+                            join m in db.Matches on md.MatchID equals m.MatchID
                             where md.MatchID == matchID
                             select new
                             {
@@ -31,7 +32,7 @@ namespace DAL
                                 AwayGoals = md.AwayGoals,
                                 HomeTactical = md.HomeTactical,
                                 AwayTactical = md.AwayTactical,
-                                MatchTime = md.MatchTime
+                                MatchTime = m.MatchTime
                             };
 
 
@@ -48,7 +49,7 @@ namespace DAL
                         matchDetail.AwayGoals = item.AwayGoals;
                         matchDetail.HomeTactical = item.HomeTactical;
                         matchDetail.AwayTactical = item.AwayTactical;
-                        matchDetail.MatchTime = item.MatchTime;
+                        matchDetail.Match = new Match { MatchTime = item.MatchTime };
                     }
                 }
             }

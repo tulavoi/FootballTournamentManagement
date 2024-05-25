@@ -1,7 +1,9 @@
 ﻿using BLL;
 using DAL;
+using GUI.Properties;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -57,8 +59,8 @@ namespace GUI
         /// </summary>
         private void LoadClubBySeasonID()
         {
-            int seasonID = Convert.ToInt32(cboSeason.SelectedValue);
-            List<Club> clubs = ssClubsBLL.LoadDataBySeasonID(seasonID);
+            //int seasonID = Convert.ToInt32(cboSeason.SelectedValue);
+            List<Club> clubs = ssClubsBLL.LoadDataBySeasonID(1003);
             LoadDataOfClubsToDataGridView(clubs);
         }
 
@@ -96,7 +98,10 @@ namespace GUI
                 if (rowIndex != -1 && rowIndex < dgvClubs.Rows.Count)
                 {
                     dgvClubs.Rows[rowIndex].Cells[0].Tag = club.ClubID;
-                    dgvClubs.Rows[rowIndex].Cells[1].Value = Image.FromFile(shortcutLogoPath + club.Logo);
+                    
+                    if (File.Exists(shortcutLogoPath + club.Logo))
+                        dgvClubs.Rows[rowIndex].Cells[1].Value = Image.FromFile(shortcutLogoPath + club.Logo);
+
                     dgvClubs.Rows[rowIndex].Cells[2].Tag = club.Logo;
                     dgvClubs.Rows[rowIndex].Cells[3].Value = club.ClubName;
                 }
@@ -110,14 +115,14 @@ namespace GUI
         private void BindSeasonCombobox()
         {
             List<Season> seasons = seasonBLL.LoadData();
-
-            // Thêm lựa chọn All vào đầu danh sách cboSeason 
+            //Thêm lựa chọn All vào đầu danh sách cboSeason
             Season season = new Season();
             season.SeasonName = "ALL";
             seasons.Insert(0, season);
             cboSeason.DataSource = seasons;
             cboSeason.ValueMember = "SeasonID";
             cboSeason.DisplayMember = "SeasonName";
+            cboSeason.Text = season.SeasonName;
         }
 
 
@@ -489,29 +494,32 @@ namespace GUI
             dgvPlayers.Rows.Clear();
 
             int i = 1;
-            foreach (var player in players)
+            if (players != null)
             {
-                int rowIndex = dgvPlayers.Rows.Add();
-                if (rowIndex != -1 && rowIndex < dgvPlayers.Rows.Count)
+                foreach (var player in players)
                 {
-                    dgvPlayers.Rows[rowIndex].Cells[0].Value = i++;
-                    dgvPlayers.Rows[rowIndex].Cells[1].Tag = player.PlayerID;
+                    int rowIndex = dgvPlayers.Rows.Add();
+                    if (rowIndex != -1 && rowIndex < dgvPlayers.Rows.Count)
+                    {
+                        dgvPlayers.Rows[rowIndex].Cells[0].Value = i++;
+                        dgvPlayers.Rows[rowIndex].Cells[1].Tag = player.PlayerID;
 
-                    // Kiểm tra nếu cầu thủ không có hình ảnh thì gán cho cầu thủ hình ảnh mặc định
-                    string imageFileName = shortcutPlayerImgPath + player.Image;
-                    if (File.Exists(imageFileName))
-                        dgvPlayers.Rows[rowIndex].Cells[2].Value = Image.FromFile(shortcutPlayerImgPath + player.Image);
-                    else
-                        dgvPlayers.Rows[rowIndex].Cells[2].Value = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
+                        // Kiểm tra nếu cầu thủ không có hình ảnh thì gán cho cầu thủ hình ảnh mặc định
+                        string imageFileName = shortcutPlayerImgPath + player.Image;
+                        if (File.Exists(imageFileName))
+                            dgvPlayers.Rows[rowIndex].Cells[2].Value = Image.FromFile(shortcutPlayerImgPath + player.Image);
+                        else
+                            dgvPlayers.Rows[rowIndex].Cells[2].Value = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
 
-                    DateTime dob = Convert.ToDateTime(player.DOB);
+                        DateTime dob = Convert.ToDateTime(player.DOB);
 
-                    dgvPlayers.Rows[rowIndex].Cells[3].Tag = player.Image;
-                    dgvPlayers.Rows[rowIndex].Cells[4].Value = player.PlayerName;
-                    dgvPlayers.Rows[rowIndex].Cells[5].Value = dob.ToString("dd/MM/yyyy");
-                    dgvPlayers.Rows[rowIndex].Cells[6].Value = player.Number;
-                    dgvPlayers.Rows[rowIndex].Cells[7].Value = player.Country;
-                    dgvPlayers.Rows[rowIndex].Cells[8].Value = player.Position;
+                        dgvPlayers.Rows[rowIndex].Cells[3].Tag = player.Image;
+                        dgvPlayers.Rows[rowIndex].Cells[4].Value = player.PlayerName;
+                        dgvPlayers.Rows[rowIndex].Cells[5].Value = dob.ToString("dd/MM/yyyy");
+                        dgvPlayers.Rows[rowIndex].Cells[6].Value = player.Number;
+                        dgvPlayers.Rows[rowIndex].Cells[7].Value = player.Country;
+                        dgvPlayers.Rows[rowIndex].Cells[8].Value = player.Position;
+                    }
                 }
             }
         }

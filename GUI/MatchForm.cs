@@ -22,6 +22,8 @@ namespace GUI
 
         MatchDetailBLL matchDetailBLL = new MatchDetailBLL();
 
+        PlayersInMatchBLL playersInMatchBLL = new PlayersInMatchBLL();
+
         private string shortcutLogoPath = "Images\\Logos\\";
 
         private string shortcutPlayerImgPath = "Images\\Players\\";
@@ -30,6 +32,8 @@ namespace GUI
 
         string selectedMatchID;
 
+        int homeClubIDInSelectedMatch;
+        int awayClubIDInSelectedMatch;
 
         public MatchForm()
         {
@@ -65,11 +69,21 @@ namespace GUI
         /// </summary>
         private void BindSeasonCombobox()
         {
-            List<Season> seasons = seasonBLL.LoadData();
-
-            cboSeason.DataSource = seasons;
-            cboSeason.ValueMember = "SeasonID";
-            cboSeason.DisplayMember = "SeasonName";
+            try
+            {
+                List<Season> seasons = seasonBLL.LoadData();
+                cboSeason.DataSource = seasons;
+                cboSeason.ValueMember = "SeasonID";
+                cboSeason.DisplayMember = "SeasonName";
+            }
+            catch (InvalidCastException ex)
+            {
+                MessageBox.Show($"Invalid cast exception: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
 
         private void cboSeason_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,7 +122,6 @@ namespace GUI
 
                 LoadMatchesToDgvMatches(roundID);
             }
-            
         }
 
         private void LoadMatchesToDgvMatches(string roundID)
@@ -123,16 +136,21 @@ namespace GUI
                 if (rowIndex != -1 && rowIndex < dgvMatches.Rows.Count)
                 {
                     dgvMatches.Rows[rowIndex].Cells["Number"].Value = i++;
-                    dgvMatches.Rows[rowIndex].Cells["HomeID"].Tag = match.HomeID;
+                    dgvMatches.Rows[rowIndex].Cells["HomeID"].Tag = match.Club.ClubID; // = match.HomeID
                     dgvMatches.Rows[rowIndex].Cells["HomeClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.Club.Logo);
                     dgvMatches.Rows[rowIndex].Cells["HomeClubName"].Value = match.Club.ClubName;
 
                     dgvMatches.Rows[rowIndex].Cells["MatchID"].Value = "-";
                     dgvMatches.Rows[rowIndex].Cells["MatchID"].Tag = match.MatchID;
 
+                    DateTime matchDate = (DateTime)match.MatchTime;
+
+                    dgvMatches.Rows[rowIndex].Cells["MatchTime"].Value = matchDate.ToString("dd/MM/yyyy");
+
                     dgvMatches.Rows[rowIndex].Cells["AwayClubName"].Value = match.Club1.ClubName;
                     dgvMatches.Rows[rowIndex].Cells["AwayClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.Club1.Logo);
-                    dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.AwayID;
+                    dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.Club1.ClubID; // = match.AwayID
+                    
                 }
             }
         }
@@ -282,6 +300,7 @@ namespace GUI
 
             // Tab home players
             lblClubNameInHomePLayersTab.Text = selectedRow.Cells["HomeClubName"].Value.ToString();
+            lblClubNameInAwayPLayersTab.Text = selectedRow.Cells["AwayClubLogo"].Value.ToString();
         }
 
         private void AssignClubLogoToPictureBoxes(DataGridViewRow selectedRow)
@@ -292,6 +311,7 @@ namespace GUI
 
             // Tab home players
             pictureBoxClubLogoDetailInHomePlayerTab.Image = (Bitmap)selectedRow.Cells["HomeClubLogo"].Value;
+            pictureBoxClubLogoDetailInAwayPlayerTab.Image = (Bitmap)selectedRow.Cells["AwayClubLogo"].Value;
         }
 
         private void tabControlMatchForm_SelectedIndexChanged(object sender, EventArgs e)
@@ -300,13 +320,15 @@ namespace GUI
                 tabControlMatchForm.SelectedIndex = 0;
         }
 
-        private void dgvMatches_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvMatches_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvMatches.Rows.Count)
             {
                 DataGridViewRow selectedRow = dgvMatches.Rows[e.RowIndex];
 
                 selectedMatchID = selectedRow.Cells["MatchID"].Tag.ToString();
+                homeClubIDInSelectedMatch = Convert.ToInt32(selectedRow.Cells["HomeID"].Tag);
+                awayClubIDInSelectedMatch = Convert.ToInt32(selectedRow.Cells["AwayID"].Tag);
 
                 AssignClubLogoToPictureBoxes(selectedRow);
 
@@ -316,8 +338,89 @@ namespace GUI
                 tabControlMatchForm.SelectedIndex = 1;
 
                 AssginDataOfMatchDetailToControlsInTabMatchDetail();
+
+                AssignHomePlayersInMatchToDatagridview();
+                AssignAwayPlayersInMatchToDatagridview();
+
             }
         }
+
+
+        /// <summary>
+        /// Xử lý sự kiện CellFormatting của DataGridView để định dạng nền cho các ô chứa nút chỉnh sửa và xóa.
+        /// </summary>
+        /// /// <param name="sender">Đối tượng gửi sự kiện.</param>
+        /// <param name="e">Đối số của sự kiện CellFormatting.</param>
+        /// <param name="editColumn">Cột chứa nút chỉnh sửa.</param>
+        /// <param name="deleteColumn">Cột chứa nút xóa.</param>
+        private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e, DataGridViewButtonColumn editColumn, DataGridViewButtonColumn deleteColumn)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (dgv != null && (e.ColumnIndex == editColumn.Index || e.ColumnIndex == deleteColumn.Index))
+            {
+                object cellValue = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                if (cellValue != null && cellValue.ToString() == "Edit")
+                {
+                    DataGridViewButtonCell cell = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewButtonCell;
+                    cell.FlatStyle = FlatStyle.Flat;
+                    cell.Style.BackColor = Color.FromArgb(70, 20, 80);
+                }
+                else if (cellValue != null && cellValue.ToString() == "Delete")
+                {
+                    DataGridViewButtonCell cell = dgv.Rows[e.RowIndex].Cells[e.ColumnIndex] as DataGridViewButtonCell;
+                    cell.FlatStyle = FlatStyle.Flat;
+                    cell.Style.BackColor = Color.FromArgb(180, 40, 130);
+                }
+            }
+        }
+
+        #region Home players tab
+        private void AssignHomePlayersInMatchToDatagridview()
+        {
+            dgvHomePlayers.Rows.Clear();
+
+            List<PlayersInMatch> playersInMatch = playersInMatchBLL.LoadPlayerInMatch(selectedMatchID, 1);
+            lblCountHomePlayer.Text = playersInMatch.Count.ToString();
+
+            int i = 1;
+            if (playersInMatch != null)
+            {
+                foreach (var player in playersInMatch)
+                {
+                    int rowIndex = dgvHomePlayers.Rows.Add();
+                    if (rowIndex != -1 && rowIndex < dgvHomePlayers.Rows.Count)
+                    {
+                        dgvHomePlayers.Rows[rowIndex].Cells[0].Value = i++;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPImgFileName"].Tag = player.Player.Image;
+
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPImgFileName"].Tag = player.Player.Image;
+
+                        if (File.Exists(shortcutPlayerImgPath + player.Player.Image))
+                            dgvHomePlayers.Rows[rowIndex].Cells["HPImg"].Value = Image.FromFile(shortcutPlayerImgPath + player.Player.Image);
+                        else
+                            dgvHomePlayers.Rows[rowIndex].Cells["HPImg"].Value = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
+
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPID"].Tag = player.PlayerID;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPName"].Value = player.Player.PlayerName;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPNumber"].Value = player.Player.Number;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPPosition"].Value = player.Position;
+
+                        if (player.IsCaptain == 1)
+                            dgvHomePlayers.Rows[rowIndex].Cells["Captain"].Value = "Captain";
+
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPPosition"].Value = player.Position;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPGoals"].Value = player.Goal;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPYellowCard"].Value = player.YellowCard;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPRedCard"].Value = player.RedCard;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPOwnGoal"].Value = player.OwnGoal;
+                    }
+                }
+            }
+            PlayersInMatch playerInMatch = new PlayersInMatch();
+        }
+
 
         private void AssginDataOfMatchDetailToControlsInTabMatchDetail()
         {
@@ -329,7 +432,7 @@ namespace GUI
             lblHomeScore.Text = matchDetail.HomeGoals.ToString();
             lblAwayScore.Text = matchDetail.AwayGoals.ToString();
 
-            DateTime matchDate = (DateTime)matchDetail.MatchTime;
+            DateTime matchDate = (DateTime)matchDetail.Match.MatchTime;
 
             string matchDay = matchDate.ToString("dd/MM/yyyy");
             string matchTime = matchDate.ToString("HH:mm:ss");
@@ -344,14 +447,82 @@ namespace GUI
                 pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
         }
 
-        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
-        {
 
+        private void dgvHomePlayers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgv_CellFormatting(sender, e, editColumn: dgvHomePlayers.Columns["btnEditHP"] as DataGridViewButtonColumn, deleteColumn: dgvHomePlayers.Columns["btnDeleteHP"] as DataGridViewButtonColumn);
         }
 
-        private void guna2Panel11_Paint(object sender, PaintEventArgs e)
+        private void btnOpenDialogAddHomePlayer_Click(object sender, EventArgs e)
         {
+            Bitmap homeClubLogo = (Bitmap)pictureBoxClubLogoDetailInHomePlayerTab.Image;
 
+            FormDialogAddPlayerInMatch frm = new FormDialogAddPlayerInMatch(selectedMatchID, homeClubLogo, homeClubIDInSelectedMatch);
+            frm.ShowDialog();
         }
+        #endregion
+
+
+        #region Away players tab
+        private void AssignAwayPlayersInMatchToDatagridview()
+        {
+            dgvAwayPlayers.Rows.Clear();
+
+            List<PlayersInMatch> playersInMatch = playersInMatchBLL.LoadPlayerInMatch(selectedMatchID, 0);
+            lblCountAwayPlayer.Text = playersInMatch.Count.ToString();
+
+            int i = 1;
+            if (playersInMatch != null)
+            {
+                foreach (var player in playersInMatch)
+                {
+                    int rowIndex = dgvAwayPlayers.Rows.Add();
+                    if (rowIndex != -1 && rowIndex < dgvAwayPlayers.Rows.Count)
+                    {
+                        dgvAwayPlayers.Rows[rowIndex].Cells[0].Value = i++;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APImgFileName"].Tag = player.Player.Image;
+
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APImgFileName"].Tag = player.Player.Image;
+
+                        if (File.Exists(shortcutPlayerImgPath + player.Player.Image))
+                            dgvAwayPlayers.Rows[rowIndex].Cells["APImg"].Value = Image.FromFile(shortcutPlayerImgPath + player.Player.Image);
+                        else
+                            dgvAwayPlayers.Rows[rowIndex].Cells["APImg"].Value = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
+
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APID"].Tag = player.PlayerID;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APName"].Value = player.Player.PlayerName;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APNumber"].Value = player.Player.Number;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APPosition"].Value = player.Position;
+
+                        if (player.IsCaptain == 1)
+                            dgvAwayPlayers.Rows[rowIndex].Cells["APCaptain"].Value = "Captain";
+
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APPosition"].Value = player.Position;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APGoals"].Value = player.Goal;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APYellowCard"].Value = player.YellowCard;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APRedCard"].Value = player.RedCard;
+                        dgvAwayPlayers.Rows[rowIndex].Cells["APOwnGoal"].Value = player.OwnGoal;
+                    }
+                }
+            }
+            PlayersInMatch playerInMatch = new PlayersInMatch();
+        }
+
+        private void dgvAwayPlayers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgv_CellFormatting(sender, e, editColumn: dgvAwayPlayers.Columns["btnEditAP"] as DataGridViewButtonColumn, deleteColumn: dgvAwayPlayers.Columns["btnDeleteAP"] as DataGridViewButtonColumn);
+        }
+
+
+        private void btnOpenDialogAddAwayPlayer_Click(object sender, EventArgs e)
+        {
+            Bitmap awayClubLogo = (Bitmap)pictureBoxClubLogoDetailInAwayPlayerTab.Image;
+
+            FormDialogAddPlayerInMatch frm = new FormDialogAddPlayerInMatch(selectedMatchID, awayClubLogo, awayClubIDInSelectedMatch);
+            frm.ShowDialog();
+        }
+        #endregion
+
+
     }
 }

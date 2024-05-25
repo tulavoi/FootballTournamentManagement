@@ -99,14 +99,20 @@ namespace DAL
                                 homeID = m.HomeID,
                                 awayID = m.AwayID,
                                 matchName = m.MatchName,
+                                matchTime = m.MatchTime,
                                 homeClubName = homeClub.ClubName,
                                 awayClubName = awayClub.ClubName,
                                 homeClubLogo = homeClub.Logo,
-                                awayClubLogo = awayClub.Logo
+                                awayClubLogo = awayClub.Logo,
                             };
 
                 foreach (var item in query)
                 {
+                    //if (item.homeID == 0 || item.awayID == 0)
+                    //{
+                    //    // Log or debug information to understand why IDs are zero
+                    //    Console.WriteLine($"Debug: Found zero ID in match: {item.matchID}, homeID: {item.homeID}, awayID: {item.awayID}");
+                    //}
                     Match match = new Match();
                     match.MatchID = item.matchID;
                     match.RoundID = item.roundID;
@@ -114,9 +120,10 @@ namespace DAL
                     match.HomeID = item.homeID;
                     match.AwayID = item.awayID;
                     match.MatchName = item.matchName;
+                    match.MatchTime = item.matchTime;
 
-                    match.Club = new Club { ClubName = item.homeClubName, Logo = item.homeClubLogo };
-                    match.Club1 = new Club { ClubName = item.awayClubName, Logo = item.awayClubLogo };
+                    match.Club = new Club { ClubName = item.homeClubName, Logo = item.homeClubLogo, ClubID = item.homeID };
+                    match.Club1 = new Club { ClubName = item.awayClubName, Logo = item.awayClubLogo, ClubID = item.awayID };
 
                     matches.Add(match);
                 }

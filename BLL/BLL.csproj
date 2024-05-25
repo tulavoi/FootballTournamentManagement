@@ -50,6 +50,7 @@
     <Compile Include="MatchDetailBLL.cs" />
     <Compile Include="MatchesBLL.cs" />
     <Compile Include="PlayersBLL.cs" />
+    <Compile Include="PlayersInMatchBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RefereesBLL.cs" />
     <Compile Include="RoundsBLL.cs" />

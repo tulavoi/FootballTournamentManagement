@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace DAL
@@ -28,6 +29,30 @@ namespace DAL
                 }
             }
             return seasons;
+            //DataTable seasonsTable = new DataTable();
+            //seasonsTable.Columns.Add("SeasonID", typeof(int));
+            //seasonsTable.Columns.Add("SeasonName", typeof(string));
+            //seasonsTable.Columns.Add("StartDate", typeof(DateTime));
+            //seasonsTable.Columns.Add("EndDate", typeof(DateTime));
+
+            //using (DBProjetDataContext db = new DBProjetDataContext())
+            //{
+            //    var query = from ss in db.Seasons
+            //                orderby ss.SeasonID descending
+            //                select ss;
+
+            //    foreach (var item in query)
+            //    {
+            //        DataRow row = seasonsTable.NewRow();
+            //        row["SeasonID"] = item.SeasonID;
+            //        row["SeasonName"] = item.SeasonName;
+            //        row["StartDate"] = item.StartDate;
+            //        row["EndDate"] = item.EndDate;
+
+            //        seasonsTable.Rows.Add(row);
+            //    }
+            //}
+            //return seasonsTable;
         }
 
         public bool AddData(Season season)
