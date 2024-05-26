@@ -136,20 +136,28 @@ namespace GUI
                 if (rowIndex != -1 && rowIndex < dgvMatches.Rows.Count)
                 {
                     dgvMatches.Rows[rowIndex].Cells["Number"].Value = i++;
-                    dgvMatches.Rows[rowIndex].Cells["HomeID"].Tag = match.Club.ClubID; // = match.HomeID
-                    dgvMatches.Rows[rowIndex].Cells["HomeClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.Club.Logo);
-                    dgvMatches.Rows[rowIndex].Cells["HomeClubName"].Value = match.Club.ClubName;
+
+                    dgvMatches.Rows[rowIndex].Cells["HomeID"].Tag = match.SeasonClub.Club.ClubID; // = match.HomeID
+
+                    if (File.Exists(shortcutLogoPath + match.SeasonClub.Club.Logo))
+                        dgvMatches.Rows[rowIndex].Cells["HomeClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.SeasonClub.Club.Logo);
+
+                    dgvMatches.Rows[rowIndex].Cells["HomeClubName"].Value = match.SeasonClub.Club.ClubName;
 
                     dgvMatches.Rows[rowIndex].Cells["MatchID"].Value = "-";
+
                     dgvMatches.Rows[rowIndex].Cells["MatchID"].Tag = match.MatchID;
 
                     DateTime matchDate = (DateTime)match.MatchTime;
 
                     dgvMatches.Rows[rowIndex].Cells["MatchTime"].Value = matchDate.ToString("dd/MM/yyyy");
 
-                    dgvMatches.Rows[rowIndex].Cells["AwayClubName"].Value = match.Club1.ClubName;
-                    dgvMatches.Rows[rowIndex].Cells["AwayClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.Club1.Logo);
-                    dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.Club1.ClubID; // = match.AwayID
+                    dgvMatches.Rows[rowIndex].Cells["AwayClubName"].Value = match.SeasonClub1.Club.ClubName;
+
+                    if (File.Exists(shortcutLogoPath + match.SeasonClub1.Club.Logo))
+                        dgvMatches.Rows[rowIndex].Cells["AwayClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.SeasonClub1.Club.Logo);
+
+                    dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.SeasonClub1.Club.ClubID; // = match.AwayID
                     
                 }
             }
@@ -208,7 +216,7 @@ namespace GUI
                 FormDialogCreateMatches frm = new FormDialogCreateMatches(seasonID, seasonName);
                 frm.ShowDialog();
 
-                // Gọi lại hàm này để gọi LoadMatchesToDgvMatches()
+                // Gọi lại hàm này để gọi LoadMatchesToDgvMatches() 
                 // Cũng có thể dùng hàm LoadMatchesToDgvMatches() thay vì cboRound_SelectedIndexChanged()
                 cboRound_SelectedIndexChanged(sender, e);
             }
@@ -217,6 +225,9 @@ namespace GUI
                 string seasonName = cboSeason.Text;
                 FormDialogAddClubToSeason frm = new FormDialogAddClubToSeason(seasonID, seasonName);
                 frm.ShowDialog();
+
+                if (dgvClubs.Rows.Count == 20)
+                    btnOpenFormCreateMatches.Text = "Create Matches";
 
                 LoadClubToDgvClubsBySeasonID();
             }
@@ -300,7 +311,7 @@ namespace GUI
 
             // Tab home players
             lblClubNameInHomePLayersTab.Text = selectedRow.Cells["HomeClubName"].Value.ToString();
-            lblClubNameInAwayPLayersTab.Text = selectedRow.Cells["AwayClubLogo"].Value.ToString();
+            lblClubNameInAwayPLayersTab.Text = selectedRow.Cells["AwayClubName"].Value.ToString();
         }
 
         private void AssignClubLogoToPictureBoxes(DataGridViewRow selectedRow)
@@ -426,25 +437,31 @@ namespace GUI
         {
             MatchDetail matchDetail = matchDetailBLL.LoadDataByMatchID(selectedMatchID);
 
-            lblHomeTactic.Text = matchDetail.HomeTactical;
-            lblAwayTactic.Text = matchDetail.AwayTactical;
+            if (matchDetail != null) 
+            {
+                lblHomeTactic.Text = matchDetail.HomeTactical;
+                lblAwayTactic.Text = matchDetail.AwayTactical;
 
-            lblHomeScore.Text = matchDetail.HomeGoals.ToString();
-            lblAwayScore.Text = matchDetail.AwayGoals.ToString();
+                lblHomeScore.Text = matchDetail.HomeGoals.ToString();
+                lblAwayScore.Text = matchDetail.AwayGoals.ToString();
 
-            DateTime matchDate = (DateTime)matchDetail.Match.MatchTime;
+                DateTime matchDate = (DateTime)matchDetail.Match.MatchTime;
 
-            string matchDay = matchDate.ToString("dd/MM/yyyy");
-            string matchTime = matchDate.ToString("HH:mm:ss");
+                string matchDay = matchDate.ToString("dd/MM/yyyy");
+                string matchTime = matchDate.ToString("HH:mm:ss");
 
-            lblMatchTime.Text = matchTime;
-            lblMatchDay.Text = matchDay;
+                lblMatchTime.Text = matchTime;
+                lblMatchDay.Text = matchDay;
 
-            lblMOTMNameAndID.Text = matchDetail.Player.PlayerName;
-            if (File.Exists(shortcutPlayerImgPath + matchDetail.Player.Image))
-                pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + matchDetail.Player.Image);
-            else
-                pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
+                lblMOTMNameAndID.Text = matchDetail.PlayersInMatch.Player.PlayerName;
+
+                lblRefereeName.Text += matchDetail.Referee.RefereeName;
+
+                if (File.Exists(shortcutPlayerImgPath + matchDetail.PlayersInMatch.Player.Image))
+                    pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + matchDetail.PlayersInMatch.Player.Image);
+                else
+                    pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
+            }
         }
 
 

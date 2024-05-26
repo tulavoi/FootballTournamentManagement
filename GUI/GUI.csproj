@@ -176,6 +176,12 @@
     <Compile Include="FormDialogEditStadium.Designer.cs">
       <DependentUpon>FormDialogEditStadium.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDialogUpdateMatchDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDialogUpdateMatchDetail.Designer.cs">
+      <DependentUpon>FormDialogUpdateMatchDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,8 +225,14 @@
     <Compile Include="SeasonForm.Designer.cs">
       <DependentUpon>SeasonForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormDialogAddClubToSeason.resx">
+      <DependentUpon>FormDialogAddClubToSeason.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDialogAddPlayerInMatch.resx">
       <DependentUpon>FormDialogAddPlayerInMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDialogUpdateMatchDetail.resx">
+      <DependentUpon>FormDialogUpdateMatchDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeasonForm.resx">
       <DependentUpon>SeasonForm.cs</DependentUpon>
@@ -228,9 +240,6 @@
     <None Include="GUI_TemporaryKey.pfx" />
     <None Include="Resources\photo-missing.png" />
     <None Include="Resources\salah.png" />
-    <EmbeddedResource Include="FormDialogAddClubToSeason.resx">
-      <DependentUpon>FormDialogAddClubToSeason.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormDialogAddManager.resx">
       <DependentUpon>FormDialogAddManager.cs</DependentUpon>
     </EmbeddedResource>

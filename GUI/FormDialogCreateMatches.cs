@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
+using System.Text.RegularExpressions;
 
 namespace GUI
 {
@@ -19,6 +20,8 @@ namespace GUI
         RoundsBLL roundsBLL = new RoundsBLL();
 
         MatchesBLL matchesBLL = new MatchesBLL();
+
+        SeasonsBLL seasonsBLL = new SeasonsBLL();
 
         private string shortcutLogoPath = "Images\\Logos\\";
 
@@ -44,6 +47,27 @@ namespace GUI
             BindRoundCombobox(seasonID);
 
             LoadDataOfClubs();
+        }
+
+        private void AssignStartEndDateOfSeasonToDateTimePicker(DAL.Match lastMatchInPreviousMatchweek)
+        {
+            Season season = seasonsBLL.LoadDataByID(seasonID);
+            if (lastMatchInPreviousMatchweek == null)
+            {
+                dtpStartDate.Value = (DateTime)season.StartDate;
+                dtpEndDate.Value = (DateTime)season.StartDate;
+            }
+            else
+            {
+                dtpStartDate.MinDate = (DateTime)season.StartDate;
+                dtpStartDate.MaxDate = (DateTime)season.EndDate;
+                dtpStartDate.Value = (DateTime)lastMatchInPreviousMatchweek.MatchTime;
+
+                dtpEndDate.MinDate = (DateTime)season.StartDate;
+                dtpEndDate.MaxDate = (DateTime)season.EndDate;
+                dtpEndDate.Value = (DateTime)lastMatchInPreviousMatchweek.MatchTime;
+            }
+            
         }
 
         private void LoadDataOfClubs()
@@ -80,18 +104,74 @@ namespace GUI
 
         private void btnOpenDialogCreateSeason_Click(object sender, EventArgs e)
         {
-            string roundID = cboRound.SelectedValue.ToString();
+            string selectedRoundID = cboRound.SelectedValue.ToString();
 
-            if (!string.IsNullOrEmpty(roundID))
+            DAL.Match lastMatchInPreviousMatchweek = GetLastMatchInPreviousMatchweek();
+
+            // Lấy ra vòng đấu hiện tại
+            string roundName = cboRound.Text;
+
+            if (roundName != "Matchweek 1")
             {
-                bool isCreatedMatches = matchesBLL.AddData(roundID, seasonID);
+                Round previousRound = roundsBLL.GetPreviousRound(seasonID, roundName);
+
+                string beforeRoundName = previousRound.RoundName;
+
+                string currentRoundName = cboRound.Text;
+
+                if (lastMatchInPreviousMatchweek == null)
+                {
+                    MessageBox.Show($"\"{beforeRoundName}\" does not have any matches yet.");
+                    return;
+                }
+
+                if (lastMatchInPreviousMatchweek.MatchTime >= dtpStartDate.Value)
+                {
+                    MessageBox.Show($"The start date of \"{currentRoundName}\" must be later than the last match of \"{beforeRoundName}\"");
+                    return;
+                }
+            }
+
+            if (dtpStartDate.Value >= dtpEndDate.Value)
+            {
+                MessageBox.Show($"The end time must be later the start time");
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(selectedRoundID))
+            {
+                bool isCreatedMatches = matchesBLL.AddData(selectedRoundID, seasonID, dtpStartDate.Value, dtpEndDate.Value);
                 if (isCreatedMatches)
                     MessageBox.Show("Created matches successfully!");
 
                 else
                     MessageBox.Show("Create matches failed!");
             }
+        }
 
+        /// <summary>
+        /// Lấy ra trận đấu cuối cùng của vòng đấu trước
+        /// </summary>
+        /// <returns></returns>
+        private DAL.Match GetLastMatchInPreviousMatchweek()
+        {
+            if (cboRound.SelectedIndex != -1)
+            {
+                Round selectedRound = (Round)cboRound.SelectedItem;
+
+                string currentRoundName = selectedRound.RoundName;
+
+                DAL.Match previousMatch = roundsBLL.GetLastMatchInPreviousMatchweekByRoundNameAndSeasonID(seasonID, currentRoundName);
+
+                return previousMatch;
+            }
+            return null;
+        }
+
+        private void cboRound_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DAL.Match lastMatchInPreviousMatchweek = GetLastMatchInPreviousMatchweek();
+            AssignStartEndDateOfSeasonToDateTimePicker(lastMatchInPreviousMatchweek);
         }
     }
 }

@@ -15,5 +15,20 @@ namespace BLL
         {
             return roundsDAL.LoadDataBySeasonID(seasonID);
         }
+
+        public Round LoadDataByID(string roundID)
+        {
+            return roundsDAL.LoadDataByID(roundID);
+        }
+
+        public Match GetLastMatchInPreviousMatchweekByRoundNameAndSeasonID(int seasonID, string currentRoundName)
+        {
+            return roundsDAL.GetLastMatchInPreviousMatchweekByRoundNameAndSeasonID(seasonID, currentRoundName);
+        }
+
+        public Round GetPreviousRound(int seasonID, string previousMatchweekName)
+        {
+            return roundsDAL.GetPreviousRound(seasonID, previousMatchweekName);
+        }
     }
 }

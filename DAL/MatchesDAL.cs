@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Instrumentation;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Web.Security;
+using System.Net.Mail;
 
 namespace DAL
 {
     public class MatchesDAL
     {
-        public bool AddData(string roundID, int seasonID)
+        public bool AddData(string roundID, int seasonID, DateTime startDate, DateTime endDate)
         {
-			try
-			{
+            try
+            {
                 using (DBProjetDataContext db = new DBProjetDataContext())
                 {
                     if (!ValidNumberOfMatchInOneRound(roundID))
@@ -27,6 +22,27 @@ namespace DAL
                                             .ToList();
 
                     int maxNumOfMatch = 10;
+
+                    // Các khung giờ thi đấu
+                    List<TimeSpan> timeSlots = new List<TimeSpan>
+                    {
+                        new TimeSpan(2, 0 ,0),
+                        new TimeSpan(18, 0, 0),
+                        new TimeSpan(18, 30, 0),
+                        new TimeSpan(19, 0, 0),
+                        new TimeSpan(19, 30, 0),
+                        new TimeSpan(20, 0, 0),
+                        new TimeSpan(20, 30, 0),
+                        new TimeSpan(21, 0, 0),
+                        new TimeSpan(21, 30, 0),
+                        new TimeSpan(22, 0, 0),
+                        new TimeSpan(22, 30, 0),
+                        new TimeSpan(23, 0, 0)
+                    };
+
+                    // Tính khoảng thời gian giữa các trận đấu
+                    TimeSpan totalDuration = endDate - startDate;
+                    TimeSpan interval = TimeSpan.FromTicks(totalDuration.Ticks / maxNumOfMatch);
 
                     // Lặp để tạo 10 trận đấu mới
                     var random = new Random();
@@ -50,13 +66,21 @@ namespace DAL
                         // Tạo matchID
                         string matchID = $"{roundID.Trim()}_{i.ToString().PadLeft(2, '0')}";
 
-                        Match match = new Match();
-                        match.MatchID = matchID;
-                        match.SeasonID = seasonID;
-                        match.RoundID = roundID;
-                        match.HomeID = homeClub.ClubID;
-                        match.AwayID = awayClub.ClubID;
-                        match.MatchName = matchName;
+                        // Chọn ngẫu nhiên thời gian thi đấu
+                        TimeSpan matchTimeSlot = timeSlots[random.Next(timeSlots.Count)];
+                        DateTime matchDate = startDate.AddTicks(interval.Ticks * (i - 1));
+                        DateTime matchTime = new DateTime(matchDate.Year, matchDate.Month, matchDate.Day, matchTimeSlot.Hours, matchTimeSlot.Minutes, matchTimeSlot.Seconds);
+
+                        Match match = new Match
+                        {
+                            MatchID = matchID,
+                            SeasonID = seasonID,
+                            RoundID = roundID,
+                            HomeID = homeClub.ClubID,
+                            AwayID = awayClub.ClubID,
+                            MatchName = matchName,
+                            MatchTime = matchTime
+                        };
 
                         db.Matches.InsertOnSubmit(match);
                     }
@@ -64,9 +88,9 @@ namespace DAL
                     return true;
                 }
             }
-			catch (Exception ex)
-			{
-				//throw ex;
+            catch (Exception ex)
+            {
+                //throw ex;
                 Console.WriteLine(ex.Message);
                 return false;
             }
@@ -88,9 +112,11 @@ namespace DAL
             using (DBProjetDataContext db = new DBProjetDataContext())
             {
                 var query = from m in db.Matches
-                            join homeClub in db.Clubs on m.HomeID equals homeClub.ClubID
-                            join awayClub in db.Clubs on m.AwayID equals awayClub.ClubID
-                            where m.RoundID == roundID && m.SeasonID == seasonID
+                            join ssHomeClubID in db.SeasonClubs on m.HomeID equals ssHomeClubID.ClubID
+                            join ssAwayClubID in db.SeasonClubs on m.AwayID equals ssAwayClubID.ClubID
+                            join homeClub in db.Clubs on ssHomeClubID.ClubID equals homeClub.ClubID
+                            join awayClub in db.Clubs on ssAwayClubID.ClubID equals awayClub.ClubID
+                            where m.RoundID == roundID && m.SeasonID == seasonID && ssHomeClubID.SeasonID == seasonID && ssAwayClubID.SeasonID == seasonID
                             select new
                             {
                                 matchID = m.MatchID,
@@ -108,11 +134,6 @@ namespace DAL
 
                 foreach (var item in query)
                 {
-                    //if (item.homeID == 0 || item.awayID == 0)
-                    //{
-                    //    // Log or debug information to understand why IDs are zero
-                    //    Console.WriteLine($"Debug: Found zero ID in match: {item.matchID}, homeID: {item.homeID}, awayID: {item.awayID}");
-                    //}
                     Match match = new Match();
                     match.MatchID = item.matchID;
                     match.RoundID = item.roundID;
@@ -122,13 +143,45 @@ namespace DAL
                     match.MatchName = item.matchName;
                     match.MatchTime = item.matchTime;
 
-                    match.Club = new Club { ClubName = item.homeClubName, Logo = item.homeClubLogo, ClubID = item.homeID };
-                    match.Club1 = new Club { ClubName = item.awayClubName, Logo = item.awayClubLogo, ClubID = item.awayID };
+                    match.SeasonClub = new SeasonClub 
+                    { 
+                        ClubID = item.homeID, 
+                        Club = new Club 
+                        { 
+                            ClubName = item.homeClubName, 
+                            Logo = item.homeClubLogo, 
+                        } 
+                    } ;
+
+                    match.SeasonClub1 = new SeasonClub
+                    {
+                        ClubID = item.awayID,
+                        Club = new Club
+                        {
+                            ClubName = item.awayClubName,
+                            Logo = item.awayClubLogo,
+                        }
+                    };
 
                     matches.Add(match);
                 }
             }
             return matches;
+        }
+
+        public Match GetLastestMatchInAMatchweek(string roundID)
+        {
+            using (DBProjetDataContext db = new DBProjetDataContext())
+            {
+                //var query = db.Matches.OrderBy(m => m.MatchTime && m.RoundID == roundID).FirstOrDefault();
+
+                var query = from m in db.Matches
+                            where m.RoundID == roundID
+                            orderby m.MatchTime descending
+                            select m;
+
+                return query.FirstOrDefault();
+            }
         }
     }
 }

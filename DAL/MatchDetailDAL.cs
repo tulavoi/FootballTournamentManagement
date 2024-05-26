@@ -16,7 +16,8 @@ namespace DAL
             using (DBProjetDataContext db = new DBProjetDataContext())
             {
                 var query = from md in db.MatchDetails
-                            join p in db.Players on md.MotmID equals p.PlayerID
+                            join pim in db.PlayersInMatches on md.MotmID equals pim.PlayerID
+                            join p in db.Players on pim.PlayerID equals p.PlayerID
                             join r in db.Referees on md.RefereeID equals r.RefereeID
                             join m in db.Matches on md.MatchID equals m.MatchID
                             where md.MatchID == matchID
@@ -36,21 +37,30 @@ namespace DAL
                             };
 
 
-                if (query != null)
+                var item = query.FirstOrDefault();
+
+                if (item != null)
                 {
-                    foreach (var item in query)
-                    {
-                        matchDetail.MatchID = item.MatchID;
-                        matchDetail.MotmID = item.MotmID;
-                        matchDetail.Player = new Player { PlayerName = item.MotmName, Image = item.MotmImg };
-                        matchDetail.RefereeID = item.RefereeID;
-                        matchDetail.Referee = new Referee { RefereeName = item.RefereeName };
-                        matchDetail.HomeGoals = item.HomeGoals;
-                        matchDetail.AwayGoals = item.AwayGoals;
-                        matchDetail.HomeTactical = item.HomeTactical;
-                        matchDetail.AwayTactical = item.AwayTactical;
-                        matchDetail.Match = new Match { MatchTime = item.MatchTime };
-                    }
+                    matchDetail.MatchID = item.MatchID;
+                    matchDetail.MotmID = item.MotmID;
+
+                    matchDetail.PlayersInMatch = new PlayersInMatch 
+                    { 
+                        PlayerID = item.MotmID, 
+                        Player = new Player 
+                        { 
+                            PlayerName = item.MotmName, 
+                            Image = item.MotmImg 
+                        } 
+                    };
+
+                    matchDetail.RefereeID = item.RefereeID;
+                    matchDetail.Referee = new Referee { RefereeName = item.RefereeName };
+                    matchDetail.HomeGoals = item.HomeGoals;
+                    matchDetail.AwayGoals = item.AwayGoals;
+                    matchDetail.HomeTactical = item.HomeTactical;
+                    matchDetail.AwayTactical = item.AwayTactical;
+                    matchDetail.Match = new Match { MatchTime = item.MatchTime };
                 }
             }
             return matchDetail;

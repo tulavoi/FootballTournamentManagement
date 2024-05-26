@@ -20,5 +20,10 @@ namespace BLL
         {
             return seasonsDAL.AddData(season);
         }
+
+        public Season LoadDataByID(int seasonID)
+        {
+            return seasonsDAL.LoadDataByID(seasonID);
+        }
     }
 }

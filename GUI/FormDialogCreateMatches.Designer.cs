@@ -44,6 +44,12 @@
             this.ImageName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelContent = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.dtpEndDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.dtpStartDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btnOpenDialogCreateSeason = new Guna.UI2.WinForms.Guna2Button();
             this.cboRound = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
@@ -53,6 +59,8 @@
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClubs)).BeginInit();
             this.panelContent.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -76,7 +84,7 @@
             this.lblCreateMatches.ForeColor = System.Drawing.Color.White;
             this.lblCreateMatches.Location = new System.Drawing.Point(48, 57);
             this.lblCreateMatches.Name = "lblCreateMatches";
-            this.lblCreateMatches.Size = new System.Drawing.Size(163, 33);
+            this.lblCreateMatches.Size = new System.Drawing.Size(790, 33);
             this.lblCreateMatches.TabIndex = 0;
             this.lblCreateMatches.Text = "Create Matches";
             // 
@@ -113,6 +121,7 @@
             // 
             // dgvClubs
             // 
+            this.dgvClubs.AllowUserToAddRows = false;
             this.dgvClubs.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvClubs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -232,6 +241,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContent.BackColor = System.Drawing.Color.White;
             this.panelContent.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.panelContent.Controls.Add(this.guna2Panel2);
+            this.panelContent.Controls.Add(this.guna2Panel1);
             this.panelContent.Controls.Add(this.btnOpenDialogCreateSeason);
             this.panelContent.Controls.Add(this.cboRound);
             this.panelContent.Controls.Add(this.dgvClubs);
@@ -240,6 +251,84 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(826, 724);
             this.panelContent.TabIndex = 33;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel2.Controls.Add(this.dtpEndDate);
+            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel2);
+            this.guna2Panel2.Location = new System.Drawing.Point(544, 225);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(231, 81);
+            this.guna2Panel2.TabIndex = 40;
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.BorderRadius = 2;
+            this.dtpEndDate.Checked = true;
+            this.dtpEndDate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dtpEndDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
+            this.dtpEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpEndDate.ForeColor = System.Drawing.Color.White;
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpEndDate.Location = new System.Drawing.Point(0, 33);
+            this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(231, 48);
+            this.dtpEndDate.TabIndex = 36;
+            this.dtpEndDate.Value = new System.DateTime(2024, 5, 25, 16, 35, 4, 609);
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.AutoSize = false;
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(231, 30);
+            this.guna2HtmlLabel2.TabIndex = 38;
+            this.guna2HtmlLabel2.Text = "End Date";
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2Panel1.Controls.Add(this.dtpStartDate);
+            this.guna2Panel1.Location = new System.Drawing.Point(544, 108);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(231, 81);
+            this.guna2Panel1.TabIndex = 39;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.AutoSize = false;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(231, 30);
+            this.guna2HtmlLabel1.TabIndex = 37;
+            this.guna2HtmlLabel1.Text = "Start Date";
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.BorderRadius = 2;
+            this.dtpStartDate.Checked = true;
+            this.dtpStartDate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dtpStartDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(40)))), ((int)(((byte)(98)))));
+            this.dtpStartDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpStartDate.ForeColor = System.Drawing.Color.White;
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dtpStartDate.Location = new System.Drawing.Point(0, 33);
+            this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(231, 48);
+            this.dtpStartDate.TabIndex = 35;
+            this.dtpStartDate.Value = new System.DateTime(2024, 5, 25, 16, 35, 4, 609);
             // 
             // btnOpenDialogCreateSeason
             // 
@@ -259,9 +348,9 @@
             this.btnOpenDialogCreateSeason.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnOpenDialogCreateSeason.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnOpenDialogCreateSeason.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenDialogCreateSeason.Location = new System.Drawing.Point(544, 86);
+            this.btnOpenDialogCreateSeason.Location = new System.Drawing.Point(544, 369);
             this.btnOpenDialogCreateSeason.Name = "btnOpenDialogCreateSeason";
-            this.btnOpenDialogCreateSeason.Size = new System.Drawing.Size(185, 40);
+            this.btnOpenDialogCreateSeason.Size = new System.Drawing.Size(231, 40);
             this.btnOpenDialogCreateSeason.TabIndex = 34;
             this.btnOpenDialogCreateSeason.Text = "Create";
             this.btnOpenDialogCreateSeason.Click += new System.EventHandler(this.btnOpenDialogCreateSeason_Click);
@@ -286,8 +375,9 @@
             this.cboRound.ItemHeight = 30;
             this.cboRound.Location = new System.Drawing.Point(544, 16);
             this.cboRound.Name = "cboRound";
-            this.cboRound.Size = new System.Drawing.Size(185, 36);
+            this.cboRound.Size = new System.Drawing.Size(231, 36);
             this.cboRound.TabIndex = 33;
+            this.cboRound.SelectedIndexChanged += new System.EventHandler(this.cboRound_SelectedIndexChanged);
             // 
             // guna2DragControl1
             // 
@@ -322,6 +412,8 @@
             this.panelTop.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClubs)).EndInit();
             this.panelContent.ResumeLayout(false);
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -344,5 +436,11 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2ComboBox cboRound;
         private Guna.UI2.WinForms.Guna2Button btnOpenDialogCreateSeason;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartDate;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndDate;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
     }
 }
