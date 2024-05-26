@@ -61,5 +61,44 @@ namespace DAL
             // Return or use the sorted list
             return sortedPlayersInMatch;
         }
+
+        public List<PlayersInMatch> LoadAllPlayerInMatch(string matchID)
+        {
+            List<PlayersInMatch> players = new List<PlayersInMatch>();
+            using (DBProjetDataContext db = new DBProjetDataContext())
+            {
+                var query = from pim in db.PlayersInMatches
+                            join p in db.Players on pim.PlayerID equals p.PlayerID
+                            where pim.MatchID == matchID
+                            select new
+                            {
+                                playerID = pim.PlayerID,
+                                playerName = p.PlayerName,
+                                image = p.Image,
+                                number = p.Number,
+                                position = p.Position
+                            };
+                if (query != null)
+                {
+                    foreach (var item in query)
+                    {
+                        PlayersInMatch player = new PlayersInMatch();
+                        player.PlayerID = player.PlayerID;
+                        player.Player = new Player
+                        {
+                            PlayerID = item.playerID,
+                            PlayerName = item.playerName,
+                            Image = item.image,
+                            Position = item.position,
+                            Number = item.number
+                        };
+
+                        players.Add(player);
+                    }
+                    return players;
+                }
+            }
+            return null;
+        }
     }
 }

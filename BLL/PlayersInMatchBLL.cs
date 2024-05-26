@@ -14,5 +14,10 @@ namespace BLL
         {
             return playersInMatchDAL.LoadPlayerInMatch(matchID, isHome);
         }
+
+        public List<PlayersInMatch> LoadAllPlayerInMatch(string matchID)
+        {
+            return playersInMatchDAL.LoadAllPlayerInMatch(matchID);
+        }
     }
 }

@@ -538,8 +538,15 @@ namespace GUI
             FormDialogAddPlayerInMatch frm = new FormDialogAddPlayerInMatch(selectedMatchID, awayClubLogo, awayClubIDInSelectedMatch);
             frm.ShowDialog();
         }
+
         #endregion
 
-
+        private void btnUpdateMatchDetail_Click(object sender, EventArgs e)
+        {
+            Bitmap homeClubLogo = (Bitmap)pictureBoxHomeClubLogo.Image;
+            Bitmap awayClubLogo = (Bitmap)pictureBoxAwayClubLogo.Image;
+            FormDialogUpdateMatchDetail frm = new FormDialogUpdateMatchDetail(homeClubLogo, awayClubLogo, selectedMatchID);
+            frm.ShowDialog();
+        }
     }
 }
