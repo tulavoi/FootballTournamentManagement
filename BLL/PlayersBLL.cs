@@ -46,5 +46,10 @@ namespace BLL
         {
             return playersDAL.SearchPlayer(keyword, clubID);
         }
+
+        public List<Player> GetAllPlayers()
+        {
+            return playersDAL.GetAllPlayers();
+        }
     }
 }

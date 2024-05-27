@@ -745,5 +745,13 @@ namespace GUI
         {
 
         }
+
+
+        private void btnOpenReportPlayers_Click(object sender, EventArgs e)
+        {
+            Bitmap clubLogo = (Bitmap)pictureBoxClubLogoDetailInPlayersTab.Image;
+            FormReportPlayers frm = new FormReportPlayers(selectedClubID, clubLogo);
+            frm.ShowDialog();
+        }
     }
 }

@@ -42,7 +42,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClubForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,6 +49,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClubForm));
             this.tabClub = new System.Windows.Forms.TabPage();
             this.tabControlClubDetail = new Guna.UI2.WinForms.Guna2TabControl();
             this.tabPlayers = new System.Windows.Forms.TabPage();
@@ -120,7 +120,6 @@
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblStadiumName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panelSpace = new Guna.UI2.WinForms.Guna2Panel();
-            this.pictureBoxStadium = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel23 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel24 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel25 = new Guna.UI2.WinForms.Guna2Panel();
@@ -129,7 +128,6 @@
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblClubNameInStadiumTab = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.pictureBoxClubLogoDetailInStadiumTab = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnBack = new Guna.UI2.WinForms.Guna2Button();
             this.tabList = new System.Windows.Forms.TabPage();
             this.dgvClubs = new Guna.UI2.WinForms.Guna2DataGridView();
             this.playerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,7 +138,6 @@
             this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelAddClub = new Guna.UI2.WinForms.Guna2Panel();
             this.btnClear = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBoxClubLogo = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnBrowseClubLogo = new Guna.UI2.WinForms.Guna2Button();
             this.txtClubName = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -152,13 +149,16 @@
             this.panelPaddingLeft = new Guna.UI2.WinForms.Guna2Panel();
             this.panelPaddingTop = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnPrint = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
             this.cboSeason = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumOfClubs = new System.Windows.Forms.Label();
             this.tabControlClubForm = new Guna.UI2.WinForms.Guna2TabControl();
+            this.pictureBoxClubLogo = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnOpenReportPlayers = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBoxStadium = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnBack = new Guna.UI2.WinForms.Guna2Button();
             this.tabClub.SuspendLayout();
             this.tabControlClubDetail.SuspendLayout();
             this.tabPlayers.SuspendLayout();
@@ -179,17 +179,17 @@
             this.guna2Panel7.SuspendLayout();
             this.guna2Panel6.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStadium)).BeginInit();
             this.guna2Panel22.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogoDetailInStadiumTab)).BeginInit();
             this.tabList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClubs)).BeginInit();
             this.panelAddClub.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel11.SuspendLayout();
             this.tabControlClubForm.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStadium)).BeginInit();
             this.SuspendLayout();
             // 
             // tabClub
@@ -503,6 +503,7 @@
             // 
             // guna2Panel10
             // 
+            this.guna2Panel10.Controls.Add(this.btnOpenReportPlayers);
             this.guna2Panel10.Controls.Add(this.txtSearchPlayer);
             this.guna2Panel10.Controls.Add(this.label1);
             this.guna2Panel10.Controls.Add(this.panelLogoClubName);
@@ -624,7 +625,7 @@
             this.btnOpenDialogAddPlayer.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnOpenDialogAddPlayer.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(0)))), ((int)(((byte)(60)))));
             this.btnOpenDialogAddPlayer.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOpenDialogAddPlayer.Location = new System.Drawing.Point(933, 38);
+            this.btnOpenDialogAddPlayer.Location = new System.Drawing.Point(987, 38);
             this.btnOpenDialogAddPlayer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOpenDialogAddPlayer.Name = "btnOpenDialogAddPlayer";
             this.btnOpenDialogAddPlayer.Size = new System.Drawing.Size(109, 39);
@@ -650,7 +651,7 @@
             this.btnDeleteAll.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDeleteAll.HoverState.FillColor = System.Drawing.Color.White;
             this.btnDeleteAll.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnDeleteAll.Location = new System.Drawing.Point(1060, 38);
+            this.btnDeleteAll.Location = new System.Drawing.Point(1114, 38);
             this.btnDeleteAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeleteAll.Name = "btnDeleteAll";
             this.btnDeleteAll.Size = new System.Drawing.Size(109, 39);
@@ -1303,23 +1304,6 @@
             this.panelSpace.Size = new System.Drawing.Size(20, 537);
             this.panelSpace.TabIndex = 27;
             // 
-            // pictureBoxStadium
-            // 
-            this.pictureBoxStadium.BorderRadius = 5;
-            this.pictureBoxStadium.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxStadium.ErrorImage = null;
-            this.pictureBoxStadium.FillColor = System.Drawing.Color.Transparent;
-            this.pictureBoxStadium.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxStadium.Image")));
-            this.pictureBoxStadium.ImageRotate = 0F;
-            this.pictureBoxStadium.InitialImage = null;
-            this.pictureBoxStadium.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxStadium.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxStadium.Name = "pictureBoxStadium";
-            this.pictureBoxStadium.Size = new System.Drawing.Size(589, 537);
-            this.pictureBoxStadium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxStadium.TabIndex = 7;
-            this.pictureBoxStadium.TabStop = false;
-            // 
             // guna2Panel23
             // 
             this.guna2Panel23.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1408,36 +1392,6 @@
             this.pictureBoxClubLogoDetailInStadiumTab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxClubLogoDetailInStadiumTab.TabIndex = 3;
             this.pictureBoxClubLogoDetailInStadiumTab.TabStop = false;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnBack.BorderRadius = 10;
-            this.btnBack.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
-            this.btnBack.HoverState.Image = global::GUI.Properties.Resources.back_btn2;
-            this.btnBack.Image = global::GUI.Properties.Resources.back_btn;
-            this.btnBack.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnBack.Location = new System.Drawing.Point(1327, 6);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.btnBack.Size = new System.Drawing.Size(45, 46);
-            this.btnBack.TabIndex = 1;
-            this.btnBack.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // tabList
             // 
@@ -1661,21 +1615,6 @@
             this.btnClear.Text = "Clear";
             this.btnClear.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // pictureBoxClubLogo
-            // 
-            this.pictureBoxClubLogo.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBoxClubLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxClubLogo.BorderRadius = 3;
-            this.pictureBoxClubLogo.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.pictureBoxClubLogo.ImageRotate = 0F;
-            this.pictureBoxClubLogo.Location = new System.Drawing.Point(208, 338);
-            this.pictureBoxClubLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxClubLogo.Name = "pictureBoxClubLogo";
-            this.pictureBoxClubLogo.Size = new System.Drawing.Size(235, 114);
-            this.pictureBoxClubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBoxClubLogo.TabIndex = 31;
-            this.pictureBoxClubLogo.TabStop = false;
-            // 
             // btnBrowseClubLogo
             // 
             this.btnBrowseClubLogo.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1828,7 +1767,6 @@
             // 
             // guna2Panel2
             // 
-            this.guna2Panel2.Controls.Add(this.btnPrint);
             this.guna2Panel2.Controls.Add(this.guna2Panel11);
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.Controls.Add(this.lblNumOfClubs);
@@ -1841,25 +1779,6 @@
             this.guna2Panel2.Size = new System.Drawing.Size(1257, 75);
             this.guna2Panel2.TabIndex = 21;
             this.guna2Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.BorderColor = System.Drawing.Color.Gray;
-            this.btnPrint.BorderThickness = 1;
-            this.btnPrint.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrint.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPrint.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPrint.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrint.FillColor = System.Drawing.Color.Transparent;
-            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnPrint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnPrint.Image = global::GUI.Properties.Resources.printer;
-            this.btnPrint.Location = new System.Drawing.Point(611, 20);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(35, 34);
-            this.btnPrint.TabIndex = 29;
             // 
             // guna2Panel11
             // 
@@ -1965,6 +1884,88 @@
             this.tabControlClubForm.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             this.tabControlClubForm.SelectedIndexChanged += new System.EventHandler(this.tabControlClubForm_SelectedIndexChanged_1);
             // 
+            // pictureBoxClubLogo
+            // 
+            this.pictureBoxClubLogo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBoxClubLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxClubLogo.BorderRadius = 3;
+            this.pictureBoxClubLogo.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.pictureBoxClubLogo.ImageRotate = 0F;
+            this.pictureBoxClubLogo.Location = new System.Drawing.Point(208, 338);
+            this.pictureBoxClubLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxClubLogo.Name = "pictureBoxClubLogo";
+            this.pictureBoxClubLogo.Size = new System.Drawing.Size(235, 114);
+            this.pictureBoxClubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxClubLogo.TabIndex = 31;
+            this.pictureBoxClubLogo.TabStop = false;
+            // 
+            // btnOpenReportPlayers
+            // 
+            this.btnOpenReportPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenReportPlayers.BorderColor = System.Drawing.Color.Gray;
+            this.btnOpenReportPlayers.BorderThickness = 1;
+            this.btnOpenReportPlayers.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenReportPlayers.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOpenReportPlayers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOpenReportPlayers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOpenReportPlayers.FillColor = System.Drawing.Color.Transparent;
+            this.btnOpenReportPlayers.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnOpenReportPlayers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnOpenReportPlayers.Image = global::GUI.Properties.Resources.printer;
+            this.btnOpenReportPlayers.Location = new System.Drawing.Point(912, 38);
+            this.btnOpenReportPlayers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnOpenReportPlayers.Name = "btnOpenReportPlayers";
+            this.btnOpenReportPlayers.Size = new System.Drawing.Size(42, 39);
+            this.btnOpenReportPlayers.TabIndex = 31;
+            this.btnOpenReportPlayers.Click += new System.EventHandler(this.btnOpenReportPlayers_Click);
+            // 
+            // pictureBoxStadium
+            // 
+            this.pictureBoxStadium.BorderRadius = 5;
+            this.pictureBoxStadium.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBoxStadium.ErrorImage = null;
+            this.pictureBoxStadium.FillColor = System.Drawing.Color.Transparent;
+            this.pictureBoxStadium.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxStadium.Image")));
+            this.pictureBoxStadium.ImageRotate = 0F;
+            this.pictureBoxStadium.InitialImage = null;
+            this.pictureBoxStadium.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxStadium.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxStadium.Name = "pictureBoxStadium";
+            this.pictureBoxStadium.Size = new System.Drawing.Size(589, 537);
+            this.pictureBoxStadium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxStadium.TabIndex = 7;
+            this.pictureBoxStadium.TabStop = false;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnBack.BorderRadius = 10;
+            this.btnBack.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.CheckedState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBack.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(245)))), ((int)(((byte)(250)))));
+            this.btnBack.HoverState.Image = global::GUI.Properties.Resources.back_btn2;
+            this.btnBack.Image = global::GUI.Properties.Resources.back_btn;
+            this.btnBack.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnBack.Location = new System.Drawing.Point(1327, 6);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.btnBack.Size = new System.Drawing.Size(45, 46);
+            this.btnBack.TabIndex = 1;
+            this.btnBack.Click += new System.EventHandler(this.guna2Button2_Click);
+            // 
             // ClubForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1999,7 +2000,6 @@
             this.guna2Panel7.ResumeLayout(false);
             this.guna2Panel6.ResumeLayout(false);
             this.guna2Panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStadium)).EndInit();
             this.guna2Panel22.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogoDetailInStadiumTab)).EndInit();
@@ -2007,12 +2007,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvClubs)).EndInit();
             this.panelAddClub.ResumeLayout(false);
             this.panelAddClub.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             this.guna2Panel11.ResumeLayout(false);
             this.guna2Panel11.PerformLayout();
             this.tabControlClubForm.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStadium)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2127,6 +2128,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
-        private Guna.UI2.WinForms.Guna2Button btnPrint;
+        private Guna.UI2.WinForms.Guna2Button btnOpenReportPlayers;
     }
 }

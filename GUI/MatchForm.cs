@@ -692,8 +692,28 @@ namespace GUI
         }
 
 
+
         #endregion
 
+        private void btnOpenReportMatch_Click(object sender, EventArgs e)
+        {
+            string roundID = cboRounds.SelectedValue.ToString();
+            FormReportMatch frm = new FormReportMatch(seasonID, roundID);
+            frm.ShowDialog();
+        }
 
+        private void btnOpenReportHomePlayer_Click(object sender, EventArgs e)
+        {
+            int isHome = 1;
+            FormReportPlayersInMatch frm = new FormReportPlayersInMatch(selectedMatchID, isHome);
+            frm.ShowDialog();
+        }
+
+        private void btnOpenReportAwayPlayer_Click(object sender, EventArgs e)
+        {
+            int isHome = 0;
+            FormReportPlayersInMatch frm = new FormReportPlayersInMatch(selectedMatchID, isHome);
+            frm.ShowDialog();
+        }
     }
 }

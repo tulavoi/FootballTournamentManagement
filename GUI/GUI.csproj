@@ -74,6 +74,24 @@
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -189,6 +207,24 @@
     <Compile Include="FormDialogUpdateMatchDetail.Designer.cs">
       <DependentUpon>FormDialogUpdateMatchDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportMatch.Designer.cs">
+      <DependentUpon>FormReportMatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportPlayers.Designer.cs">
+      <DependentUpon>FormReportPlayers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormReportPlayersInMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportPlayersInMatch.Designer.cs">
+      <DependentUpon>FormReportPlayersInMatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +262,45 @@
     <Compile Include="RefereeForm.Designer.cs">
       <DependentUpon>RefereeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="_DBProject_NetDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DBProject_NetDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_DBProject_NetDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DBProject_NetDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_DBProject_NetDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DBProject_NetDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_DBProject_NetDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DBProject_NetDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_DBProject_NetDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_DBProject_NetDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="FormDialogAddClubToSeason.resx">
       <DependentUpon>FormDialogAddClubToSeason.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,9 +343,21 @@
     <EmbeddedResource Include="FormDialogEditStadium.resx">
       <DependentUpon>FormDialogEditStadium.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormReportMatch.resx">
+      <DependentUpon>FormReportMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportPlayers.resx">
+      <DependentUpon>FormReportPlayers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportPlayersInMatch.resx">
+      <DependentUpon>FormReportPlayersInMatch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MatchForm.resx">
       <DependentUpon>MatchForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportMatches.rdlc" />
+    <EmbeddedResource Include="ReportPlayers.rdlc" />
+    <EmbeddedResource Include="ReportPlayersInMatch.rdlc" />
     <EmbeddedResource Include="Resources\back-btn.png" />
     <None Include="Resources\back-btn2.png" />
     <EmbeddedResource Include="ClubForm.resx">
@@ -334,6 +421,61 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_DBProject_NetDataSet.xsc">
+      <DependentUpon>_DBProject_NetDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_DBProject_NetDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_DBProject_NetDataSet.xss">
+      <DependentUpon>_DBProject_NetDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet1.xsc">
+      <DependentUpon>_DBProject_NetDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_DBProject_NetDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_DBProject_NetDataSet1.xss">
+      <DependentUpon>_DBProject_NetDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet2.xsc">
+      <DependentUpon>_DBProject_NetDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_DBProject_NetDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_DBProject_NetDataSet2.xss">
+      <DependentUpon>_DBProject_NetDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet3.xsc">
+      <DependentUpon>_DBProject_NetDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_DBProject_NetDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_DBProject_NetDataSet3.xss">
+      <DependentUpon>_DBProject_NetDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet4.xsc">
+      <DependentUpon>_DBProject_NetDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="_DBProject_NetDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_DBProject_NetDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_DBProject_NetDataSet4.xss">
+      <DependentUpon>_DBProject_NetDataSet4.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

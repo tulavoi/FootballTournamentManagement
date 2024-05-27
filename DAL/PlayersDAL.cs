@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Web.UI.WebControls;
 
 namespace DAL
 {
@@ -27,7 +24,11 @@ namespace DAL
                                 number = p.Number,
                                 dob = p.DOB,
                                 country = p.Country,
-                                position = p.Position
+                                position = p.Position,
+                                height = p.Height,
+                                weight = p.Weight,
+                                salary = p.Salary,
+                                foot = p.Foot
                             };
 
                 foreach (var item in query)
@@ -41,6 +42,10 @@ namespace DAL
                     player.Country = item.country;
                     player.DOB = item.dob;
                     player.Position = item.position;
+                    player.Height = item.height;
+                    player.Weight = item.weight;
+                    player.Salary = item.salary;
+                    player.Foot = item.foot;
 
                     players.Add(player);
                 }
@@ -200,6 +205,35 @@ namespace DAL
                 }
             }
             return players;
+        }
+
+        public List<Player> GetAllPlayers()
+        {
+            List<Player> players = new List<Player>();
+
+            using (DBProjetDataContext db = new DBProjetDataContext())
+            {
+                var query = db.Players.Select(p => p);
+                foreach (var item in query)
+                {
+                    Player player = new Player();
+                    player.PlayerID = item.PlayerID;
+                    player.PlayerName = item.PlayerName;
+                    player.Number = item.Number;
+                    player.ClubID = item.ClubID;
+                    player.Image = item.Image;
+                    player.Country = item.Country;
+                    player.Height = item.Height;
+                    player.Weight = item.Weight;
+                    player.DOB = item.DOB;
+                    player.Salary = item.Salary;
+                    player.Position = item.Position;
+                    player.Foot = item.Foot;
+
+                    players.Add(player);
+                }
+                return players;
+            }
         }
     }
 }
