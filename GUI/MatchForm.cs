@@ -135,7 +135,7 @@ namespace GUI
                 {
                     dgvMatches.Rows[rowIndex].Cells["Number"].Value = i++;
 
-                    dgvMatches.Rows[rowIndex].Cells["HomeID"].Tag = match.SeasonClub.Club.ClubID; // = match.HomeID
+                    dgvMatches.Rows[rowIndex].Cells["HomeID"].Tag = match.SeasonClub.ClubID; // = match.HomeID
 
                     if (File.Exists(shortcutLogoPath + match.SeasonClub.Club.Logo))
                         dgvMatches.Rows[rowIndex].Cells["HomeClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.SeasonClub.Club.Logo);
@@ -155,7 +155,7 @@ namespace GUI
                     if (File.Exists(shortcutLogoPath + match.SeasonClub1.Club.Logo))
                         dgvMatches.Rows[rowIndex].Cells["AwayClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.SeasonClub1.Club.Logo);
 
-                    dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.SeasonClub1.Club.ClubID; // = match.AwayID
+                    dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.SeasonClub1.ClubID; // = match.AwayID
                     
                 }
             }
@@ -342,6 +342,8 @@ namespace GUI
                 // Sau khi double click chọn 1 match trong datagridview thì chuyển sang tab control match detail
                 tabControlMatchForm.SelectedIndex = 1;
 
+                SetControlsToDefault();
+
                 // Gán club logo và club name vào controls
                 AssignClubLogoToPictureBoxes(selectedRow);
 
@@ -350,6 +352,19 @@ namespace GUI
                 // Load lại dữ liệu trong match detail tab
                 RefreshMatchDetailTab();
             }
+        }
+
+        private void SetControlsToDefault()
+        {
+            lblHomeScore.Text = "0";
+            lblAwayScore.Text = "0";
+            lblMatchTime.Text = "N/A";
+            lblMatchDay.Text = "N/A";
+            lblMOTMNameAndID.Text = "N/A";
+            lblHomeTactic.Text = "N/A";
+            lblAwayTactic.Text = "N/A";
+            lblRefereeName.Text = "Referee: N/A";
+            pictureBoxMOTM.Image = null;
         }
 
         private void RefreshMatchDetailTab()
@@ -391,6 +406,17 @@ namespace GUI
             }
         }
 
+        private void btnUpdateMatchDetail_Click(object sender, EventArgs e)
+        {
+            Bitmap homeClubLogo = (Bitmap)pictureBoxHomeClubLogo.Image;
+            Bitmap awayClubLogo = (Bitmap)pictureBoxAwayClubLogo.Image;
+            FormDialogUpdateMatchDetail frm = new FormDialogUpdateMatchDetail(homeClubLogo, awayClubLogo, selectedMatchID);
+            frm.ShowDialog();
+
+            // Load lại dữ liệu trong match detail tab
+            RefreshMatchDetailTab();
+        }
+
         #region Home players tab
         private void AssignHomePlayersInMatchToDatagridview()
         {
@@ -417,7 +443,7 @@ namespace GUI
                         else
                             dgvHomePlayers.Rows[rowIndex].Cells["HPImg"].Value = Image.FromFile(shortcutPlayerImgPath + "photo-missing.png");
 
-                        dgvHomePlayers.Rows[rowIndex].Cells["HPID"].Tag = player.PlayerID;
+                        dgvHomePlayers.Rows[rowIndex].Cells["HPID"].Tag = player.Player.PlayerID;
                         dgvHomePlayers.Rows[rowIndex].Cells["HPName"].Value = player.Player.PlayerName;
                         dgvHomePlayers.Rows[rowIndex].Cells["HPNumber"].Value = player.Player.Number;
                         dgvHomePlayers.Rows[rowIndex].Cells["HPPosition"].Value = player.Position;
@@ -478,9 +504,43 @@ namespace GUI
         private void btnOpenDialogAddHomePlayer_Click(object sender, EventArgs e)
         {
             Bitmap homeClubLogo = (Bitmap)pictureBoxClubLogoDetailInHomePlayerTab.Image;
-
-            FormDialogAddPlayerInMatch frm = new FormDialogAddPlayerInMatch(selectedMatchID, homeClubLogo, homeClubIDInSelectedMatch);
+            int isHomeTeam = 1;
+            FormDialogAddPlayerInMatch frm = new FormDialogAddPlayerInMatch(selectedMatchID, homeClubLogo, homeClubIDInSelectedMatch, isHomeTeam);
             frm.ShowDialog();
+            RefreshMatchDetailTab();
+        }
+
+        private void dgvHomePlayers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 12 && e.ColumnIndex != 13)
+                return;
+
+            // Button edit
+            if (e.ColumnIndex == 12)
+            {
+                HandleEditPlayerInMatchButtonClick(e.RowIndex);
+            }
+
+            // Button delete
+            if (e.ColumnIndex == 13)
+            {
+
+            }
+        }
+
+        private void HandleEditPlayerInMatchButtonClick(int rowIndex)
+        {
+            if (rowIndex < 0)
+                return;
+
+            Bitmap clubLogo = (Bitmap)pictureBoxHomeClubLogo.Image;
+            int playerID = Convert.ToInt32(dgvHomePlayers.Rows[rowIndex].Cells["HPID"].Tag);
+            Bitmap playerImg = (Bitmap)dgvHomePlayers.Rows[rowIndex].Cells["HPImg"].Value;
+            int isHomeTeam = 1;
+
+            FormDialogEditPlayerInMatch frm = new FormDialogEditPlayerInMatch(clubLogo, selectedMatchID, playerID, playerImg, selectedMatchID, isHomeTeam);
+            frm.ShowDialog();
+            RefreshMatchDetailTab();
         }
         #endregion
 
@@ -539,22 +599,16 @@ namespace GUI
         private void btnOpenDialogAddAwayPlayer_Click(object sender, EventArgs e)
         {
             Bitmap awayClubLogo = (Bitmap)pictureBoxClubLogoDetailInAwayPlayerTab.Image;
-
-            FormDialogAddPlayerInMatch frm = new FormDialogAddPlayerInMatch(selectedMatchID, awayClubLogo, awayClubIDInSelectedMatch);
+            int isHomeTeam = 0;
+            FormDialogAddPlayerInMatch frm = new FormDialogAddPlayerInMatch(selectedMatchID, awayClubLogo, awayClubIDInSelectedMatch, isHomeTeam);
             frm.ShowDialog();
+            RefreshMatchDetailTab();
         }
 
         #endregion
 
-        private void btnUpdateMatchDetail_Click(object sender, EventArgs e)
-        {
-            Bitmap homeClubLogo = (Bitmap)pictureBoxHomeClubLogo.Image;
-            Bitmap awayClubLogo = (Bitmap)pictureBoxAwayClubLogo.Image;
-            FormDialogUpdateMatchDetail frm = new FormDialogUpdateMatchDetail(homeClubLogo, awayClubLogo, selectedMatchID);
-            frm.ShowDialog();
+        
 
-            // Load lại dữ liệu trong match detail tab
-            RefreshMatchDetailTab();
-        }
+        
     }
 }

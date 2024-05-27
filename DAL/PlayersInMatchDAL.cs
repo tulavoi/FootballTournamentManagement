@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace DAL
 {
@@ -33,7 +35,7 @@ namespace DAL
                 {
                     PlayersInMatch playerInMatch = new PlayersInMatch();
                     playerInMatch.PlayerID = item.PlayerID;
-                    playerInMatch.Player = new Player { PlayerName = item.PlayerName, Image = item.Image, Number = item.Number };
+                    playerInMatch.Player = new Player { PlayerID = item.PlayerID, PlayerName = item.PlayerName, Image = item.Image, Number = item.Number };
                     playerInMatch.IsHomeTeam = item.IsHomeTeam;
                     playerInMatch.Position = item.Position;
                     playerInMatch.Goal = item.Goal;
@@ -99,6 +101,109 @@ namespace DAL
                 }
             }
             return null;
+        }
+
+        public bool AddData(List<PlayersInMatch> playersInMatch)
+        {
+            try
+            {
+                using (DBProjetDataContext db = new DBProjetDataContext())
+                {
+                    db.PlayersInMatches.InsertAllOnSubmit(playersInMatch);
+                    db.SubmitChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public PlayersInMatch Get1PlayerInMatch(string matchID, int playerID)
+        {
+            PlayersInMatch playersInMatch = new PlayersInMatch();
+            using (DBProjetDataContext db = new DBProjetDataContext())
+            {
+                var query = from pim in db.PlayersInMatches
+                            join p in db.Players on pim.PlayerID equals p.PlayerID
+                            where pim.MatchID == matchID && pim.PlayerID == playerID
+                            select new
+                            {
+                                MatchID = matchID,
+                                PlayerID = pim.PlayerID,
+                                PlayerName = p.PlayerName,
+                                Position = pim.Position,
+                                Goals = pim.Goal,
+                                OwnGoals = pim.OwnGoal,
+                                YellowCards = pim.YellowCard,
+                                RedCards = pim.RedCard,
+                                IsCaptain = pim.IsCaptain
+                            };
+
+                var item = query.FirstOrDefault();
+                if (item != null)
+                {
+                    playersInMatch.Match = new Match
+                    {
+                        MatchID = item.MatchID
+                    };
+
+                    playersInMatch.Player = new Player
+                    {
+                        PlayerID = item.PlayerID,
+                        PlayerName = item.PlayerName,
+                    };
+                    playersInMatch.Position = item.Position;
+                    playersInMatch.Goal = item.Goals;
+                    playersInMatch.OwnGoal = item.OwnGoals;
+                    playersInMatch.YellowCard = item.YellowCards;
+                    playersInMatch.RedCard = item.RedCards;
+                    playersInMatch.IsCaptain = item.IsCaptain;
+
+                    return playersInMatch;
+                }
+            }
+            return null;
+        }
+
+        public bool EditData(PlayersInMatch playersInMatch)
+        {
+            try
+            {
+                using (DBProjetDataContext db = new DBProjetDataContext())
+                {
+                    var query = db.PlayersInMatches.Where(pim => pim.PlayerID == playersInMatch.Player.PlayerID && pim.MatchID == playersInMatch.MatchID).FirstOrDefault();
+
+                    if (query != null)
+                    {
+                        query.Position = playersInMatch.Position;
+                        query.Goal = playersInMatch.Goal;
+                        query.OwnGoal = playersInMatch.OwnGoal;
+                        query.YellowCard = playersInMatch.YellowCard;
+                        query.RedCard = playersInMatch.RedCard;
+                        query.IsCaptain = playersInMatch.IsCaptain;
+                        //db.PlayersInMatches.DeleteOnSubmit(query);
+
+                        db.SubmitChanges();
+
+                        return true;
+                    }
+
+                    
+
+                    //db.PlayersInMatches.InsertOnSubmit(playersInMatch);
+
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }

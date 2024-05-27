@@ -65,6 +65,7 @@
             this.txtYear = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtMonth = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtDay = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClubLogo)).BeginInit();
             this.panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlayerImg)).BeginInit();
@@ -348,7 +349,7 @@
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(48, 57);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(113, 33);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(900, 33);
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "Edit Player";
             // 
@@ -700,6 +701,12 @@
             this.txtDay.TabIndex = 66;
             this.txtDay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numeric_KeyPress);
             // 
+            // guna2DragControl2
+            // 
+            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl2.TargetControl = this.panelContent;
+            this.guna2DragControl2.UseTransparentDrag = true;
+            // 
             // FormDialogEditPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -758,5 +765,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtDay;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel12;
         private Guna.UI2.WinForms.Guna2ComboBox cboClubs;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
     }
 }

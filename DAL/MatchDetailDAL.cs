@@ -120,9 +120,8 @@ namespace DAL
                     {
                         // Xóa match detail cũ (existingMatchDetail)
                         db.MatchDetails.DeleteOnSubmit(existingMatchDetail);
+                        EditMatchTimeOfMatch(match);
                     }
-
-                    EditMatchTimeOfMatch(match);
 
                     // Thêm vào match detail mới (newMatchDetail)
                     MatchDetail newMatchDetail = CreateNewMatchDetail(matchDetail);

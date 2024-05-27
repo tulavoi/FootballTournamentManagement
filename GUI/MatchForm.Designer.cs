@@ -63,6 +63,18 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvMatches = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HomeClubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HomeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HomeClubLogo = new System.Windows.Forms.DataGridViewImageColumn();
+            this.HomeScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MatchID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AwayScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AwayClubLogo = new System.Windows.Forms.DataGridViewImageColumn();
+            this.AwayID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AwayClubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MatchTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelPaddingBottom = new Guna.UI2.WinForms.Guna2Panel();
             this.panelPaddingRight = new Guna.UI2.WinForms.Guna2Panel();
             this.panelPaddingLeft = new Guna.UI2.WinForms.Guna2Panel();
@@ -174,18 +186,6 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblClubNameInManagersTab = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HomeClubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HomeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HomeClubLogo = new System.Windows.Forms.DataGridViewImageColumn();
-            this.HomeScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MatchID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AwayScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AwayClubLogo = new System.Windows.Forms.DataGridViewImageColumn();
-            this.AwayID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AwayClubName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MatchTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabList.SuspendLayout();
             this.guna2Panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClubs)).BeginInit();
@@ -473,6 +473,131 @@
             this.dgvMatches.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvMatches.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgvMatches.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMatches_CellDoubleClick);
+            // 
+            // Number
+            // 
+            this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Number.Frozen = true;
+            this.Number.HeaderText = "";
+            this.Number.MinimumWidth = 6;
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.Width = 30;
+            // 
+            // HomeClubName
+            // 
+            this.HomeClubName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HomeClubName.Frozen = true;
+            this.HomeClubName.HeaderText = "Home Club";
+            this.HomeClubName.MinimumWidth = 6;
+            this.HomeClubName.Name = "HomeClubName";
+            this.HomeClubName.ReadOnly = true;
+            this.HomeClubName.Width = 180;
+            // 
+            // HomeID
+            // 
+            this.HomeID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HomeID.Frozen = true;
+            this.HomeID.HeaderText = "";
+            this.HomeID.MinimumWidth = 6;
+            this.HomeID.Name = "HomeID";
+            this.HomeID.ReadOnly = true;
+            this.HomeID.Width = 20;
+            // 
+            // HomeClubLogo
+            // 
+            this.HomeClubLogo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HomeClubLogo.FillWeight = 213.9037F;
+            this.HomeClubLogo.Frozen = true;
+            this.HomeClubLogo.HeaderText = "";
+            this.HomeClubLogo.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.HomeClubLogo.MinimumWidth = 6;
+            this.HomeClubLogo.Name = "HomeClubLogo";
+            this.HomeClubLogo.ReadOnly = true;
+            this.HomeClubLogo.Width = 70;
+            // 
+            // HomeScore
+            // 
+            this.HomeScore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HomeScore.Frozen = true;
+            this.HomeScore.HeaderText = "";
+            this.HomeScore.MinimumWidth = 6;
+            this.HomeScore.Name = "HomeScore";
+            this.HomeScore.ReadOnly = true;
+            this.HomeScore.Width = 20;
+            // 
+            // MatchID
+            // 
+            this.MatchID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MatchID.FillWeight = 53.63456F;
+            this.MatchID.Frozen = true;
+            this.MatchID.HeaderText = "VS";
+            this.MatchID.MinimumWidth = 6;
+            this.MatchID.Name = "MatchID";
+            this.MatchID.ReadOnly = true;
+            this.MatchID.Width = 40;
+            // 
+            // AwayScore
+            // 
+            this.AwayScore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.AwayScore.Frozen = true;
+            this.AwayScore.HeaderText = "";
+            this.AwayScore.MinimumWidth = 6;
+            this.AwayScore.Name = "AwayScore";
+            this.AwayScore.ReadOnly = true;
+            this.AwayScore.Width = 20;
+            // 
+            // AwayClubLogo
+            // 
+            this.AwayClubLogo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.AwayClubLogo.FillWeight = 213.9037F;
+            this.AwayClubLogo.Frozen = true;
+            this.AwayClubLogo.HeaderText = "";
+            this.AwayClubLogo.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.AwayClubLogo.MinimumWidth = 6;
+            this.AwayClubLogo.Name = "AwayClubLogo";
+            this.AwayClubLogo.ReadOnly = true;
+            this.AwayClubLogo.Width = 70;
+            // 
+            // AwayID
+            // 
+            this.AwayID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.AwayID.Frozen = true;
+            this.AwayID.HeaderText = "";
+            this.AwayID.MinimumWidth = 6;
+            this.AwayID.Name = "AwayID";
+            this.AwayID.ReadOnly = true;
+            this.AwayID.Width = 20;
+            // 
+            // AwayClubName
+            // 
+            this.AwayClubName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.AwayClubName.Frozen = true;
+            this.AwayClubName.HeaderText = "Away Club";
+            this.AwayClubName.MinimumWidth = 6;
+            this.AwayClubName.Name = "AwayClubName";
+            this.AwayClubName.ReadOnly = true;
+            this.AwayClubName.Width = 180;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 30;
+            // 
+            // MatchTime
+            // 
+            this.MatchTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MatchTime.Frozen = true;
+            this.MatchTime.HeaderText = "Match Date";
+            this.MatchTime.MinimumWidth = 6;
+            this.MatchTime.Name = "MatchTime";
+            this.MatchTime.ReadOnly = true;
+            this.MatchTime.Width = 130;
             // 
             // panelPaddingBottom
             // 
@@ -1330,6 +1455,7 @@
             this.dgvHomePlayers.ThemeStyle.RowsStyle.Height = 60;
             this.dgvHomePlayers.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvHomePlayers.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvHomePlayers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHomePlayers_CellClick);
             this.dgvHomePlayers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHomePlayers_CellFormatting);
             // 
             // STTHP
@@ -2142,131 +2268,6 @@
             this.lblClubNameInManagersTab.TabIndex = 5;
             this.lblClubNameInManagersTab.Text = "N/A";
             this.lblClubNameInManagersTab.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Number
-            // 
-            this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Number.Frozen = true;
-            this.Number.HeaderText = "";
-            this.Number.MinimumWidth = 6;
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.Width = 30;
-            // 
-            // HomeClubName
-            // 
-            this.HomeClubName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HomeClubName.Frozen = true;
-            this.HomeClubName.HeaderText = "Home Club";
-            this.HomeClubName.MinimumWidth = 6;
-            this.HomeClubName.Name = "HomeClubName";
-            this.HomeClubName.ReadOnly = true;
-            this.HomeClubName.Width = 180;
-            // 
-            // HomeID
-            // 
-            this.HomeID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HomeID.Frozen = true;
-            this.HomeID.HeaderText = "";
-            this.HomeID.MinimumWidth = 6;
-            this.HomeID.Name = "HomeID";
-            this.HomeID.ReadOnly = true;
-            this.HomeID.Width = 20;
-            // 
-            // HomeClubLogo
-            // 
-            this.HomeClubLogo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HomeClubLogo.FillWeight = 213.9037F;
-            this.HomeClubLogo.Frozen = true;
-            this.HomeClubLogo.HeaderText = "";
-            this.HomeClubLogo.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.HomeClubLogo.MinimumWidth = 6;
-            this.HomeClubLogo.Name = "HomeClubLogo";
-            this.HomeClubLogo.ReadOnly = true;
-            this.HomeClubLogo.Width = 70;
-            // 
-            // HomeScore
-            // 
-            this.HomeScore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HomeScore.Frozen = true;
-            this.HomeScore.HeaderText = "";
-            this.HomeScore.MinimumWidth = 6;
-            this.HomeScore.Name = "HomeScore";
-            this.HomeScore.ReadOnly = true;
-            this.HomeScore.Width = 20;
-            // 
-            // MatchID
-            // 
-            this.MatchID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MatchID.FillWeight = 53.63456F;
-            this.MatchID.Frozen = true;
-            this.MatchID.HeaderText = "VS";
-            this.MatchID.MinimumWidth = 6;
-            this.MatchID.Name = "MatchID";
-            this.MatchID.ReadOnly = true;
-            this.MatchID.Width = 40;
-            // 
-            // AwayScore
-            // 
-            this.AwayScore.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.AwayScore.Frozen = true;
-            this.AwayScore.HeaderText = "";
-            this.AwayScore.MinimumWidth = 6;
-            this.AwayScore.Name = "AwayScore";
-            this.AwayScore.ReadOnly = true;
-            this.AwayScore.Width = 20;
-            // 
-            // AwayClubLogo
-            // 
-            this.AwayClubLogo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.AwayClubLogo.FillWeight = 213.9037F;
-            this.AwayClubLogo.Frozen = true;
-            this.AwayClubLogo.HeaderText = "";
-            this.AwayClubLogo.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.AwayClubLogo.MinimumWidth = 6;
-            this.AwayClubLogo.Name = "AwayClubLogo";
-            this.AwayClubLogo.ReadOnly = true;
-            this.AwayClubLogo.Width = 70;
-            // 
-            // AwayID
-            // 
-            this.AwayID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.AwayID.Frozen = true;
-            this.AwayID.HeaderText = "";
-            this.AwayID.MinimumWidth = 6;
-            this.AwayID.Name = "AwayID";
-            this.AwayID.ReadOnly = true;
-            this.AwayID.Width = 20;
-            // 
-            // AwayClubName
-            // 
-            this.AwayClubName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.AwayClubName.Frozen = true;
-            this.AwayClubName.HeaderText = "Away Club";
-            this.AwayClubName.MinimumWidth = 6;
-            this.AwayClubName.Name = "AwayClubName";
-            this.AwayClubName.ReadOnly = true;
-            this.AwayClubName.Width = 180;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 30;
-            // 
-            // MatchTime
-            // 
-            this.MatchTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.MatchTime.Frozen = true;
-            this.MatchTime.HeaderText = "Match Date";
-            this.MatchTime.MinimumWidth = 6;
-            this.MatchTime.Name = "MatchTime";
-            this.MatchTime.ReadOnly = true;
-            this.MatchTime.Width = 130;
             // 
             // MatchForm
             // 

@@ -165,6 +165,12 @@
     <Compile Include="FormDialogEditPlayer.Designer.cs">
       <DependentUpon>FormDialogEditPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDialogEditPlayerInMatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDialogEditPlayerInMatch.Designer.cs">
+      <DependentUpon>FormDialogEditPlayerInMatch.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDialogEditReferee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogAddPlayerInMatch.resx">
       <DependentUpon>FormDialogAddPlayerInMatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDialogEditPlayerInMatch.resx">
+      <DependentUpon>FormDialogEditPlayerInMatch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogUpdateMatchDetail.resx">
       <DependentUpon>FormDialogUpdateMatchDetail.cs</DependentUpon>

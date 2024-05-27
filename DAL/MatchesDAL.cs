@@ -148,6 +148,7 @@ namespace DAL
                         ClubID = item.homeID, 
                         Club = new Club 
                         { 
+                            ClubID = item.homeID,
                             ClubName = item.homeClubName, 
                             Logo = item.homeClubLogo, 
                         } 
@@ -158,6 +159,7 @@ namespace DAL
                         ClubID = item.awayID,
                         Club = new Club
                         {
+                            ClubID = item.awayID,
                             ClubName = item.awayClubName,
                             Logo = item.awayClubLogo,
                         }
