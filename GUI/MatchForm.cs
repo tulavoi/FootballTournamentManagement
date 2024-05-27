@@ -156,7 +156,7 @@ namespace GUI
                         dgvMatches.Rows[rowIndex].Cells["AwayClubLogo"].Value = Image.FromFile(shortcutLogoPath + match.SeasonClub1.Club.Logo);
 
                     dgvMatches.Rows[rowIndex].Cells["AwayID"].Tag = match.SeasonClub1.ClubID; // = match.AwayID
-                    
+
                 }
             }
         }
@@ -410,7 +410,10 @@ namespace GUI
         {
             Bitmap homeClubLogo = (Bitmap)pictureBoxHomeClubLogo.Image;
             Bitmap awayClubLogo = (Bitmap)pictureBoxAwayClubLogo.Image;
-            FormDialogUpdateMatchDetail frm = new FormDialogUpdateMatchDetail(homeClubLogo, awayClubLogo, selectedMatchID);
+
+            Match match = matchesBLL.GetDataByID(selectedMatchID);
+
+            FormDialogUpdateMatchDetail frm = new FormDialogUpdateMatchDetail(homeClubLogo, awayClubLogo, selectedMatchID, match.MatchTime);
             frm.ShowDialog();
 
             // Load lại dữ liệu trong match detail tab
@@ -467,7 +470,7 @@ namespace GUI
         {
             MatchDetail matchDetail = matchDetailBLL.LoadDataByMatchID(selectedMatchID);
 
-            if (matchDetail != null) 
+            if (matchDetail != null)
             {
                 lblHomeTactic.Text = matchDetail.HomeTactical;
                 lblAwayTactic.Text = matchDetail.AwayTactical;
@@ -518,17 +521,42 @@ namespace GUI
             // Button edit
             if (e.ColumnIndex == 12)
             {
-                HandleEditPlayerInMatchButtonClick(e.RowIndex);
+                HandleEditHomePlayerInMatchButtonClick(e.RowIndex);
             }
 
             // Button delete
             if (e.ColumnIndex == 13)
             {
-
+                HandleDeleteHomePlayerInMatchButtonClick(e.RowIndex);
             }
         }
 
-        private void HandleEditPlayerInMatchButtonClick(int rowIndex)
+        private void HandleDeleteHomePlayerInMatchButtonClick(int rowIndex)
+        {
+            if (rowIndex < 0)
+                return;
+
+            string playerName = dgvHomePlayers.Rows[rowIndex].Cells["HPName"].Value.ToString();
+
+            DialogResult rs = MessageBox.Show($"Are you sure to delete \"{playerName}\" from match?",
+                                                "Information",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes)
+            {
+                int playerID = Convert.ToInt32(dgvHomePlayers.Rows[rowIndex].Cells["HPID"].Tag);
+                bool isDeletePlayerSuccess = playersInMatchBLL.DeleteData(playerID, selectedMatchID);
+                if (isDeletePlayerSuccess)
+                {
+                    MessageBox.Show($"Deleted player \"{playerName}\" successfully!");
+                    RefreshMatchDetailTab();
+                }
+                else
+                    MessageBox.Show($"Delete player \"{playerName}\" failed!");
+            }
+        }
+
+        private void HandleEditHomePlayerInMatchButtonClick(int rowIndex)
         {
             if (rowIndex < 0)
                 return;
@@ -605,10 +633,67 @@ namespace GUI
             RefreshMatchDetailTab();
         }
 
+        private void dgvAwayPlayers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 12 && e.ColumnIndex != 13)
+                return;
+
+            // Button edit
+            if (e.ColumnIndex == 12)
+            {
+                HandleEditAwayPlayerInMatchButtonClick(e.RowIndex);
+            }
+
+            // Button delete
+            if (e.ColumnIndex == 13)
+            {
+                HandleDeleteAwayPlayerInMatchButtonClick(e.RowIndex);
+            }
+        }
+
+        private void HandleDeleteAwayPlayerInMatchButtonClick(int rowIndex)
+        {
+            if (rowIndex < 0)
+                return;
+
+            string playerName = dgvAwayPlayers.Rows[rowIndex].Cells["APName"].Value.ToString();
+
+            DialogResult rs = MessageBox.Show($"Are you sure to delete \"{playerName}\" from match?",
+                                                "Information",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Question);
+            if (rs == DialogResult.Yes)
+            {
+                int playerID = Convert.ToInt32(dgvAwayPlayers.Rows[rowIndex].Cells["APID"].Tag);
+                bool isDeletePlayerSuccess = playersInMatchBLL.DeleteData(playerID, selectedMatchID);
+                if (isDeletePlayerSuccess)
+                {
+                    MessageBox.Show($"Deleted player \"{playerName}\" successfully!");
+                    RefreshMatchDetailTab();
+                }
+                else
+                    MessageBox.Show($"Delete player \"{playerName}\" failed!");
+            }
+        }
+
+        private void HandleEditAwayPlayerInMatchButtonClick(int rowIndex)
+        {
+            if (rowIndex < 0)
+                return;
+
+            Bitmap clubLogo = (Bitmap)pictureBoxAwayClubLogo.Image;
+            int playerID = Convert.ToInt32(dgvAwayPlayers.Rows[rowIndex].Cells["APID"].Tag);
+            Bitmap playerImg = (Bitmap)dgvAwayPlayers.Rows[rowIndex].Cells["APImg"].Value;
+            int isHomeTeam = 0;
+
+            FormDialogEditPlayerInMatch frm = new FormDialogEditPlayerInMatch(clubLogo, selectedMatchID, playerID, playerImg, selectedMatchID, isHomeTeam);
+            frm.ShowDialog();
+            RefreshMatchDetailTab();
+        }
+
+
         #endregion
 
-        
 
-        
     }
 }

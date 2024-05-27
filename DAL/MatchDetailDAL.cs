@@ -120,8 +120,9 @@ namespace DAL
                     {
                         // Xóa match detail cũ (existingMatchDetail)
                         db.MatchDetails.DeleteOnSubmit(existingMatchDetail);
-                        EditMatchTimeOfMatch(match);
                     }
+
+                    EditMatchTimeOfMatch(match);
 
                     // Thêm vào match detail mới (newMatchDetail)
                     MatchDetail newMatchDetail = CreateNewMatchDetail(matchDetail);
@@ -133,7 +134,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
                 Console.WriteLine(ex.Message);
                 return false;
             }
@@ -170,11 +171,7 @@ namespace DAL
             newMatchDetail.HomeTactical = matchDetail.HomeTactical;
             newMatchDetail.AwayTactical = matchDetail.AwayTactical;
             newMatchDetail.RefereeID = matchDetail.RefereeID;
-            //newMatchDetail.Match = new Match
-            //{
-            //    MatchID = matchDetail.Match.MatchID,
-            //    MatchTime = matchDetail.Match.MatchTime
-            //};
+           
             return newMatchDetail;
         }
 

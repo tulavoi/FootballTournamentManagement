@@ -10,6 +10,7 @@ namespace BLL
     public class MatchesBLL
     {
         MatchesDAL matchesDAL = new MatchesDAL();
+
         public bool AddData(string roundID, int seasonID, DateTime startDate, DateTime endDate)
         {
             return matchesDAL.AddData(roundID, seasonID, startDate, endDate);
@@ -20,9 +21,9 @@ namespace BLL
             return matchesDAL.GetDataByRoundID(roundID, seasonID);
         }
 
-        public Match GetLastestMatchInAMatchweek(string roundID)
+        public Match GetDataByID(string matchID)
         {
-            return matchesDAL.GetLastestMatchInAMatchweek(roundID);
+            return matchesDAL.GetDataByID(matchID);
         }
     }
 }

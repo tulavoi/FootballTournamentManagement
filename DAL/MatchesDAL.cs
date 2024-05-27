@@ -185,5 +185,16 @@ namespace DAL
                 return query.FirstOrDefault();
             }
         }
+
+        public Match GetDataByID(string matchID)
+        {
+            using (DBProjetDataContext db = new DBProjetDataContext())
+            {
+                var query = db.Matches.Where(m => m.MatchID == matchID).FirstOrDefault();
+                if (query != null)
+                    return query;
+            }
+            return null;
+        }
     }
 }

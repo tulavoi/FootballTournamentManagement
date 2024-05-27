@@ -226,12 +226,6 @@
     <Compile Include="RefereeForm.Designer.cs">
       <DependentUpon>RefereeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SeasonForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SeasonForm.Designer.cs">
-      <DependentUpon>SeasonForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FormDialogAddClubToSeason.resx">
       <DependentUpon>FormDialogAddClubToSeason.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,9 +237,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDialogUpdateMatchDetail.resx">
       <DependentUpon>FormDialogUpdateMatchDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SeasonForm.resx">
-      <DependentUpon>SeasonForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GUI_TemporaryKey.pfx" />
     <None Include="Resources\photo-missing.png" />

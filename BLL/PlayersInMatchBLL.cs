@@ -36,5 +36,11 @@ namespace BLL
         {
             return playersInMatchDAL.EditData(playersInMatch);
         }
+
+        public bool DeleteData(int playerID, string selectedMatchID)
+        {
+            return playersInMatchDAL.DeleteData(playerID, selectedMatchID);
+
+        }
     }
 }

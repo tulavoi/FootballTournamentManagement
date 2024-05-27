@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace GUI
@@ -18,17 +17,19 @@ namespace GUI
         Bitmap homeClubLogo;
         Bitmap awayClubLogo;
         string matchID;
+        DateTime matchTime;
 
         private string shortcutPlayerImgPath = "Images\\Players\\";
         private string defaultPlayerImgPath = "Images\\Players\\photo-missing.png";
 
 
-        public FormDialogUpdateMatchDetail(Bitmap homeClubLogo, Bitmap awayClubLogo, string selectedMatchID)
+        public FormDialogUpdateMatchDetail(Bitmap homeClubLogo, Bitmap awayClubLogo, string selectedMatchID, DateTime? matchTime)
         {
             InitializeComponent();
             this.homeClubLogo = homeClubLogo;
             this.awayClubLogo = awayClubLogo;
             matchID = selectedMatchID;
+            this.matchTime = (DateTime)matchTime;
         }
 
         private void FormDialogUpdateMatchDetail_Load(object sender, EventArgs e)
@@ -46,6 +47,8 @@ namespace GUI
         {
             MatchDetail matchDetail = matchDetailBLL.GetMatchDetail(matchID);
 
+            dtpMatchTime.Value = matchTime;
+
             if (matchDetail != null)
             {
                 SetFormationAndTactic(matchDetail.HomeTactical, cboHomeFormations, cboHomeTactics);
@@ -57,8 +60,6 @@ namespace GUI
                 SelectRowByTag(dgvPLayersInMatch, matchDetail.MotmID);
 
                 cboReferees.Text = matchDetail.Referee.RefereeName;
-
-                dtpMatchTime.Value = (DateTime)matchDetail.Match.MatchTime;
             }
         }
 
@@ -228,26 +229,16 @@ namespace GUI
         {
             // Tạo matchDetail kiểm tra có tồn tại trong db hay không, nếu tồn tại thì sửa match detail, nếu chưa tồn tại thì thêm mới
             MatchDetail matchDetail = matchDetailBLL.GetMatchDetail(matchID);
+
+            Match match = new Match
+            {
+                MatchID = matchID,
+                MatchTime = dtpMatchTime.Value
+            };
+
             if (matchDetail != null)
             {
-                MatchDetail matchDetailToEdit = new MatchDetail();
-                int motmID = GetMotmID();
-                matchDetailToEdit.MotmID = motmID;
-                matchDetailToEdit.HomeGoals = Convert.ToInt32(txtHomeGoals.Text);
-                matchDetailToEdit.AwayGoals = Convert.ToInt32(txtAwayGoals.Text);
-
-                matchDetailToEdit.HomeTactical = cboHomeTactics.Text;
-                matchDetailToEdit.AwayTactical = cboAwayTactics.Text;
-
-                matchDetailToEdit.RefereeID = Convert.ToInt32(cboReferees.SelectedValue);
-
-                matchDetailToEdit.Match = new Match { MatchID = matchID };
-
-                Match match = new Match 
-                {
-                    MatchID = matchID,
-                    MatchTime = dtpMatchTime.Value
-                };
+                MatchDetail matchDetailToEdit = GetMatchDetail();
 
                 bool isEditMatchDetailSuccess = matchDetailBLL.EditData(matchDetailToEdit, match);
 
@@ -257,10 +248,57 @@ namespace GUI
                     Close();
                 }
                 else
-                {
                     MessageBox.Show("Update match detail failed!");
-                }
             }
+
+            else
+            {
+                MatchDetail matchDetailToAdd = GetMatchDetail();
+
+                bool isEditMatchDetailSuccess = matchDetailBLL.EditData(matchDetailToAdd, match);
+
+                if (isEditMatchDetailSuccess)
+                {
+                    MessageBox.Show("Updated match detail successfully!");
+                    Close();
+                }
+                else
+                    MessageBox.Show("Update match detail failed!");
+            }
+
+            //bool isEditMatchDetailSuccess;
+            //if (matchDetailBLL.GetMatchDetail(matchID) != null) {
+            //    isEditMatchDetailSuccess = matchDetailBLL.EditData(matchDetail, match);
+            //}
+            //else
+            //{
+            //    isEditMatchDetailSuccess = matchDetailBLL.EditData(matchDetail, match);
+            //}
+            //if (isEditMatchDetailSuccess)
+            //{
+            //    MessageBox.Show("Updated match detail successfully!");
+            //    Close();
+            //}
+            //else
+            //    MessageBox.Show("Update match detail failed!");
+        }
+
+        private MatchDetail GetMatchDetail()
+        {
+            MatchDetail matchDetail = new MatchDetail();
+            int motmID = GetMotmID();
+            matchDetail.MotmID = motmID;
+            matchDetail.HomeGoals = Convert.ToInt32(txtHomeGoals.Text);
+            matchDetail.AwayGoals = Convert.ToInt32(txtAwayGoals.Text);
+
+            matchDetail.HomeTactical = cboHomeTactics.Text;
+            matchDetail.AwayTactical = cboAwayTactics.Text;
+
+            matchDetail.RefereeID = Convert.ToInt32(cboReferees.SelectedValue);
+
+            matchDetail.Match = new Match { MatchID = matchID };
+            
+            return matchDetail;
         }
 
         private int GetMotmID()
@@ -273,6 +311,11 @@ namespace GUI
                 return selectedMotmID;
             }
             return 0;
+        }
+
+        private void guna2HtmlLabel8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

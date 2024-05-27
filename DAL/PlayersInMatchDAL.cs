@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.UI.WebControls;
 
 namespace DAL
 {
@@ -191,10 +190,33 @@ namespace DAL
                         return true;
                     }
 
-                    
+
 
                     //db.PlayersInMatches.InsertOnSubmit(playersInMatch);
 
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public bool DeleteData(int playerID, string matchID)
+        {
+            try
+            {
+                using (DBProjetDataContext db = new DBProjetDataContext())
+                {
+                    var query = db.PlayersInMatches.Where(pim => pim.PlayerID == playerID && pim.MatchID == matchID).FirstOrDefault();
+                    if (query != null)
+                    {
+                        db.PlayersInMatches.DeleteOnSubmit(query);
+                        db.SubmitChanges();
+                        return true;
+                    }
                     return false;
                 }
             }

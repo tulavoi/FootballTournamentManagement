@@ -1874,6 +1874,7 @@
             this.dgvAwayPlayers.ThemeStyle.RowsStyle.Height = 60;
             this.dgvAwayPlayers.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvAwayPlayers.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvAwayPlayers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAwayPlayers_CellClick);
             this.dgvAwayPlayers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAwayPlayers_CellFormatting);
             // 
             // STTAP
