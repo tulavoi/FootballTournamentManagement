@@ -59,8 +59,8 @@ namespace GUI
         /// </summary>
         private void LoadClubBySeasonID()
         {
-            //int seasonID = Convert.ToInt32(cboSeason.SelectedValue);
-            List<Club> clubs = ssClubsBLL.LoadDataBySeasonID(1003);
+            int seasonID = Convert.ToInt32(cboSeason.SelectedValue);
+            List<Club> clubs = ssClubsBLL.LoadDataBySeasonID(seasonID);
             LoadDataOfClubsToDataGridView(clubs);
         }
 

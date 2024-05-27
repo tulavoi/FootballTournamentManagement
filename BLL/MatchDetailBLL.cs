@@ -22,9 +22,9 @@ namespace BLL
             return matchDetailDAL.GetMatchDetail(matchID);
         }
 
-        public bool EditData(MatchDetail matchDetail, DateTime matchTime)
+        public bool EditData(MatchDetail matchDetail, DAL.Match match)
         {
-            return matchDetailDAL.EditData(matchDetail, matchTime);
+            return matchDetailDAL.EditData(matchDetail, match);
         }
     }
 }

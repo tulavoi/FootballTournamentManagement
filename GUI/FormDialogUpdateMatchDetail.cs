@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GUI
@@ -225,23 +226,40 @@ namespace GUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            // Tạo matchDetail kiểm tra có tồn tại trong db hay không, nếu tồn tại thì sửa match detail, nếu chưa tồn tại thì thêm mới
             MatchDetail matchDetail = matchDetailBLL.GetMatchDetail(matchID);
             if (matchDetail != null)
             {
+                MatchDetail matchDetailToEdit = new MatchDetail();
                 int motmID = GetMotmID();
-                matchDetail.MotmID = motmID;
-                matchDetail.HomeGoals = Convert.ToInt32(txtHomeGoals.Text);
-                matchDetail.AwayGoals = Convert.ToInt32(txtAwayGoals.Text);
+                matchDetailToEdit.MotmID = motmID;
+                matchDetailToEdit.HomeGoals = Convert.ToInt32(txtHomeGoals.Text);
+                matchDetailToEdit.AwayGoals = Convert.ToInt32(txtAwayGoals.Text);
 
-                matchDetail.HomeTactical = cboHomeTactics.Text;
-                matchDetail.AwayTactical = cboAwayTactics.Text;
+                matchDetailToEdit.HomeTactical = cboHomeTactics.Text;
+                matchDetailToEdit.AwayTactical = cboAwayTactics.Text;
 
-                // Lỗi ở đây
-                matchDetail.RefereeID = (int)cboReferees.SelectedValue;
+                matchDetailToEdit.RefereeID = Convert.ToInt32(cboReferees.SelectedValue);
 
-                matchDetail.Match.MatchTime = dtpMatchTime.Value;
+                matchDetailToEdit.Match = new Match { MatchID = matchID };
 
-                //bool isEditMatchDetailSuccess = matchDetailBLL.EditData();
+                Match match = new Match 
+                {
+                    MatchID = matchID,
+                    MatchTime = dtpMatchTime.Value
+                };
+
+                bool isEditMatchDetailSuccess = matchDetailBLL.EditData(matchDetailToEdit, match);
+
+                if (isEditMatchDetailSuccess)
+                {
+                    MessageBox.Show("Updated match detail successfully!");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Update match detail failed!");
+                }
             }
         }
 

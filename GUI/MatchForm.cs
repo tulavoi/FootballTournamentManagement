@@ -16,8 +16,6 @@ namespace GUI
 
         RoundsBLL roundsBLL = new RoundsBLL();
 
-        ClubsBLL clubsBLL = new ClubsBLL();
-
         MatchesBLL matchesBLL = new MatchesBLL();
 
         MatchDetailBLL matchDetailBLL = new MatchDetailBLL();
@@ -341,19 +339,25 @@ namespace GUI
                 homeClubIDInSelectedMatch = Convert.ToInt32(selectedRow.Cells["HomeID"].Tag);
                 awayClubIDInSelectedMatch = Convert.ToInt32(selectedRow.Cells["AwayID"].Tag);
 
+                // Sau khi double click chọn 1 match trong datagridview thì chuyển sang tab control match detail
+                tabControlMatchForm.SelectedIndex = 1;
+
+                // Gán club logo và club name vào controls
                 AssignClubLogoToPictureBoxes(selectedRow);
 
                 AssignClubNameToLabels(selectedRow);
 
-                // Sau khi double click chọn 1 match trong datagridview thì chuyển sang tab control match detail
-                tabControlMatchForm.SelectedIndex = 1;
-
-                AssginDataOfMatchDetailToControlsInTabMatchDetail();
-
-                AssignHomePlayersInMatchToDatagridview();
-                AssignAwayPlayersInMatchToDatagridview();
-
+                // Load lại dữ liệu trong match detail tab
+                RefreshMatchDetailTab();
             }
+        }
+
+        private void RefreshMatchDetailTab()
+        {
+            AssginDataOfMatchDetailToControlsInTabMatchDetail();
+
+            AssignHomePlayersInMatchToDatagridview();
+            AssignAwayPlayersInMatchToDatagridview();
         }
 
 
@@ -455,7 +459,8 @@ namespace GUI
 
                 lblMOTMNameAndID.Text = matchDetail.PlayersInMatch.Player.PlayerName;
 
-                lblRefereeName.Text += matchDetail.Referee.RefereeName;
+                lblRefereeName.Text = "";
+                lblRefereeName.Text = "Referee: " + matchDetail.Referee.RefereeName;
 
                 if (File.Exists(shortcutPlayerImgPath + matchDetail.PlayersInMatch.Player.Image))
                     pictureBoxMOTM.Image = Image.FromFile(shortcutPlayerImgPath + matchDetail.PlayersInMatch.Player.Image);
@@ -547,6 +552,9 @@ namespace GUI
             Bitmap awayClubLogo = (Bitmap)pictureBoxAwayClubLogo.Image;
             FormDialogUpdateMatchDetail frm = new FormDialogUpdateMatchDetail(homeClubLogo, awayClubLogo, selectedMatchID);
             frm.ShowDialog();
+
+            // Load lại dữ liệu trong match detail tab
+            RefreshMatchDetailTab();
         }
     }
 }

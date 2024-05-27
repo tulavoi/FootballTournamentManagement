@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Web.UI.Design;
 using System.Web.UI.WebControls;
 
 namespace DAL
@@ -11,7 +13,7 @@ namespace DAL
         {
             using (DBProjetDataContext db = new DBProjetDataContext())
             {
-                var query = from md in db.MatchDetails
+                var existingMatchDetail = from md in db.MatchDetails
                             join pim in db.PlayersInMatches on md.MotmID equals pim.PlayerID
                             join p in db.Players on pim.PlayerID equals p.PlayerID
                             join r in db.Referees on md.RefereeID equals r.RefereeID
@@ -33,7 +35,7 @@ namespace DAL
                             };
 
 
-                var item = query.FirstOrDefault();
+                var item = existingMatchDetail.FirstOrDefault();
 
                 if (item != null)
                 {
@@ -68,7 +70,7 @@ namespace DAL
         {
             using (DBProjetDataContext db = new DBProjetDataContext())
             {
-                var query = from md in db.MatchDetails
+                var existingMatchDetail = from md in db.MatchDetails
                             join r in db.Referees on md.RefereeID equals r.RefereeID
                             join m in db.Matches on md.MatchID equals m.MatchID
                             where md.MatchID == matchID
@@ -85,7 +87,7 @@ namespace DAL
                                 awayTactic = md.AwayTactical
                             };
 
-                var item = query.FirstOrDefault();
+                var item = existingMatchDetail.FirstOrDefault();
                 if (item != null)
                 {
                     MatchDetail matchDetail = new MatchDetail();
@@ -105,30 +107,29 @@ namespace DAL
             return null;
         }
 
-        public bool EditData(MatchDetail matchDetail, DateTime matchTime)
+        public bool EditData(MatchDetail matchDetail, Match match)
         {
             try
             {
                 using (DBProjetDataContext db = new DBProjetDataContext())
                 {
-                    string matchID = matchDetail.MatchID;
-                    //EditMatchTimeOfMatch(matchID, matchTime);
-                    var query = db.MatchDetails.Where(md => md.MatchID == matchID).FirstOrDefault();
-                    if (query != null)
-                    {
-                        query.MatchID = matchDetail.MatchID;
-                        query.MotmID = matchDetail.MotmID;
-                        query.HomeGoals = matchDetail.HomeGoals;
-                        query.AwayGoals = matchDetail.AwayGoals;
-                        query.HomeTactical = matchDetail.HomeTactical;
-                        query.AwayTactical = matchDetail.AwayTactical;
-                        query.RefereeID = matchDetail.RefereeID;
-                        query.Match.MatchTime = matchDetail.Match.MatchTime;
+                    string matchID = matchDetail.Match.MatchID;
+                    var existingMatchDetail = db.MatchDetails.Where(md => md.MatchID == matchID).FirstOrDefault();
 
-                        db.SubmitChanges();
-                        return true;
+                    if (existingMatchDetail != null)
+                    {
+                        // Xóa match detail cũ (existingMatchDetail)
+                        db.MatchDetails.DeleteOnSubmit(existingMatchDetail);
                     }
-                    return false;
+
+                    EditMatchTimeOfMatch(match);
+
+                    // Thêm vào match detail mới (newMatchDetail)
+                    MatchDetail newMatchDetail = CreateNewMatchDetail(matchDetail);
+                    db.MatchDetails.InsertOnSubmit(newMatchDetail);
+                    db.SubmitChanges();
+
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -139,14 +140,44 @@ namespace DAL
             }
         }
 
-        private void EditMatchTimeOfMatch(string matchID, DateTime matchTime)
+        private void EditMatchTimeOfMatch(Match match)
         {
-            using (DBProjetDataContext db = new DBProjetDataContext())
+            try
             {
-                var query = db.Matches.Where(m => m.MatchID == matchID).FirstOrDefault();
+                using (DBProjetDataContext db = new DBProjetDataContext())
+                {
+                    var query = db.Matches.Where(m => m.MatchID == match.MatchID).FirstOrDefault();
+                    if (query != null)
+                    {
+                        query.MatchTime = match.MatchTime;
 
+                        db.SubmitChanges();
+                    }
+                }
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+
+        private MatchDetail CreateNewMatchDetail(MatchDetail matchDetail)
+        {
+            MatchDetail newMatchDetail = new MatchDetail();
+            newMatchDetail.MatchID = matchDetail.Match.MatchID;
+            newMatchDetail.MotmID = matchDetail.MotmID;
+            newMatchDetail.HomeGoals = matchDetail.HomeGoals;
+            newMatchDetail.AwayGoals = matchDetail.AwayGoals;
+            newMatchDetail.HomeTactical = matchDetail.HomeTactical;
+            newMatchDetail.AwayTactical = matchDetail.AwayTactical;
+            newMatchDetail.RefereeID = matchDetail.RefereeID;
+            //newMatchDetail.Match = new Match
+            //{
+            //    MatchID = matchDetail.Match.MatchID,
+            //    MatchTime = matchDetail.Match.MatchTime
+            //};
+            return newMatchDetail;
+        }
+
     }
 }
