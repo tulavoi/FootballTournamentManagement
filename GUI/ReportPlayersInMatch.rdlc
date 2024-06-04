@@ -775,6 +775,13 @@
       </ConnectionProperties>
       <rd:DataSourceID>0d2f4f93-ccd6-4238-a520-4b32db90c7c1</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="ID_DBProject_NetDataSet4">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>8faf3405-b17b-446e-8224-0d900f36015a</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">

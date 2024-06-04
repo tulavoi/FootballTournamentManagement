@@ -35,7 +35,7 @@ namespace GUI
                 reportViewer1.LocalReport.ReportEmbeddedResource = "GUI.ReportPlayersInMatch.rdlc";
                 ReportDataSource rpDataSource = new ReportDataSource();
                 rpDataSource.Name = "DataSet1";
-                List<PlayersInMatch> players = playersInMatchBLL.LoadPlayerInMatch(matchID, isHome);
+                List<PlayerInMatchDTO> players = playersInMatchBLL.LoadPlayerInMatchDTO(matchID, isHome);
                 rpDataSource.Value = players;
                 reportViewer1.LocalReport.DataSources.Add(rpDataSource);
 

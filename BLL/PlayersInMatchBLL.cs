@@ -42,5 +42,10 @@ namespace BLL
             return playersInMatchDAL.DeleteData(playerID, selectedMatchID);
 
         }
+
+        public List<PlayerInMatchDTO> LoadPlayerInMatchDTO(string matchID, int isHome)
+        {
+            return playersInMatchDAL.LoadPlayerInMatchDTO(matchID, isHome);
+        }
     }
 }

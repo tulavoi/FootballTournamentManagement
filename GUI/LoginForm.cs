@@ -29,7 +29,7 @@ namespace GUI
         {
             guna2ShadowForm1.SetShadowForm(this);
             txtPassword.PasswordChar = '*';
-
+           
             LoadLoginInfo();
         }
 

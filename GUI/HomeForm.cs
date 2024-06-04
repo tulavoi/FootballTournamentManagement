@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DAL.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration.Provider;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace GUI
 {
     public partial class HomeForm : Form
     {
+         
+
         public HomeForm()
         {
             InitializeComponent();
@@ -20,6 +24,11 @@ namespace GUI
         private void guna2TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

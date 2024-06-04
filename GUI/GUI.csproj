@@ -117,6 +117,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectDB.Designer.cs">
+      <DependentUpon>ConnectDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDialogAddClubToSeason.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
       <DependentUpon>RefereeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="_DBProject_NetDataSet.cs">
+      <DependentUpon>_DBProject_NetDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="_DBProject_NetDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -301,6 +310,9 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="ConnectDB.resx">
+      <DependentUpon>ConnectDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDialogAddClubToSeason.resx">
       <DependentUpon>FormDialogAddClubToSeason.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,6 +326,7 @@
       <DependentUpon>FormDialogUpdateMatchDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="GUI_TemporaryKey.pfx" />
+    <None Include="Properties\DataSources\DAL.PlayersInMatch.datasource" />
     <None Include="Resources\photo-missing.png" />
     <None Include="Resources\salah.png" />
     <EmbeddedResource Include="FormDialogAddManager.resx">

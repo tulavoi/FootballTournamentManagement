@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace DAL
     {
         public bool CheckLogin(Account account)
         {
+            string conn = ChangeConnectionString.getConnectionString();
+            
             using (DBProjetDataContext db = new DBProjetDataContext())
             {
                 var query = db.Accounts.Where(a => a.Email == account.Email && a.Password == account.Password).FirstOrDefault();

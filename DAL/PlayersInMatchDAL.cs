@@ -222,10 +222,55 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                //throw ex;
                 Console.WriteLine(ex.Message);
                 return false;
             }
+        }
+
+
+        public List<PlayerInMatchDTO> LoadPlayerInMatchDTO(string matchID, int isHome)
+        {
+            List<PlayerInMatchDTO> playerMatchDTOs = new List<PlayerInMatchDTO>();
+
+            using (DBProjetDataContext db = new DBProjetDataContext())
+            {
+                var query = from pim in db.PlayersInMatches
+                            where pim.MatchID == matchID && pim.IsHomeTeam == isHome
+                            join p in db.Players on pim.PlayerID equals p.PlayerID
+                            select new PlayerInMatchDTO
+                            {
+                                MatchID = pim.MatchID,
+                                PlayerID = pim.PlayerID,
+                                PlayerName = p.PlayerName,
+                                Image = p.Image,
+                                Number = (int)p.Number,
+                                IsHomeTeam = pim.IsHomeTeam,
+                                Position = pim.Position,
+                                Goal = (int)pim.Goal,
+                                YellowCard = (int)pim.YellowCard,
+                                RedCard = (int)pim.RedCard,
+                                OwnGoal = (int)pim.OwnGoal,
+                                IsCaptain = pim.IsCaptain
+                            };
+
+                playerMatchDTOs = query.ToList();
+            }
+
+            var positionOrder = new Dictionary<string, int>
+            {
+                { "Goalkeeper", 1 },
+                { "Defender", 2 },
+                { "Midfielder", 3 },
+                { "Forward", 4 },
+                { "Substitute", 5 } // Assuming 'Substitute' is a valid position
+            };
+
+            // Sort the list based on the defined order
+            var sortedPlayerMatchDTOs = playerMatchDTOs.OrderBy(p => positionOrder.ContainsKey(p.Position) ? positionOrder[p.Position] : int.MaxValue).ToList();
+
+            // Return the sorted list
+            return sortedPlayerMatchDTOs;
         }
     }
 }

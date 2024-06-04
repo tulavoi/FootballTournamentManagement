@@ -75,7 +75,9 @@
     <Compile Include="ManagersDAL.cs" />
     <Compile Include="MatchDetailDAL.cs" />
     <Compile Include="MatchesDAL.cs" />
+    <Compile Include="PlayerInMatchDTO.cs" />
     <Compile Include="PlayersInMatchDAL.cs" />
+    <Compile Include="ChangeConnectionString.cs" />
     <Compile Include="RefereesDAL.cs" />
     <Compile Include="RoundsDAL.cs" />
     <Compile Include="SeasonClubsDAL.cs" />
